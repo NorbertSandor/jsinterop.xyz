@@ -25,28 +25,28 @@
 
 	<build>
 		<plugins>
-			<plugin>
-				<artifactId>maven-antrun-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>copy-apidocs</id>
-						<goals>
-							<goal>run</goal>
-						</goals>
-						<phase>prepare-package</phase>
-						<configuration>
-							<target>
-								<copy todir="${project.build.directory}/ghpages/${project.version}/apidocs">
-									<fileset dir="${basedir}/../jsinterop/target/site/apidocs" />
-								</copy>
-								<copy todir="${project.build.directory}/ghpages/latest/apidocs">
-									<fileset dir="${basedir}/../jsinterop/target/site/apidocs" />
-								</copy>
-							</target>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
+			<!-- TODO <plugin> -->
+			<!-- <artifactId>maven-antrun-plugin</artifactId> -->
+			<!-- <executions> -->
+			<!-- <execution> -->
+			<!-- <id>copy-apidocs</id> -->
+			<!-- <goals> -->
+			<!-- <goal>run</goal> -->
+			<!-- </goals> -->
+			<!-- <phase>prepare-package</phase> -->
+			<!-- <configuration> -->
+			<!-- <target> -->
+			<!-- <copy todir="${project.build.directory}/ghpages/${project.version}/apidocs"> -->
+			<!-- <fileset dir="${basedir}/../jsinterop/target/site/apidocs" /> -->
+			<!-- </copy> -->
+			<!-- <copy todir="${project.build.directory}/ghpages/latest/apidocs"> -->
+			<!-- <fileset dir="${basedir}/../jsinterop/target/site/apidocs" /> -->
+			<!-- </copy> -->
+			<!-- </target> -->
+			<!-- </configuration> -->
+			<!-- </execution> -->
+			<!-- </executions> -->
+			<!-- </plugin> -->
 			<plugin>
 				<groupId>org.asciidoctor</groupId>
 				<artifactId>asciidoctor-maven-plugin</artifactId>

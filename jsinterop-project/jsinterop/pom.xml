@@ -44,9 +44,9 @@
 						<groupId>org.sonatype.plugins</groupId>
 						<artifactId>nexus-staging-maven-plugin</artifactId>
 					</plugin>
-					<plugin>
-						<artifactId>maven-javadoc-plugin</artifactId>
-					</plugin>
+					<!-- TODO <plugin> -->
+					<!-- <artifactId>maven-javadoc-plugin</artifactId> -->
+					<!-- </plugin> -->
 				</plugins>
 			</build>
 

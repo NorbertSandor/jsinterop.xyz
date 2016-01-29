@@ -283,13 +283,13 @@
 							<failOnError>false</failOnError>
 						</configuration>
 						<executions>
-							<execution>
-								<id>generate-javadocs</id>
-								<phase>prepare-package</phase>
-								<goals>
-									<goal>javadoc</goal>
-								</goals>
-							</execution>
+							<!-- TODO <execution> -->
+							<!-- <id>generate-javadocs</id> -->
+							<!-- <phase>prepare-package</phase> -->
+							<!-- <goals> -->
+							<!-- <goal>javadoc</goal> -->
+							<!-- </goals> -->
+							<!-- </execution> -->
 							<execution>
 								<id>attach-javadocs</id>
 								<goals>
