@@ -39,6 +39,5 @@ public class JsGlobalsTest implements Runnable {
 		assertTrue(document == document2);
 		// end::JsGlobals_access_document[]
 		generatedCodeMarkerEnd("JsGlobals_access_document");
-
 	}
 }

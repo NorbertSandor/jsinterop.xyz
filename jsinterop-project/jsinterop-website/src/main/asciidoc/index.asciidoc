@@ -114,12 +114,18 @@ Source code is available on https://github.com/NorbertSandor/jsinterop.xyz[GitHu
 
 === Javascript global scope
 
-The Javascript global scope (the `window`) and the can be accessed by the static method `JsGlobals.getWindow()`:
+The Javascript global scope (the `window`) can be accessed by the static method `JsGlobals.getWindow()`:
 
 [source,java,indent=0,role="javaSourceCode"]
 .Java code
 ----
 include::../../../../jsinterop-test/src/main/java/xyz/jsinterop/test/client/core/JsGlobalsTest.java[tags=JsGlobals_access_window]
+----
+
+[source,xtend,indent=0,role="xtendSourceCode"]
+.Xtend code
+----
+include::../../../../jsinterop-test/src/main/java/xyz/jsinterop/test/client/core/JsGlobalsXtendTest.xtend[tags=JsGlobals_access_window]
 ----
 
 [source,javascript,indent=0,role="generatedJavascriptCode"]
@@ -134,6 +140,12 @@ The Javascript `document` object is accessible by `Window.getDocument()` but for
 .Java code
 ----
 include::../../../../jsinterop-test/src/main/java/xyz/jsinterop/test/client/core/JsGlobalsTest.java[tags=JsGlobals_access_document]
+----
+
+[source,xtend,indent=0,role="xtendSourceCode"]
+.Xtend code
+----
+include::../../../../jsinterop-test/src/main/java/xyz/jsinterop/test/client/core/JsGlobalsXtendTest.xtend[tags=JsGlobals_access_document]
 ----
 
 [source,javascript,indent=0,role="generatedJavascriptCode"]
