@@ -1,0 +1,55 @@
+= JsInterop.xyz
+:toc: right
+:toclevels: 5
+:sectnums:
+:icons: font
+
+== Introduction
+
+http://www.gwtproject.org/[GWT] is a Java-based technology for building Javascript applications, by transpiling Java 8 code to Javascript code.
+As part of its features GWT provides extensive http://www.gwtproject.org/doc/latest/RefJreEmulation.html[JRE emulation support] in the browser.
+
+One of the main features of GWT is the two-way interoperability between Java and Javascript code.
+As of GWT 2.8.0 there are two solutions for Javascript interoperation:
+
+* the old imperative way: http://www.gwtproject.org/doc/latest/DevGuideCodingBasicsJSNI.html[JSNI] and http://www.gwtproject.org/doc/latest/DevGuideCodingBasicsOverlay.html[overlay types]
+* the new declarative way: https://docs.google.com/document/d/10fmlEYIHcyead_4R1S5wKGs1t2I7Fnp_PaNaa7XTEk0/edit[JsInterop]
+
+The brand new JsInterop is not complete yet but it is already usable and it is a very good future direction.
+Some features are missing from it but these can be implemented with old JSNI.
+
+After this long introduction, what is JsInterop.xyz?
+
+[quote]
+--
+JsInterop.xyz is an open source project, providing high quality JsInterop APIs for Javascript libraries. +
+It makes possible to use many Javascript features and libraries in GWT applications.
+--
+
+== More information
+
+For more information see
+
+* the link:latest/index.html[latest documentation] or
+* the https://github.com/NorbertSandor/jsinterop.xyz[GitHub page].
+
+== History
+
+=== 0.1.0-SNAPSHOT
+
+Current development version.
+
+* Initial GWT APIs for core browser APIs.
+
+++++
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-72770645-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+++++

@@ -1,0 +1,266 @@
+= JsInterop.xyz
+:toc: right
+:toclevels: 5
+:sectnums:
+:icons: font
+:revnumber: {docVersion}
+
+++++
+<style>
+.toggler {
+	padding-top: 0.2em;
+}
+</style>
+
+<div class="toggler"><input id="generatedJavascriptCodeField" type="checkbox" /> Show generated Javascript in code examples</div>
+<div class="toggler"><input id="javaSourceCodeField" type="checkbox" checked /> Show Java source in code examples</div>
+<div class="toggler"><input id="xtendSourceCodeField" type="checkbox" checked /> Show Xtend source in code examples</div>
+
+<script>
+function getBlockField(blockId) {
+	return document.getElementById(blockId + "Field");
+}
+
+function isBlockVisible(blockId) {
+	return getBlockField(blockId).checked;
+}
+
+function updateBlocks(blockId) {
+  var elements = document.getElementsByClassName(blockId);
+
+  var display = isBlockVisible(blockId) ? "block" : "none";
+  for (var i = 0; i < elements.length; i++) {
+    elements[i].style.display = display;
+  }
+}
+
+document.getElementById("generatedJavascriptCodeField").addEventListener("click", function() {
+	updateBlocks("generatedJavascriptCode");
+});
+document.getElementById("javaSourceCodeField").addEventListener("click", function() {
+	updateBlocks("javaSourceCode");
+	getBlockField("xtendSourceCode").disabled = !isBlockVisible("javaSourceCode");
+});
+document.getElementById("xtendSourceCodeField").addEventListener("click", function() {
+	updateBlocks("xtendSourceCode");
+	getBlockField("javaSourceCode").disabled = !isBlockVisible("xtendSourceCode");
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+	updateBlocks("generatedJavascriptCode");
+	updateBlocks("javaSourceCode");
+	updateBlocks("xtendSourceCode");
+});
+</script>
+++++
+
+== Introduction
+
+=== What is JsInterop.xyz?
+_JsInterop.xyz_ is an open source project, providing high quality https://docs.google.com/document/d/10fmlEYIHcyead_4R1S5wKGs1t2I7Fnp_PaNaa7XTEk0/edit[JsInterop] APIs for Javascript libraries. +
+It makes possible to use many Javascript features and libraries by http://www.gwtproject.org/[GWT] applications.
+
+=== What is GWT?
+
+http://www.gwtproject.org/[GWT] is a Java-based technology for building Javascript applications, by transpiling Java 8 code to Javascript code.
+As part of its features GWT provides extensive http://www.gwtproject.org/doc/latest/RefJreEmulation.html[JRE emulation support] on the client.
+
+One of the main features of GWT is the two-way interoperability between Java and Javascript code.
+As of GWT 2.8.0 there are two solutions for Javascript interoperation:
+
+* the old imperative way: http://www.gwtproject.org/doc/latest/DevGuideCodingBasicsJSNI.html[JSNI] and http://www.gwtproject.org/doc/latest/DevGuideCodingBasicsOverlay.html[overlay types]
+* the new declarative way: https://docs.google.com/document/d/10fmlEYIHcyead_4R1S5wKGs1t2I7Fnp_PaNaa7XTEk0/edit[JsInterop 1.0]
+
+The brand new JsInterop is not complete yet but it is already usable and it is a very good future direction.
+Some features are missing from it but these can be implemented with old JSNI.
+
+=== How does _JsInterop.xyz_ work?
+
+There are several ways to implement GWT JsInterop APIs.
+
+For example http://www.gwtproject.org/articles/elemental.html[Elemental] generates GWT APIs from WEBIDL files. +
+The disadvantage of this solution is that many Javascript libraries do not have up-to-date WEBIDL specification, e.g. https://jquery.org/[JQuery] or JQuery plugins.
+
+_JsInterop.xyz_ follows a different path: it uses http://www.typescriptlang.org/[TypeScript] definition files to generate the GWT APIs. +
+The main source for the TypeScript definitions is https://github.com/DefinitelyTyped/DefinitelyTyped[DefinitelyTyped].
+
+However there is a very difficult problem: Typescript (and Javascript) is very different from Java.
+Typescript has a http://www.typescriptlang.org/Handbook#type-compatibility[structural type system] whereas Java is a https://en.wikipedia.org/wiki/Nominal_type_system[nominally-typed] language. +
+The automatic mapping of Typescript to Java is far from trivial, and its result is suboptimal in the general case (especially if more complex TypeScript types are involved).
+
+At the heart of this project there is a TypeScript->Java converter (based on http://www.antlr.org/[ANTLR] and http://www.eclipse.org/xtend/[Xtend active annotation processors]) that generates a (probably suboptimal) GWT API.
+This API can be used by GWT code as is, and of course it can be the starting point of a hand-refined, more optimal and easier to use API.
+
+_JsInterop.xyz_ provides the following:
+
+* In case of selected, widely used APIs (like core https://www.w3.org/[W3C APIs] or JQuery), there is a manually crafted and maintained API.
+* In case of other APIs at DefinitelyTyped only the automatically converted API will be provided.
+
+[NOTE]
+====
+Currently only the manually refined APIs are released, and the main focus is to make these the preferred choice for GWT developers. +
+The generated APIs for other libraries at DefinitelyTyped will be available only in the (maybe far) future.
+====
+
+NOTE: The API converter of _JsInterop.xyz_ is currently not available as an open source project.
+
+== Status and usage
+
+_JsInterop.xyz_ is in early-access phase, it is not feature-complete yet and is not recommended for production.
+
+Source code is available on https://github.com/NorbertSandor/jsinterop.xyz[GitHub], compiled binaries are uploaded to http://search.maven.org/#search|ga|1|g%3A%22xyz.jsinterop%22%20AND%20a%3A%22jsinterop%22[Central Repository].
+
+== JsInterop.xyz APIs
+
+=== Javascript global scope
+
+The Javascript global scope (the `window`) and the can be accessed by the static method `JsGlobals.getWindow()`:
+
+[source,java,indent=0,role="javaSourceCode"]
+.Java code
+----
+include::../../../../jsinterop-test/src/main/java/xyz/jsinterop/test/client/core/JsGlobalsTest.java[tags=JsGlobals_access_window]
+----
+
+[source,javascript,indent=0,role="generatedJavascriptCode"]
+.Generated Javascript code
+----
+include::../../../../jsinterop-test/target/gwt-asciidoc/gwt.js[tags=JsGlobals_access_window]
+----
+
+The Javascript `document` object is accessible by `Window.getDocument()` but for convenience it is also accessible by the static method `JsGlobals.getDocument()`:
+
+[source,java,indent=0,role="javaSourceCode"]
+.Java code
+----
+include::../../../../jsinterop-test/src/main/java/xyz/jsinterop/test/client/core/JsGlobalsTest.java[tags=JsGlobals_access_document]
+----
+
+[source,javascript,indent=0,role="generatedJavascriptCode"]
+.Generated Javascript code
+----
+include::../../../../jsinterop-test/target/gwt-asciidoc/gwt.js[tags=JsGlobals_access_document]
+----
+
+== GWT JsInterop internals
+
+To successfully use JsInterop in GWT, it is important to know how the underlying technologies work.
+
+=== Primitives in GWT
+
+GWT supports all Java primitives with mostly correct Java semantics.
+
+==== boolean
+
+Java `boolean` corresponds to Javascript `boolean`.
+
+[source,java,indent=0,role="javaSourceCode"]
+.Java code
+----
+include::../../../../jsinterop-test/src/main/java/xyz/jsinterop/test/client/docs/Primitives.java[tags=primitiveSemantics_boolean]
+----
+
+[source,javascript,indent=0,role="generatedJavascriptCode"]
+.Generated Javascript code
+----
+include::../../../../jsinterop-test/target/gwt-asciidoc/gwt.js[tags=primitiveSemantics_boolean]
+----
+
+==== byte, char, int, short
+
+`byte`, `char`, `int` and `short` are handled simply as integers in Javascript. +
+Important difference is that overflow is not handled properly.
+
+[source,java,indent=0,role="javaSourceCode"]
+.Java code
+----
+include::../../../../jsinterop-test/src/main/java/xyz/jsinterop/test/client/docs/Primitives.java[tags=primitiveSemantics_others]
+----
+
+[source,javascript,indent=0,role="generatedJavascriptCode"]
+.Generated Javascript code
+----
+include::../../../../jsinterop-test/target/gwt-asciidoc/gwt.js[tags=primitiveSemantics_others]
+----
+
+==== double
+
+`double`s are represented as floating point Javascript numbers.
+
+[source,java,indent=0,role="javaSourceCode"]
+.Java code
+----
+include::../../../../jsinterop-test/src/main/java/xyz/jsinterop/test/client/docs/Primitives.java[tags=primitiveSemantics_double]
+----
+
+[source,javascript,indent=0,role="generatedJavascriptCode"]
+.Generated Javascript code
+----
+include::../../../../jsinterop-test/target/gwt-asciidoc/gwt.js[tags=primitiveSemantics_double]
+----
+
+==== float
+
+`float` is handled just like as `double`.
+Because there is no difference between `float` and `double` (except for literals) it is better to use `double` instead of `float` when interfacing with Javascript.
+
+[source,java,indent=0,role="javaSourceCode"]
+.Java code
+----
+include::../../../../jsinterop-test/src/main/java/xyz/jsinterop/test/client/docs/Primitives.java[tags=primitiveSemantics_float]
+----
+
+[source,javascript,indent=0,role="generatedJavascriptCode"]
+.Generated Javascript code
+----
+include::../../../../jsinterop-test/target/gwt-asciidoc/gwt.js[tags=primitiveSemantics_float]
+----
+
+==== long
+
+`long` is also special: "small" `long` values are treated as `int`, larger values (that do not fit into an `int`) are represented by "black-box" Javascript objects.
+This means that only "small" `long` values should be passed to Javascript. +
+Because of this special behaviour (and because Javascript doesn't have a 64 bit integer type) `long` should not be used in JsInterop interfacing.
+
+[source,java,indent=0,role="javaSourceCode"]
+.Java code
+----
+include::../../../../jsinterop-test/src/main/java/xyz/jsinterop/test/client/docs/Primitives.java[tags=primitiveSemantics_long]
+----
+
+[source,javascript,indent=0,role="generatedJavascriptCode"]
+.Generated Javascript code
+----
+include::../../../../jsinterop-test/target/gwt-asciidoc/gwt.js[tags=primitiveSemantics_long]
+----
+
+==== Primitives best practices
+
+It is obvious that the semantic differences do not cause big problems in practice. +
+For example if an integer calculation overflows then probably it has a bug. In Java it overflows, in GWT it does not - but both results are incorrect in the given integer range.
+
+To summarize:
+
+* Primitive semantics are correct in all important cases (but consider creating plenty of unit tests if mission-critical calculations are shared between Java and Javascript).
+* In JsInterop interfaces
+** the most "safe" primitive types are `int` and `double`,
+** `byte`, `float`, `short` and `char` is rarely used,
+** `long` should be avoided.
+
+=== Native Javascript types
+
+GWT supports the usage of native Javascript functions and objects in Java code. +
+See the details at https://docs.google.com/document/d/10fmlEYIHcyead_4R1S5wKGs1t2I7Fnp_PaNaa7XTEk0/edit#heading=h.b1boa8c235km[JsInterop V1.0 / Native JsTypes].
+
+++++
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-72770645-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+++++
