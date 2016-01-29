@@ -240,6 +240,7 @@
 							<useReleaseProfile>false</useReleaseProfile>
 							<goals>deploy</goals>
 							<tagNameFormat>v@{project.version}</tagNameFormat>
+							<allowTimestampedSnapshots>true</allowTimestampedSnapshots>
 						</configuration>
 					</plugin>
 					<plugin>
