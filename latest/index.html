@@ -413,27 +413,109 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <body class="article toc2 toc-right">
 <div id="header">
 <h1>JsInterop.xyz</h1>
+<div class="details">
+<span id="revnumber">version 0.1.0</span>
+</div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
-<li><a href="#_introduction">1. Introduction</a></li>
-<li><a href="#_more_information">2. More information</a></li>
-<li><a href="#_history">3. History</a>
+<li><a href="#_introduction">1. Introduction</a>
 <ul class="sectlevel2">
-<li><a href="#_0_2_0_snapshot">3.1. 0.2.0-SNAPSHOT</a></li>
-<li><a href="#_0_1_0">3.2. 0.1.0</a></li>
+<li><a href="#_what_is_jsinterop_xyz">1.1. What is JsInterop.xyz?</a></li>
+<li><a href="#_what_is_gwt">1.2. What is GWT?</a></li>
+<li><a href="#_how_does_em_jsinterop_xyz_em_work">1.3. How does <em>JsInterop.xyz</em> work?</a></li>
+</ul>
+</li>
+<li><a href="#_status_and_usage">2. Status and usage</a></li>
+<li><a href="#_jsinterop_xyz_apis">3. JsInterop.xyz APIs</a>
+<ul class="sectlevel2">
+<li><a href="#_javascript_global_scope">3.1. Javascript global scope</a></li>
+</ul>
+</li>
+<li><a href="#_gwt_jsinterop_internals">4. GWT JsInterop internals</a>
+<ul class="sectlevel2">
+<li><a href="#_primitives_in_gwt">4.1. Primitives in GWT</a>
+<ul class="sectlevel3">
+<li><a href="#_boolean">4.1.1. boolean</a></li>
+<li><a href="#_byte_char_int_short">4.1.2. byte, char, int, short</a></li>
+<li><a href="#_double">4.1.3. double</a></li>
+<li><a href="#_float">4.1.4. float</a></li>
+<li><a href="#_long">4.1.5. long</a></li>
+<li><a href="#_primitives_best_practices">4.1.6. Primitives best practices</a></li>
+</ul>
+</li>
+<li><a href="#_native_javascript_types">4.2. Native Javascript types</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 <div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<style>
+.toggler {
+	padding-top: 0.2em;
+}
+</style>
+
+<div class="toggler"><input id="generatedJavascriptCodeField" type="checkbox" /> Show generated Javascript in code examples</div>
+<div class="toggler"><input id="javaSourceCodeField" type="checkbox" checked /> Show Java source in code examples</div>
+<div class="toggler"><input id="xtendSourceCodeField" type="checkbox" checked /> Show Xtend source in code examples</div>
+
+<script>
+function getBlockField(blockId) {
+	return document.getElementById(blockId + "Field");
+}
+
+function isBlockVisible(blockId) {
+	return getBlockField(blockId).checked;
+}
+
+function updateBlocks(blockId) {
+  var elements = document.getElementsByClassName(blockId);
+
+  var display = isBlockVisible(blockId) ? "block" : "none";
+  for (var i = 0; i < elements.length; i++) {
+    elements[i].style.display = display;
+  }
+}
+
+document.getElementById("generatedJavascriptCodeField").addEventListener("click", function() {
+	updateBlocks("generatedJavascriptCode");
+});
+document.getElementById("javaSourceCodeField").addEventListener("click", function() {
+	updateBlocks("javaSourceCode");
+	getBlockField("xtendSourceCode").disabled = !isBlockVisible("javaSourceCode");
+});
+document.getElementById("xtendSourceCodeField").addEventListener("click", function() {
+	updateBlocks("xtendSourceCode");
+	getBlockField("javaSourceCode").disabled = !isBlockVisible("xtendSourceCode");
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+	updateBlocks("generatedJavascriptCode");
+	updateBlocks("javaSourceCode");
+	updateBlocks("xtendSourceCode");
+});
+</script>
+</div>
+</div>
 <div class="sect1">
 <h2 id="_introduction">1. Introduction</h2>
 <div class="sectionbody">
+<div class="sect2">
+<h3 id="_what_is_jsinterop_xyz">1.1. What is JsInterop.xyz?</h3>
+<div class="paragraph">
+<p><em>JsInterop.xyz</em> is an open source project, providing high quality <a href="https://docs.google.com/document/d/10fmlEYIHcyead_4R1S5wKGs1t2I7Fnp_PaNaa7XTEk0/edit">JsInterop</a> APIs for Javascript libraries.<br>
+It makes possible to use many Javascript features and libraries by <a href="http://www.gwtproject.org/">GWT</a> applications.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_what_is_gwt">1.2. What is GWT?</h3>
 <div class="paragraph">
 <p><a href="http://www.gwtproject.org/">GWT</a> is a Java-based technology for building Javascript applications, by transpiling Java 8 code to Javascript code.
-As part of its features GWT provides extensive <a href="http://www.gwtproject.org/doc/latest/RefJreEmulation.html">JRE emulation support</a> in the browser.</p>
+As part of its features GWT provides extensive <a href="http://www.gwtproject.org/doc/latest/RefJreEmulation.html">JRE emulation support</a> on the client.</p>
 </div>
 <div class="paragraph">
 <p>One of the main features of GWT is the two-way interoperability between Java and Javascript code.
@@ -445,7 +527,7 @@ As of GWT 2.8.0 there are two solutions for Javascript interoperation:</p>
 <p>the old imperative way: <a href="http://www.gwtproject.org/doc/latest/DevGuideCodingBasicsJSNI.html">JSNI</a> and <a href="http://www.gwtproject.org/doc/latest/DevGuideCodingBasicsOverlay.html">overlay types</a></p>
 </li>
 <li>
-<p>the new declarative way: <a href="https://docs.google.com/document/d/10fmlEYIHcyead_4R1S5wKGs1t2I7Fnp_PaNaa7XTEk0/edit">JsInterop</a></p>
+<p>the new declarative way: <a href="https://docs.google.com/document/d/10fmlEYIHcyead_4R1S5wKGs1t2I7Fnp_PaNaa7XTEk0/edit">JsInterop 1.0</a></p>
 </li>
 </ul>
 </div>
@@ -453,63 +535,305 @@ As of GWT 2.8.0 there are two solutions for Javascript interoperation:</p>
 <p>The brand new JsInterop is not complete yet but it is already usable and it is a very good future direction.
 Some features are missing from it but these can be implemented with old JSNI.</p>
 </div>
+</div>
+<div class="sect2">
+<h3 id="_how_does_em_jsinterop_xyz_em_work">1.3. How does <em>JsInterop.xyz</em> work?</h3>
 <div class="paragraph">
-<p>After this long introduction, what is JsInterop.xyz?</p>
+<p>There are several ways to implement GWT JsInterop APIs.</p>
 </div>
-<div class="quoteblock">
-<blockquote>
 <div class="paragraph">
-<p>JsInterop.xyz is an open source project, providing high quality JsInterop APIs for Javascript libraries.<br>
-It makes possible to use many Javascript features and libraries in GWT applications.</p>
+<p>For example <a href="http://www.gwtproject.org/articles/elemental.html">Elemental</a> generates GWT APIs from WEBIDL files.<br>
+The disadvantage of this solution is that many Javascript libraries do not have up-to-date WEBIDL specification, e.g. <a href="https://jquery.org/">JQuery</a> or JQuery plugins.</p>
 </div>
-</blockquote>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_more_information">2. More information</h2>
-<div class="sectionbody">
 <div class="paragraph">
-<p>For more information see</p>
+<p><em>JsInterop.xyz</em> follows a different path: it uses <a href="http://www.typescriptlang.org/">TypeScript</a> definition files to generate the GWT APIs.<br>
+The main source for the TypeScript definitions is <a href="https://github.com/DefinitelyTyped/DefinitelyTyped">DefinitelyTyped</a>.</p>
+</div>
+<div class="paragraph">
+<p>However there is a very difficult problem: Typescript (and Javascript) is very different from Java.
+Typescript has a <a href="http://www.typescriptlang.org/Handbook#type-compatibility">structural type system</a> whereas Java is a <a href="https://en.wikipedia.org/wiki/Nominal_type_system">nominally-typed</a> language.<br>
+The automatic mapping of Typescript to Java is far from trivial, and its result is suboptimal in the general case (especially if more complex TypeScript types are involved).</p>
+</div>
+<div class="paragraph">
+<p>At the heart of this project there is a TypeScript&#8594;Java converter (based on <a href="http://www.antlr.org/">ANTLR</a> and <a href="http://www.eclipse.org/xtend/">Xtend active annotation processors</a>) that generates a (probably suboptimal) GWT API.
+This API can be used by GWT code as is, and of course it can be the starting point of a hand-refined, more optimal and easier to use API.</p>
+</div>
+<div class="paragraph">
+<p><em>JsInterop.xyz</em> provides the following:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>the <a href="latest/index.html">latest documentation</a> or</p>
+<p>In case of selected, widely used APIs (like core <a href="https://www.w3.org/">W3C APIs</a> or JQuery), there is a manually crafted and maintained API.</p>
 </li>
 <li>
-<p>the <a href="https://github.com/NorbertSandor/jsinterop.xyz">GitHub page</a>.</p>
+<p>In case of other APIs at DefinitelyTyped only the automatically converted API will be provided.</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Currently only the manually refined APIs are released, and the main focus is to make these the preferred choice for GWT developers.<br>
+The generated APIs for other libraries at DefinitelyTyped will be available only in the (maybe far) future.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The API converter of <em>JsInterop.xyz</em> is currently not available as an open source project.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_status_and_usage">2. Status and usage</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><em>JsInterop.xyz</em> is in early-access phase, it is not feature-complete yet and is not recommended for production.</p>
+</div>
+<div class="paragraph">
+<p>Source code is available on <a href="https://github.com/NorbertSandor/jsinterop.xyz">GitHub</a>, compiled binaries are uploaded to <a href="http://search.maven.org/#search|ga|1|g%3A%22xyz.jsinterop%22%20AND%20a%3A%22jsinterop%22">Central Repository</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_jsinterop_xyz_apis">3. JsInterop.xyz APIs</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_javascript_global_scope">3.1. Javascript global scope</h3>
+<div class="paragraph">
+<p>The Javascript global scope (the <code>window</code>) and the can be accessed by the static method <code>JsGlobals.getWindow()</code>:</p>
+</div>
+<div class="listingblock javaSourceCode">
+<div class="title">Java code</div>
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">Window window = JsGlobals.getWindow();</code></pre>
+</div>
+</div>
+<div class="listingblock generatedJavascriptCode">
+<div class="title">Generated Javascript code</div>
+<div class="content">
+<pre class="highlight"><code class="language-javascript" data-lang="javascript">window_0 = $wnd.window;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The Javascript <code>document</code> object is accessible by <code>Window.getDocument()</code> but for convenience it is also accessible by the static method <code>JsGlobals.getDocument()</code>:</p>
+</div>
+<div class="listingblock javaSourceCode">
+<div class="title">Java code</div>
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">Document document = JsGlobals.getDocument();
+Document document2 = window.getDocument();
+assertTrue(document == document2);</code></pre>
+</div>
+</div>
+<div class="listingblock generatedJavascriptCode">
+<div class="title">Generated Javascript code</div>
+<div class="content">
+<pre class="highlight"><code class="language-javascript" data-lang="javascript">document_0 = $wnd.document;
+document2 = window_0.document;
+xjtc.assertTrue(maskUndefined(document_0) === maskUndefined(document2));</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_gwt_jsinterop_internals">4. GWT JsInterop internals</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To successfully use JsInterop in GWT, it is important to know how the underlying technologies work.</p>
+</div>
+<div class="sect2">
+<h3 id="_primitives_in_gwt">4.1. Primitives in GWT</h3>
+<div class="paragraph">
+<p>GWT supports all Java primitives with mostly correct Java semantics.</p>
+</div>
+<div class="sect3">
+<h4 id="_boolean">4.1.1. boolean</h4>
+<div class="paragraph">
+<p>Java <code>boolean</code> corresponds to Javascript <code>boolean</code>.</p>
+</div>
+<div class="listingblock javaSourceCode">
+<div class="title">Java code</div>
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">boolean b1 = true;
+boolean b2 = false;</code></pre>
+</div>
+</div>
+<div class="listingblock generatedJavascriptCode">
+<div class="title">Generated Javascript code</div>
+<div class="content">
+<pre class="highlight"><code class="language-javascript" data-lang="javascript">b1 = true;
+b2 = false;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_byte_char_int_short">4.1.2. byte, char, int, short</h4>
+<div class="paragraph">
+<p><code>byte</code>, <code>char</code>, <code>int</code> and <code>short</code> are handled simply as integers in Javascript.<br>
+Important difference is that overflow is not handled properly.</p>
+</div>
+<div class="listingblock javaSourceCode">
+<div class="title">Java code</div>
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">byte by0 = (byte) 0;
+byte by1 = (byte) 1000; // Narrowing conversion
+
+char c1 = 'A';
+char c2 = '☺';
+
+int i1 = 256;
+int i2 = Integer.MAX_VALUE + 1; // No overflow in GWT
+assertTrue((long) Integer.MAX_VALUE + 1L == (long) i2); // Fails in Java, succeeds in GWT</code></pre>
+</div>
+</div>
+<div class="listingblock generatedJavascriptCode">
+<div class="title">Generated Javascript code</div>
+<div class="content">
+<pre class="highlight"><code class="language-javascript" data-lang="javascript">by0 = narrow_byte(0);
+by1 = narrow_byte(1000);
+c1 = 65;
+c2 = 9786;
+i1 = 256;
+i2 = 2147483647 + 1;
+xjtc.assertTrue(eq(add_2(fromInt_0(2147483647), 1), fromInt_0(i2)));</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_double">4.1.3. double</h4>
+<div class="paragraph">
+<p>`double`s are represented as floating point Javascript numbers.</p>
+</div>
+<div class="listingblock javaSourceCode">
+<div class="title">Java code</div>
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">double d1 = 2.2; // Literal compiles to 2.2
+double d2 = Double.MAX_VALUE;
+assertTrue(Double.MAX_VALUE == d2);</code></pre>
+</div>
+</div>
+<div class="listingblock generatedJavascriptCode">
+<div class="title">Generated Javascript code</div>
+<div class="content">
+<pre class="highlight"><code class="language-javascript" data-lang="javascript">d1 = 2.2;
+d2 = 1.7976931348623157E308;
+xjtc.assertTrue(1.7976931348623157E308 == d2);</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_float">4.1.4. float</h4>
+<div class="paragraph">
+<p><code>float</code> is handled just like as <code>double</code>.
+Because there is no difference between <code>float</code> and <code>double</code> (except for literals) it is better to use <code>double</code> instead of <code>float</code> when interfacing with Javascript.</p>
+</div>
+<div class="listingblock javaSourceCode">
+<div class="title">Java code</div>
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">float f1 = 2.2F; // Literal compiles to 2.200000047683716
+float f2 = (float) Double.MAX_VALUE; // No narrowing conversion in GWT
+assertTrue(d2 == f2); // Fails in Java, succeeds in GWT
+assertTrue(Double.MAX_VALUE == (double) f2); // Fails in Java, succeeds in GWT</code></pre>
+</div>
+</div>
+<div class="listingblock generatedJavascriptCode">
+<div class="title">Generated Javascript code</div>
+<div class="content">
+<pre class="highlight"><code class="language-javascript" data-lang="javascript">f1 = 2.200000047683716;
+f2 = 1.7976931348623157E308;
+xjtc.assertTrue(d2 == f2);
+xjtc.assertTrue(1.7976931348623157E308 == f2);</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_long">4.1.5. long</h4>
+<div class="paragraph">
+<p><code>long</code> is also special: "small" <code>long</code> values are treated as <code>int</code>, larger values (that do not fit into an <code>int</code>) are represented by "black-box" Javascript objects.
+This means that only "small" <code>long</code> values should be passed to Javascript.<br>
+Because of this special behaviour (and because Javascript doesn&#8217;t have a 64 bit integer type) <code>long</code> should not be used in JsInterop interfacing.</p>
+</div>
+<div class="listingblock javaSourceCode">
+<div class="title">Java code</div>
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">long lo1 = 1; // Small long value
+long lo2 = 1L; // Small long value
+long lo3 = 1000000000000000000L; // Big long literal
+long lo4 = (long) Integer.MAX_VALUE + 1; // Big long value from expression
+long lo5 = Integer.MAX_VALUE + 1; // int operations do not overflow in GWT
+assertTrue(lo4 == lo5); // Fails in Java, succeeds in GWT</code></pre>
+</div>
+</div>
+<div class="listingblock generatedJavascriptCode">
+<div class="title">Generated Javascript code</div>
+<div class="content">
+<pre class="highlight"><code class="language-javascript" data-lang="javascript">lo1 = 1;
+lo2 = 1;
+lo3 = {l:2359296, m:1756829, h:56843};
+lo4 = add_2(fromInt_0(2147483647), 1);
+lo5 = fromInt_0(2147483647 + 1);
+xjtc.assertTrue(eq(lo4, lo5));</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_primitives_best_practices">4.1.6. Primitives best practices</h4>
+<div class="paragraph">
+<p>It is obvious that the semantic differences do not cause big problems in practice.<br>
+For example if an integer calculation overflows then probably it has a bug. In Java it overflows, in GWT it does not - but both results are incorrect in the given integer range.</p>
+</div>
+<div class="paragraph">
+<p>To summarize:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Primitive semantics are correct in all important cases (but consider creating plenty of unit tests if mission-critical calculations are shared between Java and Javascript).</p>
+</li>
+<li>
+<p>In JsInterop interfaces</p>
+<div class="ulist">
+<ul>
+<li>
+<p>the most "safe" primitive types are <code>int</code> and <code>double</code>,</p>
+</li>
+<li>
+<p><code>byte</code>, <code>float</code>, <code>short</code> and <code>char</code> is rarely used,</p>
+</li>
+<li>
+<p><code>long</code> should be avoided.</p>
+</li>
+</ul>
+</div>
 </li>
 </ul>
 </div>
 </div>
 </div>
-<div class="sect1">
-<h2 id="_history">3. History</h2>
-<div class="sectionbody">
 <div class="sect2">
-<h3 id="_0_2_0_snapshot">3.1. 0.2.0-SNAPSHOT</h3>
+<h3 id="_native_javascript_types">4.2. Native Javascript types</h3>
 <div class="paragraph">
-<p>Current development version.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_0_1_0">3.2. 0.1.0</h3>
-<div class="paragraph">
-<p>Current development version.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Initial version.</p>
-</li>
-<li>
-<p>Initial generated GWT APIs for core browser APIs.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Documentation: <a href="0.1.0/index.html">0.1.0</a></p>
+<p>GWT supports the usage of native Javascript functions and objects in Java code.<br>
+See the details at <a href="https://docs.google.com/document/d/10fmlEYIHcyead_4R1S5wKGs1t2I7Fnp_PaNaa7XTEk0/edit#heading=h.b1boa8c235km">JsInterop V1.0 / Native JsTypes</a>.</p>
 </div>
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -527,6 +851,7 @@ It makes possible to use many Javascript features and libraries in GWT applicati
 </div>
 <div id="footer">
 <div id="footer-text">
+Version 0.1.0<br>
 Last updated 2016-01-29 17:12:00 +01:00
 </div>
 </div>
