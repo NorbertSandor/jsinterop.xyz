@@ -35,11 +35,18 @@ For more information see
 
 == History
 
-=== 0.1.0-SNAPSHOT
+=== 0.2.0-SNAPSHOT
 
 Current development version.
 
-* Initial GWT APIs for core browser APIs.
+=== 0.1.0
+
+Current development version.
+
+* Initial version.
+* Initial generated GWT APIs for core browser APIs.
+
+Documentation: link:0.1.0/index.html[0.1.0]
 
 ++++
 <script>
