@@ -17,25 +17,14 @@ import xyz.jsinterop.test.client.core.JsArrayIntTest;
 import xyz.jsinterop.test.client.core.JsGlobalsTest;
 import xyz.jsinterop.test.client.docs.CoreTest;
 import xyz.jsinterop.test.client.docs.Primitives;
+import xyz.jsinterop.test.client.dom.DomTest;
 
 public class JsInteropTestEntryPoint implements EntryPoint {
 	@Override
 	public void onModuleLoad() {
-		// TODO
-		// Document document = JsGlobals.getDocument();
-		//
-		// HTMLDivElement div = document.createElementDiv();
-		// div.setInnerText("Text in div");
-		//
-		// document.getBody().appendChild(div);
-		//
-		// div.addEventListenerClick(event -> JsGlobals.getWindow().alert("Alert
-		// from div! " + event.isCtrlKey()));
-		//
-		// div.addEventListener("click", new A1234());
-		// div.addEventListener("click", new B1234());
-
 		new JsGlobalsTest().run();
+		new DomTest().run();
+		
 		new CoreTest().run();
 		new Primitives().run();
 		new JsArrayIntTest().run();

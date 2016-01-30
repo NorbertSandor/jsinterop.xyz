@@ -1,6 +1,6 @@
 = JsInterop.xyz
 :toc: right
-:toclevels: 5
+:toclevels: 3
 :sectnums:
 :icons: font
 :revnumber: {docVersion}
@@ -125,7 +125,11 @@ Source code is available on https://github.com/NorbertSandor/jsinterop.xyz[GitHu
 
 == JsInterop.xyz APIs
 
-=== Javascript global scope
+=== Core
+
+All core types are in package `xyz.jsinterop.client.core`.
+
+==== Javascript global scope
 
 The Javascript global scope (the `window`) can be accessed by the static method `JsGlobals.getWindow()`:
 
@@ -165,6 +169,69 @@ include::../../../../jsinterop-test/src/main/java/xyz/jsinterop/test/client/core
 .Generated Javascript code
 ----
 include::../../../../jsinterop-test/target/gwt-asciidoc/gwt.js[tags=JsGlobals_access_document]
+----
+
+=== DOM
+
+DOM interfaces are generated from the corresponding https://github.com/Microsoft/TypeScript/blob/master/src/lib/dom.generated.d.ts[TypeScript definitions].
+
+A good documentation for DOM APIs is available in the https://developer.mozilla.org/hu/docs/Web/Reference/API[MDN Web API reference]. +
+This chapter focuses only on key interoperability use cases, it is not a full documentation for DOM programming.
+
+All DOM interfaces are in package `xyz.jsinterop.client.dom`.
+
+==== Nodes and elements
+
+The most important related interfaces are:
+
+* `Node` is the super-interface of many DOM types - check its inheritance chain.
+* `Element` corresponds to a DOM element.
+* `HTMLElement` and its sub-interfaces represent HTML elements.
+* `CharacterData` and its sub-interfaces represent textual nodes like text or comments.
+* `Document` also extends `Node`.
+
+===== Creating HTML elements
+
+`HTMLElement` instances are instantiated indirectly by calling `Document.createElement()` or `Document.createElementX()` (where X is an element's name):
+
+[source,java,indent=0,role="javaSourceCode"]
+.Java code
+----
+include::../../../../jsinterop-test/src/main/java/xyz/jsinterop/test/client/dom/DomTest.java[tags=Dom_createElement]
+----
+
+[source,xtend,indent=0,role="xtendSourceCode"]
+.Xtend code
+----
+include::../../../../jsinterop-test/src/main/java/xyz/jsinterop/test/client/dom/DomXtendTest.xtend[tags=Dom_createElement]
+----
+
+[source,javascript,indent=0,role="generatedJavascriptCode"]
+.Generated Javascript code
+----
+include::../../../../jsinterop-test/target/gwt-asciidoc/gwt.js[tags=Dom_createElement]
+----
+
+===== Creating text nodes
+
+Text nodes are instantiated indirectly by `Document.createTextNode()`:
+
+[source,java,indent=0,role="javaSourceCode"]
+.Java code
+----
+include::../../../../jsinterop-test/src/main/java/xyz/jsinterop/test/client/dom/DomTest.java[tags=Dom_createTextNode]
+----
+
+[source,xtend,indent=0,role="xtendSourceCode"]
+.Xtend code
+----
+include::../../../../jsinterop-test/src/main/java/xyz/jsinterop/test/client/dom/DomXtendTest.xtend[tags=Dom_createTextNode]
+----
+
+[source,javascript,indent=0,role="generatedJavascriptCode"]
+.Generated Javascript code
+----
+include::../../../../jsinterop-test/target/gwt-asciidoc/gwt.js[tags=Dom_createTextNode]
 ----
 
 == GWT JsInterop internals
