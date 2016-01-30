@@ -12,9 +12,9 @@
 }
 </style>
 
-<div class="toggler"><input id="generatedJavascriptCodeField" type="checkbox" /> Show generated Javascript in code examples</div>
 <div class="toggler"><input id="javaSourceCodeField" type="checkbox" checked /> Show Java source in code examples</div>
-<div class="toggler"><input id="xtendSourceCodeField" type="checkbox" checked /> Show Xtend source in code examples</div>
+<div class="toggler"><input id="xtendSourceCodeField" type="checkbox" checked /> Show Xtend source in code examples (if available; otherwise Java code is shown)</div>
+<div class="toggler"><input id="generatedJavascriptCodeField" type="checkbox" /> Show generated Javascript in code examples (generated from Java code)</div>
 
 <script>
 function getBlockField(blockId) {
@@ -34,22 +34,35 @@ function updateBlocks(blockId) {
   }
 }
 
-document.getElementById("generatedJavascriptCodeField").addEventListener("click", function() {
+function updateAllBlocks() {
 	updateBlocks("generatedJavascriptCode");
-});
-document.getElementById("javaSourceCodeField").addEventListener("click", function() {
 	updateBlocks("javaSourceCode");
-	getBlockField("xtendSourceCode").disabled = !isBlockVisible("javaSourceCode");
-});
-document.getElementById("xtendSourceCodeField").addEventListener("click", function() {
 	updateBlocks("xtendSourceCode");
+}
+
+getBlockField("generatedJavascriptCode").addEventListener("click", function() {
+	updateAllBlocks();
+});
+getBlockField("javaSourceCode").addEventListener("click", function() {
+	getBlockField("xtendSourceCode").disabled = !isBlockVisible("javaSourceCode");
+	updateAllBlocks();
+});
+getBlockField("xtendSourceCode").addEventListener("click", function() {
 	getBlockField("javaSourceCode").disabled = !isBlockVisible("xtendSourceCode");
+	updateAllBlocks();
 });
 
 document.addEventListener("DOMContentLoaded", function() {
-	updateBlocks("generatedJavascriptCode");
-	updateBlocks("javaSourceCode");
-	updateBlocks("xtendSourceCode");
+	getBlockField("javaSourceCode").disabled = false;
+	getBlockField("javaSourceCode").checked = true;
+
+	getBlockField("xtendSourceCode").disabled = false;
+	getBlockField("xtendSourceCode").checked = true;
+
+	getBlockField("generatedJavascriptCode").disabled = false;
+	getBlockField("generatedJavascriptCode").checked = false;
+
+	updateAllBlocks();
 });
 </script>
 ++++
@@ -166,7 +179,7 @@ GWT supports all Java primitives with mostly correct Java semantics.
 
 Java `boolean` corresponds to Javascript `boolean`.
 
-[source,java,indent=0,role="javaSourceCode"]
+[source,java,indent=0]
 .Java code
 ----
 include::../../../../jsinterop-test/src/main/java/xyz/jsinterop/test/client/docs/Primitives.java[tags=primitiveSemantics_boolean]
@@ -183,7 +196,7 @@ include::../../../../jsinterop-test/target/gwt-asciidoc/gwt.js[tags=primitiveSem
 `byte`, `char`, `int` and `short` are handled simply as integers in Javascript. +
 Important difference is that overflow is not handled properly.
 
-[source,java,indent=0,role="javaSourceCode"]
+[source,java,indent=0]
 .Java code
 ----
 include::../../../../jsinterop-test/src/main/java/xyz/jsinterop/test/client/docs/Primitives.java[tags=primitiveSemantics_others]
@@ -199,7 +212,7 @@ include::../../../../jsinterop-test/target/gwt-asciidoc/gwt.js[tags=primitiveSem
 
 `double`s are represented as floating point Javascript numbers.
 
-[source,java,indent=0,role="javaSourceCode"]
+[source,java,indent=0]
 .Java code
 ----
 include::../../../../jsinterop-test/src/main/java/xyz/jsinterop/test/client/docs/Primitives.java[tags=primitiveSemantics_double]
@@ -216,7 +229,7 @@ include::../../../../jsinterop-test/target/gwt-asciidoc/gwt.js[tags=primitiveSem
 `float` is handled just like as `double`.
 Because there is no difference between `float` and `double` (except for literals) it is better to use `double` instead of `float` when interfacing with Javascript.
 
-[source,java,indent=0,role="javaSourceCode"]
+[source,java,indent=0]
 .Java code
 ----
 include::../../../../jsinterop-test/src/main/java/xyz/jsinterop/test/client/docs/Primitives.java[tags=primitiveSemantics_float]
@@ -234,7 +247,7 @@ include::../../../../jsinterop-test/target/gwt-asciidoc/gwt.js[tags=primitiveSem
 This means that only "small" `long` values should be passed to Javascript. +
 Because of this special behaviour (and because Javascript doesn't have a 64 bit integer type) `long` should not be used in JsInterop interfacing.
 
-[source,java,indent=0,role="javaSourceCode"]
+[source,java,indent=0]
 .Java code
 ----
 include::../../../../jsinterop-test/src/main/java/xyz/jsinterop/test/client/docs/Primitives.java[tags=primitiveSemantics_long]
