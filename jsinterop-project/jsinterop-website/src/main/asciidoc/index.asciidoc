@@ -14,7 +14,7 @@
 
 <div class="toggler"><input id="javaSourceCodeField" type="checkbox" checked /> Show Java source in code examples</div>
 <div class="toggler"><input id="xtendSourceCodeField" type="checkbox" checked /> Show Xtend source in code examples (if available; otherwise Java code is shown)</div>
-<div class="toggler"><input id="generatedJavascriptCodeField" type="checkbox" /> Show generated Javascript in code examples (generated from Java code)</div>
+<div class="toggler"><input id="generatedJavascriptCodeField" type="checkbox" /> Show non-optimized generated Javascript in code examples (generated from Java code)</div>
 
 <script>
 function getBlockField(blockId) {
@@ -232,6 +232,28 @@ include::../../../../jsinterop-test/src/main/java/xyz/jsinterop/test/client/dom/
 .Generated Javascript code
 ----
 include::../../../../jsinterop-test/target/gwt-asciidoc/gwt.js[tags=Dom_createTextNode]
+----
+
+===== Handling events
+
+Event listeners can be added by `addEventListener` or `addEventListenerX` where X is the event's name:
+
+[source,java,indent=0,role="javaSourceCode"]
+.Java code
+----
+include::../../../../jsinterop-test/src/main/java/xyz/jsinterop/test/client/dom/DomTest.java[tags=Dom_eventHandlers]
+----
+
+[source,xtend,indent=0,role="xtendSourceCode"]
+.Xtend code
+----
+include::../../../../jsinterop-test/src/main/java/xyz/jsinterop/test/client/dom/DomXtendTest.xtend[tags=Dom_eventHandlers]
+----
+
+[source,javascript,indent=0,role="generatedJavascriptCode"]
+.Generated Javascript code
+----
+include::../../../../jsinterop-test/target/gwt-asciidoc/gwt.js[tags=Dom_eventHandlers]
 ----
 
 == GWT JsInterop internals

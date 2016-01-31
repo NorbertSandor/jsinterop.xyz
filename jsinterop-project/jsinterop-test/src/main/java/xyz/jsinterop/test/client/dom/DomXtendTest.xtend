@@ -21,6 +21,21 @@ class DomXtendTest implements Runnable {
 	override void run() {
 		createElement
 		createTextNode
+		eventHandlers
+	}
+
+	def private void eventHandlers() {
+		val document = JsGlobals.getDocument();
+
+		generatedCodeMarkerStart("Dom_eventHandlers");
+		// tag::Dom_eventHandlers[]
+		val input = document.createElementInput
+		input.addEventListenerFocus[input.style.backgroundColor = "yellow"]
+		input.addEventListener("blur") [input.style.backgroundColor = "white"]
+		// end::Dom_eventHandlers[]
+		generatedCodeMarkerEnd("Dom_eventHandlers");
+
+		document.body.appendChild(input)
 	}
 
 	def private void createTextNode() {

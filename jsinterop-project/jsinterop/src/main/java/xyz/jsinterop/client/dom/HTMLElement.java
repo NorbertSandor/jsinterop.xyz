@@ -1611,13 +1611,13 @@ public interface HTMLElement extends Element {
 	@JsMethod
 	public abstract void addEventListener(final String type, final EventListener<?> listener);
 
-	@JsMethod
-	public abstract void addEventListener(final String type, final EventListenerObject listener);
+	@JsMethod(name="addEventListener")
+	public abstract void addEventListenerObject(final String type, final EventListenerObject listener);
 
 	@JsMethod
 	public abstract void addEventListener(final String type, final EventListener<?> listener, final boolean useCapture);
 
-	@JsMethod
-	public abstract void addEventListener(final String type, final EventListenerObject listener,
+	@JsMethod(name="addEventListener")
+	public abstract void addEventListenerObject(final String type, final EventListenerObject listener,
 			final boolean useCapture);
 }

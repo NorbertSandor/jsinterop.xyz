@@ -16,15 +16,35 @@ import static xyz.jsinterop.test.client.TestUtils.generatedCodeMarkerStart;
 
 import xyz.jsinterop.client.core.JsGlobals;
 import xyz.jsinterop.client.dom.Document;
+import xyz.jsinterop.client.dom.Event;
+import xyz.jsinterop.client.dom.EventListener;
+import xyz.jsinterop.client.dom.EventListenerObject;
+import xyz.jsinterop.client.dom.HTMLButtonElement;
 import xyz.jsinterop.client.dom.HTMLDivElement;
 import xyz.jsinterop.client.dom.HTMLInputElement;
 import xyz.jsinterop.client.dom.Text;
+import xyz.jsinterop.client.dom.Window;
 
 public class DomTest implements Runnable {
 	@Override
 	public void run() {
 		createElement();
 		createTextNode();
+		eventHandlers();
+	}
+
+	private void eventHandlers() {
+		Document document = JsGlobals.getDocument();
+
+		generatedCodeMarkerStart("Dom_eventHandlers");
+		// tag::Dom_eventHandlers[]
+		HTMLInputElement input = document.createElementInput();
+		input.addEventListenerFocus(event -> input.getStyle().setBackgroundColor("yellow"));
+		input.addEventListener("blur", event -> input.getStyle().setBackgroundColor("white"));
+		// end::Dom_eventHandlers[]
+		generatedCodeMarkerEnd("Dom_eventHandlers");
+
+		document.getBody().appendChild(input);
 	}
 
 	private void createTextNode() {

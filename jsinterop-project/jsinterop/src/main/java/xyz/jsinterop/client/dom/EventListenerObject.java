@@ -1,7 +1,5 @@
 package xyz.jsinterop.client.dom;
 
-import jsinterop.annotations.JsFunction;
-
 /*
  * #%L
  * jsinterop
@@ -15,7 +13,6 @@ import jsinterop.annotations.JsFunction;
  */
 
 import jsinterop.annotations.JsMethod;
-import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsType;
 
 @JsType
