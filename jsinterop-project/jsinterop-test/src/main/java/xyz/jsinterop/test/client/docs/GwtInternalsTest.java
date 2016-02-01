@@ -11,11 +11,16 @@
  */
 package xyz.jsinterop.test.client.docs;
 
+import static xyz.jsinterop.test.client.TestUtils.assertEquals;
 import static xyz.jsinterop.test.client.TestUtils.assertTrue;
 import static xyz.jsinterop.test.client.TestUtils.generatedCodeMarkerEnd;
 import static xyz.jsinterop.test.client.TestUtils.generatedCodeMarkerStart;
 
+import java.util.Arrays;
+
+import xyz.jsinterop.client.core.JsArrayInt;
 import xyz.jsinterop.client.core.JsArrays;
+import xyz.jsinterop.client.core.JsUtils;
 
 public class GwtInternalsTest implements Runnable {
 	public void run() {
@@ -24,15 +29,40 @@ public class GwtInternalsTest implements Runnable {
 	}
 
 	private void arraySemantics() {
-		generatedCodeMarkerStart("GwtInternalsTest_arraySemantics");
-		// tag::GwtInternalsTest_arraySemantics[]
-		String[] stringArray = {"a", "b", "c"};
-		assertTrue(JsArrays.isArray(stringArray));
-		
-		int[] intArray = new int[5];
-		assertTrue(JsArrays.isArray(intArray));
-		// end::GwtInternalsTest_arraySemantics[]
-		generatedCodeMarkerEnd("GwtInternalsTest_arraySemantics");
+		{
+			generatedCodeMarkerStart("GwtInternalsTest_arraySemantics_stringArray");
+			// tag::GwtInternalsTest_arraySemantics_stringArray[]
+			String[] stringArray = { "a", "b", "c" };
+			assertTrue(JsArrays.isArray(stringArray));
+			assertEquals("b", stringArray[1]);
+			// end::GwtInternalsTest_arraySemantics_stringArray[]
+			generatedCodeMarkerEnd("GwtInternalsTest_arraySemantics_stringArray");
+		}
+
+		{
+			generatedCodeMarkerStart("GwtInternalsTest_arraySemantics_intArray");
+			// tag::GwtInternalsTest_arraySemantics_intArray[]
+			int[] intArray = new int[5];
+			assertTrue(JsArrays.isArray(intArray));
+			assertEquals(0, intArray[0]);
+			// end::GwtInternalsTest_arraySemantics_intArray[]
+			generatedCodeMarkerEnd("GwtInternalsTest_arraySemantics_intArray");
+		}
+
+		{
+			generatedCodeMarkerStart("GwtInternalsTest_arraySemantics_break");
+			// tag::GwtInternalsTest_arraySemantics_break[]
+			int[] javaArray = { 1, 2, 3 };
+			assertEquals(3, javaArray.length);
+
+			JsArrayInt jsArray = JsUtils.cast(javaArray);
+			jsArray.push(4);
+			
+			assertEquals(4, javaArray.length);
+			assertTrue(Arrays.equals(new int[] { 1, 2, 3, 4 }, javaArray));
+			// end::GwtInternalsTest_arraySemantics_break[]
+			generatedCodeMarkerEnd("GwtInternalsTest_arraySemantics_break");
+		}
 	}
 
 	@SuppressWarnings("unused")
