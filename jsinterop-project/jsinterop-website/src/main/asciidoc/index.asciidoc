@@ -261,7 +261,7 @@ include::../../../../jsinterop-test/src/main/java/xyz/jsinterop/test/client/dom/
 include::../../../../jsinterop-test/target/gwt-asciidoc/gwt.js[tags=Dom_eventHandlers]
 ----
 
-== GWT JsInterop internals
+== GWT internals
 
 To successfully use JsInterop in GWT, it is important to know how the underlying technologies work.
 
@@ -366,9 +366,25 @@ To summarize:
 ** `byte`, `float`, `short` and `char` is rarely used
 ** `long` should be avoided.
 
+=== Strings
+
+Java `String` is implemented with Javascript `String`, so it is safe to pass it to Javascript:
+
+[source,java,indent=0]
+.Java code
+----
+include::../../../../jsinterop-test/src/main/java/xyz/jsinterop/test/client/docs/GwtInternalsTest.java[tags=GwtInternalsTest_stringSemantics]
+----
+
+[source,javascript,indent=0,role="generatedJavascriptCode"]
+.Generated Javascript code
+----
+include::../../../../jsinterop-test/target/gwt-asciidoc/gwt.js[tags=GwtInternalsTest_stringSemantics]
+----
+
 === Arrays
 
-Java arrays are implemented by native Javascript arrays (with some additional type information stored as custom properties of the `Array` object) therefore they are very fast:
+Java arrays are implemented using native Javascript arrays (with some additional type information stored as custom properties of the `Array` object) therefore they are very fast:
 
 [source,java,indent=0]
 .Java code
@@ -394,8 +410,9 @@ include::../../../../jsinterop-test/src/main/java/xyz/jsinterop/test/client/docs
 include::../../../../jsinterop-test/target/gwt-asciidoc/gwt.js[tags=GwtInternalsTest_arraySemantics_intArray]
 ----
 
-This means that Java arrays can be passed directly to Javascript code although it is not recommended because Javascript code may break Java semantics if it modifies the array. +
-The following example modifies the length of an array which is not possible in plain Java:
+This means that Java arrays can be passed directly to Javascript code. +
+Note that Javascript code should not modify the array's length or add incompatible elements because it would break Java semantics. +
+The following example adds an element to the array which is not possible in plain Java:
 
 [source,java,indent=0]
 .Java code

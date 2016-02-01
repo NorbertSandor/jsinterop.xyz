@@ -26,6 +26,19 @@ public class GwtInternalsTest implements Runnable {
 	public void run() {
 		primitiveSemantics();
 		arraySemantics();
+		stringSemantics();
+	}
+
+	@SuppressWarnings("unused")
+	private void stringSemantics() {
+		generatedCodeMarkerStart("GwtInternalsTest_stringSemantics");
+		// tag::GwtInternalsTest_stringSemantics[]
+		String a = "a";
+		String b = "b";
+		String s1 = a + b + a + b;
+		String s2 = s1.substring(1, 2);
+		// end::GwtInternalsTest_stringSemantics[]
+		generatedCodeMarkerEnd("GwtInternalsTest_stringSemantics");
 	}
 
 	private void arraySemantics() {
@@ -57,7 +70,7 @@ public class GwtInternalsTest implements Runnable {
 
 			JsArrayInt jsArray = JsUtils.cast(javaArray);
 			jsArray.push(4);
-			
+
 			assertEquals(4, javaArray.length);
 			assertTrue(Arrays.equals(new int[] { 1, 2, 3, 4 }, javaArray));
 			// end::GwtInternalsTest_arraySemantics_break[]

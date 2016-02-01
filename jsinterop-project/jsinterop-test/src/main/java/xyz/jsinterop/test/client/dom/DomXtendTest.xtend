@@ -31,7 +31,7 @@ class DomXtendTest implements Runnable {
 		// tag::Dom_eventHandlers[]
 		val input = document.createElementInput
 		input.addEventListenerFocus[input.style.backgroundColor = "yellow"]
-		input.addEventListener("blur") [input.style.backgroundColor = "white"]
+		input.addEventListener("blur")[input.style.backgroundColor = "white"]
 		// end::Dom_eventHandlers[]
 		generatedCodeMarkerEnd("Dom_eventHandlers");
 
@@ -43,9 +43,9 @@ class DomXtendTest implements Runnable {
 
 		generatedCodeMarkerStart("Dom_createTextNode");
 		// tag::Dom_createTextNode[]
-		val divElement = document.createElementDiv
+		val div = document.createElementDiv
 		val textNode = document.createTextNode("DIV contents...")
-		divElement.appendChild(textNode)
+		div.appendChild(textNode)
 		// end::Dom_createTextNode[]
 		generatedCodeMarkerEnd("Dom_createTextNode");
 	}
@@ -55,12 +55,12 @@ class DomXtendTest implements Runnable {
 
 		generatedCodeMarkerStart("Dom_createElement");
 		// tag::Dom_createElement[]
-		val inputElement1 = document.createElement("input") as HTMLInputElement
-		inputElement1.value = "some text..."
+		val input1 = document.createElement("input") as HTMLInputElement
+		input1.value = "some text..."
 
-		val inputElement2 = document.createElementInput
-		inputElement2.readOnly = true
-		inputElement2.value = inputElement1.value
+		val input2 = document.createElementInput
+		input2.readOnly = true
+		input2.value = input1.value
 		// end::Dom_createElement[]
 		generatedCodeMarkerEnd("Dom_createElement");
 	}

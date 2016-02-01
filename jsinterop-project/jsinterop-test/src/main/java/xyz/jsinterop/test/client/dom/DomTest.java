@@ -52,9 +52,9 @@ public class DomTest implements Runnable {
 
 		generatedCodeMarkerStart("Dom_createTextNode");
 		// tag::Dom_createTextNode[]
-		HTMLDivElement divElement = document.createElementDiv();
+		HTMLDivElement div = document.createElementDiv();
 		Text textNode = document.createTextNode("DIV contents...");
-		divElement.appendChild(textNode);
+		div.appendChild(textNode);
 		// end::Dom_createTextNode[]
 		generatedCodeMarkerEnd("Dom_createTextNode");
 	}
@@ -64,12 +64,12 @@ public class DomTest implements Runnable {
 
 		generatedCodeMarkerStart("Dom_createElement");
 		// tag::Dom_createElement[]
-		HTMLInputElement inputElement1 = (HTMLInputElement) document.createElement("input");
-		inputElement1.setValue("some text...");
+		HTMLInputElement input1 = (HTMLInputElement) document.createElement("input");
+		input1.setValue("some text...");
 
-		HTMLInputElement inputElement2 = document.createElementInput();
-		inputElement2.setReadOnly(true);
-		inputElement2.setValue(inputElement1.getValue());
+		HTMLInputElement input2 = document.createElementInput();
+		input2.setReadOnly(true);
+		input2.setValue(input1.getValue());
 		// end::Dom_createElement[]
 		generatedCodeMarkerEnd("Dom_createElement");
 	}
