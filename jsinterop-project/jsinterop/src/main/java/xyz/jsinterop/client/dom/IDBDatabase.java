@@ -45,10 +45,10 @@ public interface IDBDatabase extends EventTarget {
 	public abstract void setOnerror(final EventListener<Event> value);
 
 	@JsProperty
-	public abstract String getVersion();
+	public abstract int getVersion();
 
 	@JsProperty
-	public abstract void setVersion(final String value);
+	public abstract void setVersion(final int value);
 
 	@JsMethod
 	public abstract void close();

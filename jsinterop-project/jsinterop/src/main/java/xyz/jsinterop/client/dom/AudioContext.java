@@ -45,6 +45,12 @@ public interface AudioContext extends EventTarget {
 	@JsProperty
 	public abstract void setSampleRate(final double value);
 
+	@JsProperty
+	public abstract String getState();
+
+	@JsProperty
+	public abstract void setState(final String value);
+
 	@JsMethod
 	public abstract AnalyserNode createAnalyser();
 

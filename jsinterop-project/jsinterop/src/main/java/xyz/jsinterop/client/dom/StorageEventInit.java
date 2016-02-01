@@ -13,14 +13,7 @@ package xyz.jsinterop.client.dom;
 
 import jsinterop.annotations.JsProperty;
 
-@SuppressWarnings("all")
-public interface StorageEvent extends Event {
-	@JsProperty
-	public abstract String getUrl();
-
-	@JsProperty
-	public abstract void setUrl(final String value);
-
+public interface StorageEventInit extends EventInit {
 	@JsProperty
 	public abstract String getKey();
 
@@ -38,6 +31,12 @@ public interface StorageEvent extends Event {
 
 	@JsProperty
 	public abstract void setNewValue(final String value);
+
+	@JsProperty
+	public abstract String getUrl();
+
+	@JsProperty
+	public abstract void setUrl(final String value);
 
 	@JsProperty
 	public abstract Storage getStorageArea();

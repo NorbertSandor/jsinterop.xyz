@@ -210,6 +210,12 @@ public interface HTMLSelectElement extends HTMLElement {
 	@JsProperty
 	public abstract void setWillValidate(final boolean value);
 
+	@JsProperty
+	public abstract HTMLCollection getSelectedOptions();
+	
+	@JsProperty
+	public abstract void setSelectedOptions(HTMLCollection value);
+	
 	@JsOverlay
 	public default Object get(final String name) {
 		return (Object) xyz.jsinterop.client.core.JsMaps.getItem(this, name);

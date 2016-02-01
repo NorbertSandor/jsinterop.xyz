@@ -15,17 +15,10 @@ package xyz.jsinterop.client.dom;
 import jsinterop.annotations.JsMethod;
 import jsinterop.annotations.JsOverlay;
 import jsinterop.annotations.JsPackage;
-import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
 
 @JsType(isNative = true, namespace = JsPackage.GLOBAL)
 public interface NodeListOf<TNode> extends NodeList {
-	@JsProperty
-	public abstract double getLength();
-
-	@JsProperty
-	public abstract void setLength(final double value);
-
 	// TODO rename to get()
 	@JsOverlay
 	public default TNode getAt(final int index) {

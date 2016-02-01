@@ -133,6 +133,12 @@ public interface Console {
 	public abstract void trace();
 
 	@JsMethod
+	public abstract void trace(final Object message);
+
+	@JsMethod
+	public abstract void trace(final Object message, final Object optionalParams);
+
+	@JsMethod
 	public abstract void warn();
 
 	@JsMethod

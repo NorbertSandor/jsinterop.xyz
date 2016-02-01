@@ -4098,6 +4098,16 @@ public interface Document extends Node, GlobalEventHandlers, NodeSelector, Docum
 	public abstract void writeln(final Object content);
 
 	@JsOverlay
+	public default HTMLPictureElement createElementPicture() {
+		return (HTMLPictureElement) createElement("picture");
+	}
+	
+	@JsOverlay
+	public default NodeListOf<HTMLPictureElement> getElementsByTagNamePicture() {
+		return (NodeListOf<HTMLPictureElement>) getElementsByTagName("picture");
+	}
+
+	@JsOverlay
 	public default void addEventListenerMSContentZoom(final EventListener<UIEvent> listener) {
 		addEventListener("MSContentZoom", listener);
 	}

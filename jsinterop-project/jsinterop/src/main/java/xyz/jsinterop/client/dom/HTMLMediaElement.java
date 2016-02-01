@@ -377,10 +377,10 @@ public interface HTMLMediaElement extends HTMLElement {
 	public abstract void setPreload(final String value);
 
 	@JsProperty
-	public abstract Object getReadyState();
+	public abstract int getReadyState();
 
 	@JsProperty
-	public abstract void setReadyState(final Object value);
+	public abstract void setReadyState(final int value);
 
 	/**
 	 * Returns a TimeRanges object that represents the ranges of the current

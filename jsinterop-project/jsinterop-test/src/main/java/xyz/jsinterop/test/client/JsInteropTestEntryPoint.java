@@ -15,8 +15,7 @@ import com.google.gwt.core.client.EntryPoint;
 
 import xyz.jsinterop.test.client.core.JsArrayIntTest;
 import xyz.jsinterop.test.client.core.JsGlobalsTest;
-import xyz.jsinterop.test.client.docs.CoreTest;
-import xyz.jsinterop.test.client.docs.Primitives;
+import xyz.jsinterop.test.client.docs.GwtInternalsTest;
 import xyz.jsinterop.test.client.dom.DomTest;
 
 public class JsInteropTestEntryPoint implements EntryPoint {
@@ -25,8 +24,7 @@ public class JsInteropTestEntryPoint implements EntryPoint {
 		new JsGlobalsTest().run();
 		new DomTest().run();
 		
-		new CoreTest().run();
-		new Primitives().run();
+		new GwtInternalsTest().run();
 		new JsArrayIntTest().run();
 	}
 }

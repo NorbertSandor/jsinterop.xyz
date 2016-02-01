@@ -935,19 +935,19 @@ public interface Window extends EventTarget, WindowTimers, WindowSessionStorage,
 	public abstract void msWriteProfilerMark(final String profilerMarkName);
 
 	@JsMethod
-	public abstract Object open();
+	public abstract Window open();
 
 	@JsMethod
-	public abstract Object open(final String url);
+	public abstract Window open(final String url);
 
 	@JsMethod
-	public abstract Object open(final String url, final String target);
+	public abstract Window open(final String url, final String target);
 
 	@JsMethod
-	public abstract Object open(final String url, final String target, final String features);
+	public abstract Window open(final String url, final String target, final String features);
 
 	@JsMethod
-	public abstract Object open(final String url, final String target, final String features, final boolean replace);
+	public abstract Window open(final String url, final String target, final String features, final boolean replace);
 
 	@JsMethod
 	public abstract void postMessage(final Object message, final String targetOrigin);

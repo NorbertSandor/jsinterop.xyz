@@ -27,12 +27,12 @@ public interface DataTransferItemList {
 	public abstract void setLength(final double value);
 
 	@JsOverlay
-	public default File get(final int index) {
-		return (File) xyz.jsinterop.client.core.JsArrays.getArrayItem(this, index);
+	public default DataTransferItem get(final int index) {
+		return (DataTransferItem) xyz.jsinterop.client.core.JsArrays.getArrayItem(this, index);
 	}
 
 	@JsOverlay
-	public default void set(final int index, final File value) {
+	public default void set(final int index, final DataTransferItem value) {
 		xyz.jsinterop.client.core.JsArrays.setArrayItem(this, index, value);
 	}
 
@@ -43,7 +43,7 @@ public interface DataTransferItemList {
 	public abstract void clear();
 
 	@JsMethod
-	public abstract File item(final double index);
+	public abstract DataTransferItem item(final double index);
 
 	@JsMethod
 	public abstract void remove(final double index);

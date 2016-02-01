@@ -266,6 +266,12 @@ public interface Element extends Node, GlobalEventHandlers, ElementTraversal, No
 	@JsProperty
 	public abstract void setClassName(final String value);
 
+	@JsProperty
+	public abstract String getInnerHTML();
+
+	@JsProperty
+	public abstract void setInnerHTML(final String value);
+	
 	@JsMethod
 	public abstract String getAttribute();
 
@@ -1205,12 +1211,6 @@ public interface Element extends Node, GlobalEventHandlers, ElementTraversal, No
 	public abstract void requestPointerLock();
 
 	@JsMethod
-	public abstract void setAttribute();
-
-	@JsMethod
-	public abstract void setAttribute(final String name);
-
-	@JsMethod
 	public abstract void setAttribute(final String name, final String value);
 
 	@JsMethod
@@ -1239,6 +1239,11 @@ public interface Element extends Node, GlobalEventHandlers, ElementTraversal, No
 
 	@JsMethod
 	public abstract boolean matches(final String selector);
+
+	@JsOverlay
+	public default NodeListOf<HTMLPictureElement> getElementsByTagNamePicture() {
+		return (NodeListOf<HTMLPictureElement>) getElementsByTagName("picture");
+	}
 
 	@JsOverlay
 	public default void addEventListenerMSGestureChange(final EventListener<MSGestureEvent> listener) {

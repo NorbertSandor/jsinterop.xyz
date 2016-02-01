@@ -119,9 +119,14 @@ NOTE: The API converter of _JsInterop.xyz_ is currently not available as an open
 
 == Status and usage
 
-_JsInterop.xyz_ is in early-access phase, it is not feature-complete yet and is not recommended for production.
+_JsInterop.xyz_ is in early-access phase, it is not feature-complete yet, and its APIs may change.
 
 Source code is available on https://github.com/NorbertSandor/jsinterop.xyz[GitHub], compiled binaries are uploaded to http://search.maven.org/#search|ga|1|g%3A%22xyz.jsinterop%22%20AND%20a%3A%22jsinterop%22[Central Repository].
+
+To use JsInterop.xyz
+
+* add the dependency http://search.maven.org/#artifactdetails|xyz.jsinterop|jsinterop|{docVersion}|jar[xyz.jsinterop:jsinterop:{docVersion}] to the project, and
+* the GWT module should inherit `xyz.jsinterop.JsInterop`, for example by using `<inherits name="xyz.jsinterop.JsInterop" />`.
 
 == JsInterop.xyz APIs
 
@@ -260,7 +265,7 @@ include::../../../../jsinterop-test/target/gwt-asciidoc/gwt.js[tags=Dom_eventHan
 
 To successfully use JsInterop in GWT, it is important to know how the underlying technologies work.
 
-=== Primitives in GWT
+=== Primitives
 
 GWT supports all Java primitives with mostly correct Java semantics.
 
@@ -271,13 +276,13 @@ Java `boolean` corresponds to Javascript `boolean`.
 [source,java,indent=0]
 .Java code
 ----
-include::../../../../jsinterop-test/src/main/java/xyz/jsinterop/test/client/docs/Primitives.java[tags=primitiveSemantics_boolean]
+include::../../../../jsinterop-test/src/main/java/xyz/jsinterop/test/client/docs/GwtInternalsTest.java[tags=GwtInternalsTest_primitiveSemantics_boolean]
 ----
 
 [source,javascript,indent=0,role="generatedJavascriptCode"]
 .Generated Javascript code
 ----
-include::../../../../jsinterop-test/target/gwt-asciidoc/gwt.js[tags=primitiveSemantics_boolean]
+include::../../../../jsinterop-test/target/gwt-asciidoc/gwt.js[tags=GwtInternalsTest_primitiveSemantics_boolean]
 ----
 
 ==== byte, char, int, short
@@ -288,13 +293,13 @@ Important difference is that overflow is not handled properly.
 [source,java,indent=0]
 .Java code
 ----
-include::../../../../jsinterop-test/src/main/java/xyz/jsinterop/test/client/docs/Primitives.java[tags=primitiveSemantics_others]
+include::../../../../jsinterop-test/src/main/java/xyz/jsinterop/test/client/docs/GwtInternalsTest.java[tags=GwtInternalsTest_primitiveSemantics_others]
 ----
 
 [source,javascript,indent=0,role="generatedJavascriptCode"]
 .Generated Javascript code
 ----
-include::../../../../jsinterop-test/target/gwt-asciidoc/gwt.js[tags=primitiveSemantics_others]
+include::../../../../jsinterop-test/target/gwt-asciidoc/gwt.js[tags=GwtInternalsTest_primitiveSemantics_others]
 ----
 
 ==== double
@@ -304,13 +309,13 @@ include::../../../../jsinterop-test/target/gwt-asciidoc/gwt.js[tags=primitiveSem
 [source,java,indent=0]
 .Java code
 ----
-include::../../../../jsinterop-test/src/main/java/xyz/jsinterop/test/client/docs/Primitives.java[tags=primitiveSemantics_double]
+include::../../../../jsinterop-test/src/main/java/xyz/jsinterop/test/client/docs/GwtInternalsTest.java[tags=GwtInternalsTest_primitiveSemantics_double]
 ----
 
 [source,javascript,indent=0,role="generatedJavascriptCode"]
 .Generated Javascript code
 ----
-include::../../../../jsinterop-test/target/gwt-asciidoc/gwt.js[tags=primitiveSemantics_double]
+include::../../../../jsinterop-test/target/gwt-asciidoc/gwt.js[tags=GwtInternalsTest_primitiveSemantics_double]
 ----
 
 ==== float
@@ -321,13 +326,13 @@ Because there is no difference between `float` and `double` (except for literals
 [source,java,indent=0]
 .Java code
 ----
-include::../../../../jsinterop-test/src/main/java/xyz/jsinterop/test/client/docs/Primitives.java[tags=primitiveSemantics_float]
+include::../../../../jsinterop-test/src/main/java/xyz/jsinterop/test/client/docs/GwtInternalsTest.java[tags=GwtInternalsTest_primitiveSemantics_float]
 ----
 
 [source,javascript,indent=0,role="generatedJavascriptCode"]
 .Generated Javascript code
 ----
-include::../../../../jsinterop-test/target/gwt-asciidoc/gwt.js[tags=primitiveSemantics_float]
+include::../../../../jsinterop-test/target/gwt-asciidoc/gwt.js[tags=GwtInternalsTest_primitiveSemantics_float]
 ----
 
 ==== long
@@ -339,13 +344,13 @@ Because of this special behaviour (and because Javascript doesn't have a 64 bit 
 [source,java,indent=0]
 .Java code
 ----
-include::../../../../jsinterop-test/src/main/java/xyz/jsinterop/test/client/docs/Primitives.java[tags=primitiveSemantics_long]
+include::../../../../jsinterop-test/src/main/java/xyz/jsinterop/test/client/docs/GwtInternalsTest.java[tags=GwtInternalsTest_primitiveSemantics_long]
 ----
 
 [source,javascript,indent=0,role="generatedJavascriptCode"]
 .Generated Javascript code
 ----
-include::../../../../jsinterop-test/target/gwt-asciidoc/gwt.js[tags=primitiveSemantics_long]
+include::../../../../jsinterop-test/target/gwt-asciidoc/gwt.js[tags=GwtInternalsTest_primitiveSemantics_long]
 ----
 
 ==== Primitives best practices
@@ -356,10 +361,14 @@ For example if an integer calculation overflows then probably it has a bug. In J
 To summarize:
 
 * Primitive semantics are correct in all important cases (but consider creating plenty of unit tests if mission-critical calculations are shared between Java and Javascript).
-* In JsInterop interfaces
-** the most "safe" primitive types are `int` and `double`,
-** `byte`, `float`, `short` and `char` is rarely used,
+* In JsInterop declarations
+** the most "safe" primitive types are `boolean`, `int` and `double`
+** `byte`, `float`, `short` and `char` is rarely used
 ** `long` should be avoided.
+
+=== Arrays
+
+Java arrays are implemented by Javascript arrays therefore they are very fast.
 
 === Native Javascript types
 

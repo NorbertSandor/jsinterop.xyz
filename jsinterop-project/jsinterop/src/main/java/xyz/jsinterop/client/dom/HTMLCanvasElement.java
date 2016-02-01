@@ -102,4 +102,7 @@ public interface HTMLCanvasElement extends HTMLElement {
 	 */
 	@JsMethod
 	public abstract String toDataURL(final String type, final Object args);
+	
+	@JsMethod
+	public abstract Blob toBlob();
 }

@@ -32,10 +32,10 @@ public interface MediaSource extends EventTarget {
 	public abstract void setDuration(final double value);
 
 	@JsProperty
-	public abstract double getReadyState();
+	public abstract String getReadyState();
 
 	@JsProperty
-	public abstract void setReadyState(final double value);
+	public abstract void setReadyState(final String value);
 
 	@JsProperty
 	public abstract SourceBufferList getSourceBuffers();
