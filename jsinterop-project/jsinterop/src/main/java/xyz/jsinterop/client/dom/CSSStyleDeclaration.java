@@ -20,11 +20,70 @@ import jsinterop.annotations.JsType;
 
 @JsType(isNative = true, namespace = JsPackage.GLOBAL)
 public interface CSSStyleDeclaration {
+	/**
+	 * Aligns a flex container's lines within the flex container when there is
+	 * extra space on the cross-axis.<br>
+	 * This property has no effect on single line flexible boxes.
+	 *
+	 * @see <a href="https://developer.mozilla.org/docs/Web/CSS/align-content">
+	 *      MDN / align-content</a>
+	 */
 	@JsProperty
 	public abstract String getAlignContent();
 
+	/**
+	 * Aligns a flex container's lines within the flex container when there is
+	 * extra space on the cross-axis.<br>
+	 * This property has no effect on single line flexible boxes.
+	 *
+	 * @see <a href="https://developer.mozilla.org/docs/Web/CSS/align-content">
+	 *      MDN / align-content</a>
+	 */
 	@JsProperty
 	public abstract void setAlignContent(final String value);
+
+	enum AlignContentValue {
+		/**
+		 * Lines are packed starting from the cross-start. Cross-start edge of
+		 * the first line and cross-start edge of the flex container are flushed
+		 * together. Each following line is flush with the preceding.
+		 */
+		FLEX_START("flex-start");
+
+		// TODO
+
+		private final String cssName;
+
+		AlignContentValue(String cssName) {
+			this.cssName = cssName;
+		}
+
+		public String getCssName() {
+			return cssName;
+		}
+	}
+
+	@JsOverlay
+	public default AlignContentValue getAlignContentValue() {
+		AlignContentValue result;
+
+		switch (getAlignContent()) {
+		case "flex-start":
+			result = AlignContentValue.FLEX_START;
+			break;
+		// TODO
+		default:
+			result = null;
+			break;
+		}
+
+		return result;
+	}
+
+	@JsProperty
+	public default void setAlignContentValue(final AlignContentValue value) {
+		setAlignContent(value.getCssName());
+	}
 
 	@JsProperty
 	public abstract String getAlignItems();
