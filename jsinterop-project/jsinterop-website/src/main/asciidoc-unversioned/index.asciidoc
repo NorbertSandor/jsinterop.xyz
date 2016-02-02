@@ -35,13 +35,16 @@ For more information see
 
 == History
 
-=== 0.2.0-SNAPSHOT
+=== 0.1.2-SNAPSHOT
 
 Current development version.
+
+=== 0.1.1
+
+* Improve DOM APIs.
+* Documentation progress.
 
 === 0.1.0
-
-Current development version.
 
 * Initial version.
 * Initial generated GWT APIs for core browser APIs.

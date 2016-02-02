@@ -12,17 +12,37 @@
 package xyz.jsinterop.test.client.dom
 
 import xyz.jsinterop.client.core.JsGlobals
+import xyz.jsinterop.client.dom.CssNamedColor
+import xyz.jsinterop.client.dom.CssUnit
 import xyz.jsinterop.client.dom.HTMLInputElement
 
 import static xyz.jsinterop.test.client.TestUtils.generatedCodeMarkerEnd
 import static xyz.jsinterop.test.client.TestUtils.generatedCodeMarkerStart
-import xyz.jsinterop.client.dom.CssNamedColor
 
 class DomXtendTest implements Runnable {
 	override void run() {
 		createElement
 		createTextNode
 		eventHandlers
+		settingCssStyle
+	}
+
+	def private void settingCssStyle() {
+		val document = JsGlobals.getDocument();
+
+		generatedCodeMarkerStart("Dom_settingCssStyle");
+		// tag::Dom_settingCssStyle[]
+		val div = document.createElementDiv
+		div.style => [
+			backgroundColor = CssNamedColor.LIGHTGRAY
+			setMargin(10, CssUnit.PX)
+			setPadding(0.5, CssUnit.EM)
+		]
+		// end::Dom_settingCssStyle[]
+		generatedCodeMarkerEnd("Dom_settingCssStyle");
+
+		div.innerText = "some text..."
+		document.getBody().appendChild(div)
 	}
 
 	def private void eventHandlers() {
