@@ -15,7 +15,6 @@ import static xyz.jsinterop.test.client.TestUtils.generatedCodeMarkerEnd;
 import static xyz.jsinterop.test.client.TestUtils.generatedCodeMarkerStart;
 
 import xyz.jsinterop.client.core.JsGlobals;
-import xyz.jsinterop.client.dom.CSSStyleDeclaration.Display;
 import xyz.jsinterop.client.dom.CssNamedColor;
 import xyz.jsinterop.client.dom.CssUnit;
 import xyz.jsinterop.client.dom.Document;
@@ -81,7 +80,6 @@ public class DomTest implements Runnable {
 		// tag::Dom_createElement[]
 		HTMLInputElement input1 = (HTMLInputElement) document.createElement("input");
 		input1.setValue("some text...");
-		input1.getStyle().setDisplay(Display.BLOCK);
 
 		HTMLInputElement input2 = document.createElementInput();
 		input2.setReadOnly(true);
