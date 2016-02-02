@@ -1,8 +1,6 @@
-package xyz.jsinterop.client.dom;
-
 /*
  * #%L
- * jsinterop
+ * JsInterop.xyz
  * %%
  * Copyright (C) 2016 Norbert Sándor
  * %%
@@ -11,6 +9,9 @@ package xyz.jsinterop.client.dom;
  * file, You can obtain one at http://mozilla.org/MPL/2.0/.
  * #L%
  */
+package xyz.jsinterop.client.dom;
+
+import com.google.common.base.Preconditions;
 
 import jsinterop.annotations.JsMethod;
 import jsinterop.annotations.JsOverlay;
@@ -18,71 +19,125 @@ import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
 
+/**
+ * Represents a collection of CSS property-value pairs.
+ * 
+ * @see <a href=
+ *      "https://developer.mozilla.org/en/docs/Web/API/CSSStyleDeclaration">MDN
+ *      / CSSStyleDeclaration</a>
+ * @see <span>API documentation is based on
+ *      <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference">MDN
+ *      / CSS</a> by Mozilla Contributors, licensed under CC-BY-SA 2.5</span>
+ */
 @JsType(isNative = true, namespace = JsPackage.GLOBAL)
 public interface CSSStyleDeclaration {
 	/**
-	 * Aligns a flex container's lines within the flex container when there is
-	 * extra space on the cross-axis.<br>
-	 * This property has no effect on single line flexible boxes.
-	 *
-	 * @see <a href="https://developer.mozilla.org/docs/Web/CSS/align-content">
-	 *      MDN / align-content</a>
+	 * @see #setAlignContent(String)
 	 */
 	@JsProperty
 	public abstract String getAlignContent();
 
 	/**
-	 * Aligns a flex container's lines within the flex container when there is
-	 * extra space on the cross-axis.<br>
-	 * This property has no effect on single line flexible boxes.
-	 *
-	 * @see <a href="https://developer.mozilla.org/docs/Web/CSS/align-content">
-	 *      MDN / align-content</a>
+	 * @see #setAlignContent(String)
 	 */
 	@JsProperty
 	public abstract void setAlignContent(final String value);
 
-	enum AlignContentValue {
+	/**
+	 * Values for {@link CSSStyleDeclaration#setAlignContent(AlignContent)}.
+	 */
+	enum AlignContent {
 		/**
 		 * Lines are packed starting from the cross-start. Cross-start edge of
 		 * the first line and cross-start edge of the flex container are flushed
 		 * together. Each following line is flush with the preceding.
 		 */
-		FLEX_START("flex-start");
+		FLEX_START {
+			@Override
+			public String getCssPropertyValue() {
+				return "flex-start";
+			}
+		},
+		/**
+		 * Lines are packed starting from the cross-end. Cross-end of the last
+		 * line and cross-end of the flex container are flushed together. Each
+		 * preceding line is flushed with the following line.
+		 */
+		FLEX_END {
+			@Override
+			public String getCssPropertyValue() {
+				return "flex-end";
+			}
+		},
+		/**
+		 * Lines are packed toward the center of the flex container. The lines
+		 * are flushed with each other and aligned in the center of the flex
+		 * container. Space between the cross-start edge of the flex container
+		 * and first line and between cross-end of the flex container and the
+		 * last line is the same.
+		 */
+		CENTER {
+			@Override
+			public String getCssPropertyValue() {
+				return "center";
+			}
+		},
+		/**
+		 * Lines are evenly distributed in the flex container. The spacing is
+		 * done such as the space between two adjacent items is the same.
+		 * Cross-start edge and cross-end edge of the flex container are flushed
+		 * with respectively first and last line edges.
+		 */
+		SPACE_BETWEEN {
+			@Override
+			public String getCssPropertyValue() {
+				return "space-between";
+			}
+		},
+		/**
+		 * Lines are evenly distributed so that the space between two adjacent
+		 * lines is the same. The empty space before the first and after the
+		 * last lines equals half of the space between two adjacent lines.
+		 */
+		SPACE_AROUND {
+			@Override
+			public String getCssPropertyValue() {
+				return "space-around";
+			}
+		},
+		/**
+		 * Lines stretch to use the remaining space. The free-space is split
+		 * equally between all the lines.
+		 */
+		STRETCH {
+			@Override
+			public String getCssPropertyValue() {
+				return "stretch";
+			}
+		};
 
-		// TODO
-
-		private final String cssName;
-
-		AlignContentValue(String cssName) {
-			this.cssName = cssName;
-		}
-
-		public String getCssName() {
-			return cssName;
-		}
+		public abstract String getCssPropertyValue();
 	}
 
+	/**
+	 * Aligns a flex container's lines within the flex container when there is
+	 * extra space on the cross-axis.<br>
+	 * This property has no effect on single line flexible boxes.
+	 *
+	 * @see <a href="https://developer.mozilla.org/docs/Web/CSS/align-content">
+	 *      MDN / CSS / align-content</a>
+	 */
 	@JsOverlay
-	public default AlignContentValue getAlignContentValue() {
-		AlignContentValue result;
-
-		switch (getAlignContent()) {
-		case "flex-start":
-			result = AlignContentValue.FLEX_START;
-			break;
-		// TODO
-		default:
-			result = null;
-			break;
-		}
-
-		return result;
+	public default void setAlignContent(final AlignContent value) {
+		setAlignContent(value.getCssPropertyValue());
 	}
 
-	@JsProperty
-	public default void setAlignContentValue(final AlignContentValue value) {
-		setAlignContent(value.getCssName());
+	/**
+	 * @see #setAlignContent(String)
+	 */
+	@JsOverlay
+	public default void setAlignContent(final CssGlobalStyle value) {
+		setAlignContent(value.getCssPropertyValue());
 	}
 
 	@JsProperty
@@ -175,17 +230,102 @@ public interface CSSStyleDeclaration {
 	@JsProperty
 	public abstract void setBackgroundAttachment(final String value);
 
+	/**
+	 * @see #setBackgroundClip(BackgroundClip)
+	 */
 	@JsProperty
 	public abstract String getBackgroundClip();
 
+	/**
+	 * @see #setBackgroundClip(BackgroundClip)
+	 */
 	@JsProperty
 	public abstract void setBackgroundClip(final String value);
 
+	/**
+	 * Values for {@link CSSStyleDeclaration#setBackgroundClip(BackgroundClip)}.
+	 */
+	enum BackgroundClip {
+		/**
+		 * The background extends to the outside edge of the border (but
+		 * underneath the border in z-ordering).
+		 */
+		BORDER_BOX {
+			@Override
+			public String getCssPropertyValue() {
+				return "border-box";
+			}
+		},
+		/**
+		 * No background is drawn below the border (background extends to the
+		 * outside edge of the padding).
+		 */
+		PADDING_BOX {
+			@Override
+			public String getCssPropertyValue() {
+				return "padding-box";
+			}
+		},
+		/**
+		 * The background is painted within (clipped to) the content box.
+		 */
+		CONTENT_BOX {
+			@Override
+			public String getCssPropertyValue() {
+				return "content-box";
+			}
+		};
+
+		public abstract String getCssPropertyValue();
+	}
+
+	/**
+	 * @see #setBackgroundClip(BackgroundClip)
+	 */
+	@JsOverlay
+	public default void setBackgroundClip(final BackgroundClip value) {
+		setBackgroundClip(value.getCssPropertyValue());
+	}
+
+	/**
+	 * @see #setBackgroundClip(BackgroundClip)
+	 */
+	@JsOverlay
+	public default void setBackgroundClip(final CssGlobalStyle value) {
+		setBackgroundClip(value.getCssPropertyValue());
+	}
+
+	/**
+	 * @see #setBackgroundColor(HasCssColorValue)
+	 */
 	@JsProperty
 	public abstract String getBackgroundColor();
 
+	/**
+	 * @see #setBackgroundColor(HasCssColorValue)
+	 */
 	@JsProperty
 	public abstract void setBackgroundColor(final String value);
+
+	/**
+	 * Sets the background color of an element.
+	 *
+	 * @see <a href=
+	 *      "https://developer.mozilla.org/en-US/docs/Web/CSS/background-color">
+	 *      MDN / CSS / background-color</a>
+	 */
+	@JsOverlay
+	public default void setBackgroundColor(final HasCssColorValue value) {
+		setBackgroundColor(value.getCssColorValue());
+	}
+
+	/**
+	 * @see #setBackgroundColor(HasCssColorValue)
+	 */
+	@JsOverlay
+	public default void setBackgroundColor(final CssGlobalStyle value) {
+		setBackgroundColor(value.getCssPropertyValue());
+	}
 
 	@JsProperty
 	public abstract String getBackgroundImage();
@@ -217,11 +357,185 @@ public interface CSSStyleDeclaration {
 	@JsProperty
 	public abstract void setBackgroundPositionY(final String value);
 
+	/**
+	 * @see #setBackgroundRepeat(BackgroundRepeat, BackgroundRepeat)
+	 */
 	@JsProperty
 	public abstract String getBackgroundRepeat();
 
+	/**
+	 * @see #setBackgroundRepeat(BackgroundRepeat, BackgroundRepeat)
+	 */
 	@JsProperty
 	public abstract void setBackgroundRepeat(final String value);
+
+	/**
+	 * Values for
+	 * {@link CSSStyleDeclaration#setBackgroundRepeat(BackgroundRepeatShortcut)}
+	 * .
+	 */
+	enum BackgroundRepeatShortcut {
+		/**
+		 * Equivalent to {@code repeat no-repeat}.
+		 */
+		REPEAT_X {
+			@Override
+			public String getCssPropertyValue() {
+				return "repeat-x";
+			}
+		},
+		/**
+		 * Equivalent to {@code no-repeat repeat}.
+		 */
+		REPEAT_Y {
+			@Override
+			public String getCssPropertyValue() {
+				return "repeat-y";
+			}
+		},
+		/**
+		 * Equivalent to {@code repeat repeat}.
+		 */
+		REPEAT {
+			@Override
+			public String getCssPropertyValue() {
+				return "repeat";
+			}
+		},
+		/**
+		 * Equivalent to {@code space space}.
+		 */
+		SPACE {
+			@Override
+			public String getCssPropertyValue() {
+				return "space";
+			}
+		},
+		/**
+		 * Equivalent to {@code round round}.
+		 */
+		ROUND {
+			@Override
+			public String getCssPropertyValue() {
+				return "round";
+			}
+		},
+		/**
+		 * Equivalent to {@code no-repeat no-repeat}.
+		 */
+		NO_REPEAT {
+			@Override
+			public String getCssPropertyValue() {
+				return "no-repeat";
+			}
+		};
+
+		public abstract String getCssPropertyValue();
+	}
+
+	/**
+	 * Sets {@code background-repeat} for both directions.
+	 * 
+	 * @see #setBackgroundRepeat(BackgroundRepeat, BackgroundRepeat)
+	 */
+	@JsOverlay
+	public default void setBackgroundRepeat(final BackgroundRepeatShortcut value) {
+		setBackgroundRepeat(value.getCssPropertyValue());
+	}
+
+	/**
+	 * Sets {@code background-repeat} for both directions.
+	 * 
+	 * @see #setBackgroundRepeat(BackgroundRepeat, BackgroundRepeat)
+	 */
+	@JsOverlay
+	public default void setBackgroundRepeat(final CssGlobalStyle value) {
+		setBackgroundRepeat(value.getCssPropertyValue());
+	}
+
+	/**
+	 * Values for
+	 * {@link CSSStyleDeclaration#setBackgroundRepeat(BackgroundRepeat, BackgroundRepeat)}
+	 * .
+	 */
+	enum BackgroundRepeat {
+		/**
+		 * The image is repeated as much as needed to cover the whole background
+		 * image painting area. The last image will be clipped if it doesn't
+		 * fit.
+		 */
+		REPEAT {
+			@Override
+			public String getCssPropertyValue() {
+				return "repeat";
+			}
+		},
+		/**
+		 * The image is repeated as much as possible without clipping. The first
+		 * and last images are pinned to either side of the element, and
+		 * whitespace is distributed evenly between the images. The
+		 * {@code background-position} property is ignored unless only one image
+		 * can be displayed without clipping. The only case where clipping
+		 * happens using space is when there isn't enough room to display one
+		 * image.
+		 */
+		SPACE {
+			@Override
+			public String getCssPropertyValue() {
+				return "space";
+			}
+		},
+		/**
+		 * As the allowed space increases in size, the repeated images will
+		 * stretch (leaving no gaps) until there is room for another one to be
+		 * added. When the next image is added, all of the current ones compress
+		 * to allow room. Example: An image with an original width of 260px,
+		 * repeated three times, might stretch until each repetition is 300px
+		 * wide, and then another image will be added. They will then compress
+		 * to 225px.
+		 */
+		ROUND {
+			@Override
+			public String getCssPropertyValue() {
+				return "round";
+			}
+		},
+		/**
+		 * The image is not repeated (and hence the background image painting
+		 * area will not necessarily be entirely covered). The position of the
+		 * non-repeated background image is defined by the
+		 * {@code background-position} CSS property.
+		 */
+		NO_REPEAT {
+			@Override
+			public String getCssPropertyValue() {
+				return "no-repeat";
+			}
+		};
+
+		public abstract String getCssPropertyValue();
+	}
+
+	/**
+	 * Defines how background images are repeated. A background image can be
+	 * repeated along the horizontal axis, the vertical axis, both axes, or not
+	 * repeated at all.<br>
+	 * By default, the repeated images are clipped to the size of the element,
+	 * but they can be scaled to fit (using round) or evenly distributed from
+	 * end to end (using space).
+	 * 
+	 * @see #setBackgroundRepeat(BackgroundRepeatShortcut)
+	 * @see <a href=
+	 *      "https://developer.mozilla.org/en-US/docs/Web/CSS/background-repeat">
+	 *      MDN / CSS / background-repeat</a>
+	 */
+	@JsOverlay
+	public default void setBackgroundRepeat(final BackgroundRepeat horizontal, final BackgroundRepeat vertical) {
+		Preconditions.checkNotNull(horizontal, "'horizontal' should not be null.");
+		Preconditions.checkNotNull(vertical, "'vertical' should not be null.");
+
+		setBackgroundRepeat(horizontal.getCssPropertyValue() + " " + vertical.getCssPropertyValue());
+	}
 
 	@JsProperty
 	public abstract String getBackgroundSize();
@@ -247,11 +561,37 @@ public interface CSSStyleDeclaration {
 	@JsProperty
 	public abstract void setBorderBottom(final String value);
 
+	/**
+	 * @see #setBorderBottomColor(HasCssColorValue)
+	 */
 	@JsProperty
 	public abstract String getBorderBottomColor();
 
+	/**
+	 * @see #setBorderBottomColor(HasCssColorValue)
+	 */
 	@JsProperty
 	public abstract void setBorderBottomColor(final String value);
+
+	/**
+	 * Sets the color of the bottom border of an element.
+	 *
+	 * @see <a href=
+	 *      "https://developer.mozilla.org/en-US/docs/Web/CSS/border-bottom-color">
+	 *      MDN / CSS / border-bottom-color</a>
+	 */
+	@JsOverlay
+	public default void setBorderBottomColor(final HasCssColorValue value) {
+		setBorderBottomColor(value.getCssColorValue());
+	}
+
+	/**
+	 * @see #setBorderBottomColor(HasCssColorValue)
+	 */
+	@JsOverlay
+	public default void setBorderBottomColor(final CssGlobalStyle value) {
+		setBorderBottomColor(value.getCssPropertyValue());
+	}
 
 	@JsProperty
 	public abstract String getBorderBottomLeftRadius();
@@ -283,11 +623,38 @@ public interface CSSStyleDeclaration {
 	@JsProperty
 	public abstract void setBorderCollapse(final String value);
 
+	/**
+	 * @see #setBorderColor(HasCssColorValue)
+	 */
 	@JsProperty
 	public abstract String getBorderColor();
 
+	/**
+	 * @see #setBorderColor(HasCssColorValue)
+	 */
 	@JsProperty
 	public abstract void setBorderColor(final String value);
+
+	/**
+	 * A shorthand for setting the color of the four sides of an element's
+	 * border.
+	 *
+	 * @see <a href=
+	 *      "https://developer.mozilla.org/en-US/docs/Web/CSS/border-color"> MDN
+	 *      / CSS / border-color</a>
+	 */
+	@JsOverlay
+	public default void setBorderColor(final HasCssColorValue value) {
+		setBorderColor(value.getCssColorValue());
+	}
+
+	/**
+	 * @see #setBorderColor(HasCssColorValue)
+	 */
+	@JsOverlay
+	public default void setBorderColor(final CssGlobalStyle value) {
+		setBorderColor(value.getCssPropertyValue());
+	}
 
 	@JsProperty
 	public abstract String getBorderImage();
@@ -331,11 +698,37 @@ public interface CSSStyleDeclaration {
 	@JsProperty
 	public abstract void setBorderLeft(final String value);
 
+	/**
+	 * @see #setBorderLeftColor(HasCssColorValue)
+	 */
 	@JsProperty
 	public abstract String getBorderLeftColor();
 
+	/**
+	 * @see #setBorderLeftColor(HasCssColorValue)
+	 */
 	@JsProperty
 	public abstract void setBorderLeftColor(final String value);
+
+	/**
+	 * Sets the color of the left border of an element.
+	 *
+	 * @see <a href=
+	 *      "https://developer.mozilla.org/en-US/docs/Web/CSS/border-left-color">
+	 *      MDN / CSS / border-left-color</a>
+	 */
+	@JsOverlay
+	public default void setBorderLeftColor(final HasCssColorValue value) {
+		setBorderLeftColor(value.getCssColorValue());
+	}
+
+	/**
+	 * @see #setBorderLeftColor(HasCssColorValue)
+	 */
+	@JsOverlay
+	public default void setBorderLeftColor(final CssGlobalStyle value) {
+		setBorderLeftColor(value.getCssPropertyValue());
+	}
 
 	@JsProperty
 	public abstract String getBorderLeftStyle();
@@ -361,11 +754,37 @@ public interface CSSStyleDeclaration {
 	@JsProperty
 	public abstract void setBorderRight(final String value);
 
+	/**
+	 * @see #setBorderRightColor(HasCssColorValue)
+	 */
 	@JsProperty
 	public abstract String getBorderRightColor();
 
+	/**
+	 * @see #setBorderRightColor(HasCssColorValue)
+	 */
 	@JsProperty
 	public abstract void setBorderRightColor(final String value);
+
+	/**
+	 * Sets the color of the right border of an element.
+	 *
+	 * @see <a href=
+	 *      "https://developer.mozilla.org/en-US/docs/Web/CSS/border-right-color">
+	 *      MDN / CSS / border-right-color</a>
+	 */
+	@JsOverlay
+	public default void setBorderRightColor(final HasCssColorValue value) {
+		setBorderRightColor(value.getCssColorValue());
+	}
+
+	/**
+	 * @see #setBorderRightColor(HasCssColorValue)
+	 */
+	@JsOverlay
+	public default void setBorderRightColor(final CssGlobalStyle value) {
+		setBorderRightColor(value.getCssPropertyValue());
+	}
 
 	@JsProperty
 	public abstract String getBorderRightStyle();
@@ -397,11 +816,37 @@ public interface CSSStyleDeclaration {
 	@JsProperty
 	public abstract void setBorderTop(final String value);
 
+	/**
+	 * @see #setBorderTopColor(HasCssColorValue)
+	 */
 	@JsProperty
 	public abstract String getBorderTopColor();
 
+	/**
+	 * @see #setBorderTopColor(HasCssColorValue)
+	 */
 	@JsProperty
 	public abstract void setBorderTopColor(final String value);
+
+	/**
+	 * Sets the color of the top border of an element.
+	 *
+	 * @see <a href=
+	 *      "https://developer.mozilla.org/en-US/docs/Web/CSS/border-top-color">
+	 *      MDN / CSS / border-top-color</a>
+	 */
+	@JsOverlay
+	public default void setBorderTopColor(final HasCssColorValue value) {
+		setBorderTopColor(value.getCssColorValue());
+	}
+
+	/**
+	 * @see #setBorderTopColor(HasCssColorValue)
+	 */
+	@JsOverlay
+	public default void setBorderTopColor(final CssGlobalStyle value) {
+		setBorderTopColor(value.getCssPropertyValue());
+	}
 
 	@JsProperty
 	public abstract String getBorderTopLeftRadius();
@@ -475,11 +920,107 @@ public interface CSSStyleDeclaration {
 	@JsProperty
 	public abstract void setCaptionSide(final String value);
 
+	/**
+	 * @see #setClear(Clear)
+	 */
 	@JsProperty
 	public abstract String getClear();
 
+	/**
+	 * @see #setClear(Clear)
+	 */
 	@JsProperty
 	public abstract void setClear(final String value);
+
+	/**
+	 * Values for {@link CSSStyleDeclaration#setClear(Clear)} .
+	 */
+	enum Clear {
+		/**
+		 * Is a keyword indicating that the element is not moved down to clear
+		 * past floating elements.
+		 */
+		NONE {
+			@Override
+			public String getCssPropertyValue() {
+				return "none";
+			}
+		},
+		/**
+		 * Is a keyword indicating that the element is moved down to clear past
+		 * left floats.
+		 */
+		LEFT {
+			@Override
+			public String getCssPropertyValue() {
+				return "left";
+			}
+		},
+		/**
+		 * Is a keyword indicating that the element is moved down to clear past
+		 * right floats.
+		 */
+		RIGHT {
+			@Override
+			public String getCssPropertyValue() {
+				return "right";
+			}
+		},
+		/**
+		 * Is a keyword indicating that the element is moved down to clear past
+		 * both left and right floats.
+		 */
+		BOTH {
+			@Override
+			public String getCssPropertyValue() {
+				return "both";
+			}
+		},
+		/**
+		 * Is a keyword indicating that the element is moved down to clear
+		 * floats on start side of its containing block, that is the left floats
+		 * on ltr scripts and the right floats on rtl scripts.
+		 */
+		INLINE_START {
+			@Override
+			public String getCssPropertyValue() {
+				return "inline-start";
+			}
+		},
+		/**
+		 * Is a keyword indicating that the element is moved down to clear
+		 * floats on end side of its containing block, that is the right floats
+		 * on ltr scripts and the left floats on rtl scripts.
+		 */
+		INLINE_END {
+			@Override
+			public String getCssPropertyValue() {
+				return "inline-end";
+			}
+		};
+		public abstract String getCssPropertyValue();
+	}
+
+	/**
+	 * Specifies whether an element can be next to floating elements that
+	 * precede it or must be moved down (cleared) below them. The clear property
+	 * applies to both floating and non-floating elements.
+	 *
+	 * @see <a href= "https://developer.mozilla.org/en-US/docs/Web/CSS/clear">
+	 *      MDN / CSS / clear</a>
+	 */
+	@JsOverlay
+	public default void setClear(final Clear value) {
+		setClear(value.getCssPropertyValue());
+	}
+
+	/**
+	 * @see #setClear(Clear)
+	 */
+	@JsOverlay
+	public default void setClear(final CssGlobalStyle value) {
+		setClear(value.getCssPropertyValue());
+	}
 
 	@JsProperty
 	public abstract String getClip();
@@ -499,11 +1040,38 @@ public interface CSSStyleDeclaration {
 	@JsProperty
 	public abstract void setClipRule(final String value);
 
+	/**
+	 * @see #setColor(HasCssColorValue)
+	 */
 	@JsProperty
 	public abstract String getColor();
 
+	/**
+	 * @see #setColor(HasCssColorValue)
+	 */
 	@JsProperty
 	public abstract void setColor(final String value);
+
+	/**
+	 * Sets the foreground color of an element's text content, and its
+	 * decorations.<br>
+	 * It doesn't affect any other characteristic of the element.
+	 *
+	 * @see <a href= "https://developer.mozilla.org/en-US/docs/Web/CSS/color">
+	 *      MDN / CSS / color</a>
+	 */
+	@JsOverlay
+	public default void setColor(final HasCssColorValue value) {
+		setColor(value.getCssColorValue());
+	}
+
+	/**
+	 * @see #setColor(HasCssColorValue)
+	 */
+	@JsOverlay
+	public default void setColor(final CssGlobalStyle value) {
+		setColor(value.getCssPropertyValue());
+	}
 
 	@JsProperty
 	public abstract String getColorInterpolationFilters();
@@ -613,11 +1181,330 @@ public interface CSSStyleDeclaration {
 	@JsProperty
 	public abstract void setDirection(final String value);
 
+	/**
+	 * @see #setDisplay(Display)
+	 */
 	@JsProperty
 	public abstract String getDisplay();
 
+	/**
+	 * @see #setDisplay(Display)
+	 */
 	@JsProperty
 	public abstract void setDisplay(final String value);
+
+	/**
+	 * Values for {@link CSSStyleDeclaration#setDisplay(Display) display}.
+	 */
+	enum Display {
+		/**
+		 * Turns off the display of an element (it has no effect on layout); all
+		 * descendant elements also have their display turned off. The document
+		 * is rendered as though the element did not exist.
+		 */
+		NONE {
+			@Override
+			public String getCssPropertyValue() {
+				return "none";
+			}
+		},
+		/**
+		 * The element generates one or more inline element boxes.
+		 */
+		INLINE {
+			@Override
+			public String getCssPropertyValue() {
+				return "inline";
+			}
+		},
+		/**
+		 * The element generates a block element box.
+		 */
+		BLOCK {
+			@Override
+			public String getCssPropertyValue() {
+				return "block";
+			}
+		},
+		/**
+		 * The element generates a block element box that will be flowed with
+		 * surrounding content as if it were a single inline box (behaving much
+		 * like a replaced element would).
+		 */
+		INLINE_BLOCK {
+			@Override
+			public String getCssPropertyValue() {
+				return "inline-block";
+			}
+		},
+		/**
+		 * These elements don't produce a specific box by themselves. They are
+		 * replaced by their pseudo-box and their child boxes.
+		 */
+		CONTENTS {
+			@Override
+			public String getCssPropertyValue() {
+				return "contents";
+			}
+		},
+		/**
+		 * The element generates a block box for the content and a separate
+		 * list-item inline box.
+		 */
+		LIST_ITEM {
+			@Override
+			public String getCssPropertyValue() {
+				return "list-item";
+			}
+		},
+		/**
+		 * The inline-list-item display value makes the element a list item,
+		 * with the effects described above. Additionally, the outside value of
+		 * list-style-position computes to inside on this element. Otherwise,
+		 * this display value is treated identically to inline.
+		 */
+		INLINE_LIST_ITEM {
+			@Override
+			public String getCssPropertyValue() {
+				return "inline-list-item";
+			}
+		},
+		/**
+		 * These elements behave like {@code 
+		 * 
+		<table>
+		 * } HTML elements. It defines a block-level box.
+		 */
+		TABLE {
+			@Override
+			public String getCssPropertyValue() {
+				return "table";
+			}
+		},
+		/**
+		 * The inline-table value does not have a direct mapping in HTML. It
+		 * behaves like a {@code 
+		 * 
+		<table>
+		 * } HTML element, but as an inline box, rather than a block-level box.
+		 * Inside the table box is a block-level context.
+		 */
+		INLINE_TABLE {
+			@Override
+			public String getCssPropertyValue() {
+				return "inline-table";
+			}
+		},
+		/**
+		 * These elements behave like {@code 
+		 * 
+		<td>} HTML elements.
+		 */
+		TABLE_CELL {
+			@Override
+			public String getCssPropertyValue() {
+				return "table-cell";
+			}
+		},
+		/**
+		 * These elements behave like {@code <col>} HTML elements.
+		 */
+		TABLE_COLUMN {
+			@Override
+			public String getCssPropertyValue() {
+				return "table-column";
+			}
+		},
+		/**
+		 * These elements behave like {@code <colgroup>} HTML elements.
+		 */
+		TABLE_COLUMN_GROUP {
+			@Override
+			public String getCssPropertyValue() {
+				return "table-column-group";
+			}
+		},
+		/**
+		 * These elements behave like {@code <tfoot>} HTML elements.
+		 */
+		TABLE_FOOTER_GROUP {
+			@Override
+			public String getCssPropertyValue() {
+				return "table-footer-group";
+			}
+		},
+		/**
+		 * These elements behave like {@code <thead>} HTML elements.
+		 */
+		TABLE_HEADER_GROUP {
+			@Override
+			public String getCssPropertyValue() {
+				return "table-header-group";
+			}
+		},
+		/**
+		 * These elements behave like {@code 
+		 * 
+		<tr>
+		 * } HTML elements.
+		 */
+		TABLE_ROW {
+			@Override
+			public String getCssPropertyValue() {
+				return "table-row";
+			}
+		},
+		/**
+		 * These elements behave like {@code <tbody>} HTML elements.
+		 */
+		TABLE_ROW_GROUP {
+			@Override
+			public String getCssPropertyValue() {
+				return "table-row-group";
+			}
+		},
+		/**
+		 * These elements behave like {@code <caption>} HTML elements.
+		 */
+		TABLE_CAPTION {
+			@Override
+			public String getCssPropertyValue() {
+				return "table-caption";
+			}
+		},
+		/**
+		 * The element behaves like a block element and lays out its content
+		 * according to the flexbox model.
+		 */
+		FLEX {
+			@Override
+			public String getCssPropertyValue() {
+				return "flex";
+			}
+		},
+		/**
+		 * The element behaves like an inline element and lays out its content
+		 * according to the flexbox model.
+		 */
+		INLINE_FLEX {
+			@Override
+			public String getCssPropertyValue() {
+				return "inline-flex";
+			}
+		},
+		/**
+		 * The element behaves like a block element and lays out its content
+		 * according to the grid model.
+		 */
+		GRID {
+			@Override
+			public String getCssPropertyValue() {
+				return "grid";
+			}
+		},
+		/**
+		 * The element behaves like an inline element and lays out its content
+		 * according to the grid model.
+		 */
+		INLINE_GRID {
+			@Override
+			public String getCssPropertyValue() {
+				return "inline-grid";
+			}
+		},
+		/**
+		 * The element behaves like an inline element and lays out its content
+		 * according to the ruby formatting model. It behaves like the
+		 * corresponding {@code <ruby>} HTML elements.
+		 */
+		RUBY {
+			@Override
+			public String getCssPropertyValue() {
+				return "ruby";
+			}
+		},
+		/**
+		 * These elements behave like {@code <rb>} elements.
+		 */
+		RUBY_BASE {
+			@Override
+			public String getCssPropertyValue() {
+				return "ruby-base";
+			}
+		},
+		/**
+		 * These elements behave like {@code <rt>} elements.
+		 */
+		RUBY_TEXT {
+			@Override
+			public String getCssPropertyValue() {
+				return "ruby-text";
+			}
+		},
+		/**
+		 * These elements behave like {@code <rbc>} elements generated as
+		 * anonymous boxes.
+		 */
+		RUBY_BASE_CONTAINER {
+			@Override
+			public String getCssPropertyValue() {
+				return "ruby-base-container";
+			}
+		},
+		/**
+		 * These elements behave like {@code <rtc>} elements.
+		 */
+		RUBY_TEXT_CONTAINER {
+			@Override
+			public String getCssPropertyValue() {
+				return "ruby-text-container";
+			}
+		},
+		/**
+		 * <ul>
+		 * <li>If the run-in box contains a block box, same as block.</li>
+		 * <li>If a block box follows the run-in box, the run-in box becomes the
+		 * first inline box of the block box.</li>
+		 * <li>If an inline box follows, the run-in box becomes a block box.
+		 * </li>
+		 * </ul>
+		 */
+		RUN_IN {
+			@Override
+			public String getCssPropertyValue() {
+				return "run-in";
+			}
+		};
+
+		public abstract String getCssPropertyValue();
+	}
+
+	/**
+	 * Specifies the type of rendering box used for an element. In HTML, default
+	 * {@code display} property values are taken from behaviors described in the
+	 * HTML specifications or from the browser/user default stylesheet. The
+	 * default value in XML is inline.<br>
+	 * In addition to the many different display box types, the value
+	 * {@code none} lets you turn off the display of an element; when you use
+	 * {@code none}, all descendant elements also have their display turned off.
+	 * The document is rendered as though the element doesn't exist in the
+	 * document tree.
+	 *
+	 * @see <a href= "https://developer.mozilla.org/en-US/docs/Web/CSS/display">
+	 *      MDN / CSS / display</a>
+	 */
+	@JsOverlay
+	public default void setDisplay(final Display value) {
+		setDisplay(value.getCssPropertyValue());
+	}
+
+	/**
+	 * @see #setDisplay(Display)
+	 */
+	@JsOverlay
+	public default void setDisplay(final CssGlobalStyle value) {
+		setDisplay(value.getCssPropertyValue());
+	}
 
 	@JsProperty
 	public abstract String getDominantBaseline();
@@ -859,35 +1746,213 @@ public interface CSSStyleDeclaration {
 	@JsProperty
 	public abstract void setListStyleType(final String value);
 
+	/**
+	 * @see #setMargin(double, CssUnit)
+	 */
 	@JsProperty
 	public abstract String getMargin();
 
+	/**
+	 * @see #setMargin(double, CssUnit)
+	 */
 	@JsProperty
 	public abstract void setMargin(final String value);
 
+	/**
+	 * Sets the margin for all four sides. It is a shorthand to avoid setting
+	 * each side separately with the other margin properties.
+	 * 
+	 * @see <a href= "https://developer.mozilla.org/en-US/docs/Web/CSS/margin">
+	 *      MDN / CSS / margin</a>
+	 */
+	@JsOverlay
+	public default void setMargin(final double value, CssUnit unit) {
+		setMargin(value + unit.getCssValue());
+	}
+
+	/**
+	 * @see #setMargin(double, CssUnit)
+	 */
+	@JsOverlay
+	public default void setMargin(final int value, CssUnit unit) {
+		setMargin(value + unit.getCssValue());
+	}
+
+	/**
+	 * @see #setMargin(double, CssUnit)
+	 */
+	@JsOverlay
+	public default void setMargin(CssGlobalStyle value) {
+		setMargin(value.getCssPropertyValue());
+	}
+
+	/**
+	 * @see #setMarginBottom(double, CssUnit)
+	 */
 	@JsProperty
 	public abstract String getMarginBottom();
 
+	/**
+	 * @see #setMarginBottom(double, CssUnit)
+	 */
 	@JsProperty
 	public abstract void setMarginBottom(final String value);
 
+	/**
+	 * Sets the margin space required on the bottom of an element. A negative
+	 * value is also allowed.<br>
+	 * This property has no effect on non-replaced inline elements, like {@code 
+	 * <tt>} or {@code <span>}.
+	 * 
+	 * @see <a href=
+	 *      "https://developer.mozilla.org/en-US/docs/Web/CSS/margin-bottom">
+	 *      MDN / CSS / margin-bottom</a>
+	 */
+	@JsOverlay
+	public default void setMarginBottom(final double value, CssUnit unit) {
+		setMarginBottom(value + unit.getCssValue());
+	}
+
+	/**
+	 * @see #setMarginBottom(double, CssUnit)
+	 */
+	@JsOverlay
+	public default void setMarginBottom(final int value, CssUnit unit) {
+		setMarginBottom(value + unit.getCssValue());
+	}
+
+	/**
+	 * @see #setMarginBottom(double, CssUnit)
+	 */
+	@JsOverlay
+	public default void setMarginBottom(CssGlobalStyle value) {
+		setMarginBottom(value.getCssPropertyValue());
+	}
+
+	/**
+	 * @see #setMarginLeft(double, CssUnit)
+	 */
 	@JsProperty
 	public abstract String getMarginLeft();
 
+	/**
+	 * @see #setMarginLeft(double, CssUnit)
+	 */
 	@JsProperty
 	public abstract void setMarginLeft(final String value);
 
+	/**
+	 * Sets the margin space required on the left side of a box associated with
+	 * an element. A negative value is also allowed.
+	 * 
+	 * @see <a href=
+	 *      "https://developer.mozilla.org/en-US/docs/Web/CSS/margin-left"> MDN
+	 *      / CSS / margin-left</a>
+	 */
+	@JsOverlay
+	public default void setMarginLeft(final double value, CssUnit unit) {
+		setMarginLeft(value + unit.getCssValue());
+	}
+
+	/**
+	 * @see #setMarginLeft(double, CssUnit)
+	 */
+	@JsOverlay
+	public default void setMarginLeft(final int value, CssUnit unit) {
+		setMarginLeft(value + unit.getCssValue());
+	}
+
+	/**
+	 * @see #setMarginLeft(double, CssUnit)
+	 */
+	@JsOverlay
+	public default void setMarginLeft(CssGlobalStyle value) {
+		setMarginLeft(value.getCssPropertyValue());
+	}
+
+	/**
+	 * @see #setMarginRight(double, CssUnit)
+	 */
 	@JsProperty
 	public abstract String getMarginRight();
 
+	/**
+	 * @see #setMarginRight(double, CssUnit)
+	 */
 	@JsProperty
 	public abstract void setMarginRight(final String value);
 
+	/**
+	 * Sets the margin space required on the right side of an element. A
+	 * negative value is also allowed.
+	 * 
+	 * @see <a href=
+	 *      "https://developer.mozilla.org/en-US/docs/Web/CSS/margin-right"> MDN
+	 *      / CSS / margin-right</a>
+	 */
+	@JsOverlay
+	public default void setMarginRight(final double value, CssUnit unit) {
+		setMarginRight(value + unit.getCssValue());
+	}
+
+	/**
+	 * @see #setMarginRight(double, CssUnit)
+	 */
+	@JsOverlay
+	public default void setMarginRight(final int value, CssUnit unit) {
+		setMarginRight(value + unit.getCssValue());
+	}
+
+	/**
+	 * @see #setMarginRight(double, CssUnit)
+	 */
+	@JsOverlay
+	public default void setMarginRight(CssGlobalStyle value) {
+		setMarginRight(value.getCssPropertyValue());
+	}
+
+	/**
+	 * @see #setMarginTop(double, CssUnit)
+	 */
 	@JsProperty
 	public abstract String getMarginTop();
 
+	/**
+	 * @see #setMarginTop(double, CssUnit)
+	 */
 	@JsProperty
 	public abstract void setMarginTop(final String value);
+
+	/**
+	 * Sets the margin space required on the top of an element. A negative value
+	 * is also allowed.<br>
+	 * This property has no effect on non-replaced inline elements, like {@code 
+	 * <tt>} or {@code <span>}.
+	 * 
+	 * @see <a href=
+	 *      "https://developer.mozilla.org/en-US/docs/Web/CSS/margin-top"> MDN /
+	 *      CSS / margin-top</a>
+	 */
+	@JsOverlay
+	public default void setMarginTop(final double value, CssUnit unit) {
+		setMarginTop(value + unit.getCssValue());
+	}
+
+	/**
+	 * @see #setMarginTop(double, CssUnit)
+	 */
+	@JsOverlay
+	public default void setMarginTop(final int value, CssUnit unit) {
+		setMarginTop(value + unit.getCssValue());
+	}
+
+	/**
+	 * @see #setMarginTop(double, CssUnit)
+	 */
+	@JsOverlay
+	public default void setMarginTop(CssGlobalStyle value) {
+		setMarginTop(value.getCssPropertyValue());
+	}
 
 	@JsProperty
 	public abstract String getMarker();
@@ -1267,53 +2332,368 @@ public interface CSSStyleDeclaration {
 	@JsProperty
 	public abstract void setOutlineWidth(final String value);
 
+	/**
+	 * @see #setOverflow(Overflow)
+	 */
 	@JsProperty
 	public abstract String getOverflow();
 
+	/**
+	 * @see #setOverflow(Overflow)
+	 */
 	@JsProperty
 	public abstract void setOverflow(final String value);
 
+	/**
+	 * Values for {@link CSSStyleDeclaration#setOverflow(Overflow) overflow}.
+	 */
+	enum Overflow {
+		/**
+		 * Default value. Content is not clipped, it may be rendered outside the
+		 * content box.
+		 */
+		VISIBLE {
+			@Override
+			public String getCssPropertyValue() {
+				return "visible";
+			}
+		},
+		/**
+		 * The content is clipped and no scrollbars are provided.
+		 */
+		HIDDEN {
+			@Override
+			public String getCssPropertyValue() {
+				return "hidden";
+			}
+		},
+		/**
+		 * The content is clipped and desktop browsers use scrollbars, whether
+		 * or not any content is clipped. This avoids any problem with
+		 * scrollbars appearing and disappearing in a dynamic environment.
+		 * Printers may print overflowing content.
+		 */
+		SCROLL {
+			@Override
+			public String getCssPropertyValue() {
+				return "scroll";
+			}
+		},
+		/**
+		 * Depends on the user agent. Desktop browsers like Firefox provide
+		 * scrollbars if content overflows.
+		 */
+		AUTO {
+			@Override
+			public String getCssPropertyValue() {
+				return "auto";
+			}
+		};
+
+		public abstract String getCssPropertyValue();
+	}
+
+	/**
+	 * Specifies whether to clip content, render scrollbars or just display
+	 * content when it overflows its block level container.
+	 *
+	 * @see <a href=
+	 *      "https://developer.mozilla.org/en-US/docs/Web/CSS/overflow"> MDN /
+	 *      CSS / overflow</a>
+	 */
+	@JsOverlay
+	public default void setOverflow(final Overflow value) {
+		setOverflow(value.getCssPropertyValue());
+	}
+
+	/**
+	 * @see #setOverflow(Overflow)
+	 */
+	@JsOverlay
+	public default void setOverflow(final CssGlobalStyle value) {
+		setOverflow(value.getCssPropertyValue());
+	}
+
+	/**
+	 * @see #setOverflowX(Overflow)
+	 */
 	@JsProperty
 	public abstract String getOverflowX();
 
+	/**
+	 * @see #setOverflowX(Overflow)
+	 */
 	@JsProperty
 	public abstract void setOverflowX(final String value);
 
+	/**
+	 * Specifies whether to clip content, render a scroll bar, or display
+	 * overflow content of a block-level element, when it overflows at the left
+	 * and right edges.
+	 *
+	 * @see <a href=
+	 *      "https://developer.mozilla.org/en-US/docs/Web/CSS/overflow-x"> MDN /
+	 *      CSS / overflow-x</a>
+	 */
+	@JsOverlay
+	public default void setOverflowX(final Overflow value) {
+		setOverflowX(value.getCssPropertyValue());
+	}
+
+	/**
+	 * @see #setOverflowX(Overflow)
+	 */
+	@JsOverlay
+	public default void setOverflowX(final CssGlobalStyle value) {
+		setOverflowX(value.getCssPropertyValue());
+	}
+
+	/**
+	 * @see #setOverflowY(Overflow)
+	 */
 	@JsProperty
 	public abstract String getOverflowY();
 
+	/**
+	 * @see #setOverflowY(Overflow)
+	 */
 	@JsProperty
 	public abstract void setOverflowY(final String value);
 
+	/**
+	 * Specifies whether to clip content, render a scroll bar, or display
+	 * overflow content of a block-level element, when it overflows at the top
+	 * and bottom edges.
+	 *
+	 * @see <a href=
+	 *      "https://developer.mozilla.org/en-US/docs/Web/CSS/overflow-y"> MDN /
+	 *      CSS / overflow-y</a>
+	 */
+	@JsOverlay
+	public default void setOverflowY(final Overflow value) {
+		setOverflowY(value.getCssPropertyValue());
+	}
+
+	/**
+	 * @see #setOverflowY(Overflow)
+	 */
+	@JsOverlay
+	public default void setOverflowY(final CssGlobalStyle value) {
+		setOverflowY(value.getCssPropertyValue());
+	}
+
+	/**
+	 * @see #setPadding(double, CssUnit)
+	 */
 	@JsProperty
 	public abstract String getPadding();
 
+	/**
+	 * @see #setPadding(double, CssUnit)
+	 */
 	@JsProperty
 	public abstract void setPadding(final String value);
 
+	/**
+	 * Sets the padding space on all sides of an element. The padding area is
+	 * the space between the content of the element and its border. Negative
+	 * values are not allowed.<br>
+	 * The padding property is a shorthand to avoid setting each side
+	 * separately.
+	 * 
+	 * @see <a href= "https://developer.mozilla.org/en-US/docs/Web/CSS/padding">
+	 *      MDN / CSS / padding</a>
+	 */
+	@JsOverlay
+	public default void setPadding(final double value, CssUnit unit) {
+		setPadding(value + unit.getCssValue());
+	}
+
+	/**
+	 * @see #setPadding(double, CssUnit)
+	 */
+	@JsOverlay
+	public default void setPadding(final int value, CssUnit unit) {
+		setPadding(value + unit.getCssValue());
+	}
+
+	/**
+	 * @see #setPadding(double, CssUnit)
+	 */
+	@JsOverlay
+	public default void setPadding(CssGlobalStyle value) {
+		setPadding(value.getCssPropertyValue());
+	}
+
+	/**
+	 * @see #setPaddingBottom(double, CssUnit)
+	 */
 	@JsProperty
 	public abstract String getPaddingBottom();
 
+	/**
+	 * @see #setPaddingBottom(double, CssUnit)
+	 */
 	@JsProperty
 	public abstract void setPaddingBottom(final String value);
 
+	/**
+	 * Sets the height of the padding area at the bottom of an element. The
+	 * padding area is the space between the content of the element and it's
+	 * border. Contrary to margin-bottom values, negative values of
+	 * padding-bottom are invalid.
+	 * 
+	 * @see <a href=
+	 *      "https://developer.mozilla.org/en-US/docs/Web/CSS/padding-bottom">
+	 *      MDN / CSS / padding-bottom</a>
+	 */
+	@JsOverlay
+	public default void setPaddingBottom(final double value, CssUnit unit) {
+		setPaddingBottom(value + unit.getCssValue());
+	}
+
+	/**
+	 * @see #setPaddingBottom(double, CssUnit)
+	 */
+	@JsOverlay
+	public default void setPaddingBottom(final int value, CssUnit unit) {
+		setPaddingBottom(value + unit.getCssValue());
+	}
+
+	/**
+	 * @see #setPaddingBottom(double, CssUnit)
+	 */
+	@JsOverlay
+	public default void setPaddingBottom(CssGlobalStyle value) {
+		setPaddingBottom(value.getCssPropertyValue());
+	}
+
+	/**
+	 * @see #setPaddingLeft(double, CssUnit)
+	 */
 	@JsProperty
 	public abstract String getPaddingLeft();
 
+	/**
+	 * @see #setPaddingLeft(double, CssUnit)
+	 */
 	@JsProperty
 	public abstract void setPaddingLeft(final String value);
 
+	/**
+	 * Sets the padding space required on the left side of an element. The
+	 * padding area is the space between the content of the element and it's
+	 * border. A negative value is not allowed.
+	 * 
+	 * @see <a href=
+	 *      "https://developer.mozilla.org/en-US/docs/Web/CSS/padding-left"> MDN
+	 *      / CSS / padding-left</a>
+	 */
+	@JsOverlay
+	public default void setPaddingLeft(final double value, CssUnit unit) {
+		setPaddingLeft(value + unit.getCssValue());
+	}
+
+	/**
+	 * @see #setPaddingLeft(double, CssUnit)
+	 */
+	@JsOverlay
+	public default void setPaddingLeft(final int value, CssUnit unit) {
+		setPaddingLeft(value + unit.getCssValue());
+	}
+
+	/**
+	 * @see #setPaddingLeft(double, CssUnit)
+	 */
+	@JsOverlay
+	public default void setPaddingLeft(CssGlobalStyle value) {
+		setPaddingLeft(value.getCssPropertyValue());
+	}
+
+	/**
+	 * @see #setPaddingRight(double, CssUnit)
+	 */
 	@JsProperty
 	public abstract String getPaddingRight();
 
+	/**
+	 * @see #setPaddingRight(double, CssUnit)
+	 */
 	@JsProperty
 	public abstract void setPaddingRight(final String value);
 
+	/**
+	 * Sets the padding space required on the right side of an element. The
+	 * padding area is the space between the content of the element and its
+	 * border. Negative values are not allowed.
+	 * 
+	 * @see <a href=
+	 *      "https://developer.mozilla.org/en-US/docs/Web/CSS/padding-right">
+	 *      MDN / CSS / padding-right</a>
+	 */
+	@JsOverlay
+	public default void setPaddingRight(final double value, CssUnit unit) {
+		setPaddingRight(value + unit.getCssValue());
+	}
+
+	/**
+	 * @see #setPaddingRight(double, CssUnit)
+	 */
+	@JsOverlay
+	public default void setPaddingRight(final int value, CssUnit unit) {
+		setPaddingRight(value + unit.getCssValue());
+	}
+
+	/**
+	 * @see #setPaddingRight(double, CssUnit)
+	 */
+	@JsOverlay
+	public default void setPaddingRight(CssGlobalStyle value) {
+		setPaddingRight(value.getCssPropertyValue());
+	}
+
+	/**
+	 * @see #setPaddingTop(double, CssUnit)
+	 */
 	@JsProperty
 	public abstract String getPaddingTop();
 
+	/**
+	 * @see #setPaddingTop(double, CssUnit)
+	 */
 	@JsProperty
 	public abstract void setPaddingTop(final String value);
+
+	/**
+	 * Sets the padding space required on the top of an element. The padding
+	 * area is the space between the content of the element and its border.
+	 * Contrary to margin-top values, negative values of padding-top are
+	 * invalid.
+	 * 
+	 * @see <a href=
+	 *      "https://developer.mozilla.org/en-US/docs/Web/CSS/padding-top"> MDN
+	 *      / CSS / padding-top</a>
+	 */
+	@JsOverlay
+	public default void setPaddingTop(final double value, CssUnit unit) {
+		setPaddingTop(value + unit.getCssValue());
+	}
+
+	/**
+	 * @see #setPaddingTop(double, CssUnit)
+	 */
+	@JsOverlay
+	public default void setPaddingTop(final int value, CssUnit unit) {
+		setPaddingTop(value + unit.getCssValue());
+	}
+
+	/**
+	 * @see #setPaddingTop(double, CssUnit)
+	 */
+	@JsOverlay
+	public default void setPaddingTop(CssGlobalStyle value) {
+		setPaddingTop(value.getCssPropertyValue());
+	}
 
 	@JsProperty
 	public abstract String getPageBreakAfter();

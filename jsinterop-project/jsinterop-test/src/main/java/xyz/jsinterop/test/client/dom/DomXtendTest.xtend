@@ -16,6 +16,7 @@ import xyz.jsinterop.client.dom.HTMLInputElement
 
 import static xyz.jsinterop.test.client.TestUtils.generatedCodeMarkerEnd
 import static xyz.jsinterop.test.client.TestUtils.generatedCodeMarkerStart
+import xyz.jsinterop.client.dom.CssNamedColor
 
 class DomXtendTest implements Runnable {
 	override void run() {
@@ -30,8 +31,8 @@ class DomXtendTest implements Runnable {
 		generatedCodeMarkerStart("Dom_eventHandlers");
 		// tag::Dom_eventHandlers[]
 		val input = document.createElementInput
-		input.addEventListenerFocus[input.style.backgroundColor = "yellow"]
-		input.addEventListener("blur")[input.style.backgroundColor = "white"]
+		input.addEventListenerFocus[input.style.backgroundColor = CssNamedColor.LIGHTYELLOW]
+		input.addEventListener("blur")[input.style.backgroundColor = ""]
 		// end::Dom_eventHandlers[]
 		generatedCodeMarkerEnd("Dom_eventHandlers");
 

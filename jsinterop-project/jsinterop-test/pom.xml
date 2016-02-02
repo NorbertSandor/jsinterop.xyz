@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
@@ -58,11 +59,9 @@
 				<configuration>
 					<webappDirectory>${project.build.directory}/gwt-out</webappDirectory>
 
-					<draftCompile>true</draftCompile>
 					<localWorkers>2</localWorkers>
 					<saveSource>true</saveSource>
 					<generateJsInteropExports>true</generateJsInteropExports>
-					<optimizationLevel>0</optimizationLevel>
 					<extra>${project.build.directory}/.gwt/extra</extra>
 					<gen>${project.build.directory}/.gwt/gen</gen>
 					<workDir>${project.build.directory}/.gwt/work</workDir>
@@ -77,6 +76,8 @@
 						<id>compile-gwt</id>
 						<configuration>
 							<style>PRETTY</style>
+							<draftCompile>true</draftCompile>
+							<optimizationLevel>0</optimizationLevel>
 						</configuration>
 						<phase>process-classes</phase>
 						<goals>
