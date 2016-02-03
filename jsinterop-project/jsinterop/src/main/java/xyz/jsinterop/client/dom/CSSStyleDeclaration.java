@@ -44,7 +44,8 @@ public interface CSSStyleDeclaration {
 	public abstract void setAlignContent(final String value);
 
 	/**
-	 * Values for {@link CSSStyleDeclaration#setAlignContent(AlignContent)}.
+	 * Keyword values for
+	 * {@link CSSStyleDeclaration#setAlignContent(AlignContent)}.
 	 */
 	enum AlignContent {
 		/**
@@ -143,15 +144,28 @@ public interface CSSStyleDeclaration {
 	@JsProperty
 	public abstract String getAlignItems();
 
+	/**
+	 * 
+	 *
+	 * @see <a href="https://developer.mozilla.org/docs/Web/CSS/align-items">
+	 *      MDN / CSS / align-items</a>
+	 */
 	@JsProperty
 	public abstract void setAlignItems(final String value);
 
 	@JsProperty
 	public abstract String getAlignSelf();
 
+	/**
+	 * 
+	 *
+	 * @see <a href="https://developer.mozilla.org/docs/Web/CSS/align-self"> MDN
+	 *      / CSS / align-self</a>
+	 */
 	@JsProperty
 	public abstract void setAlignSelf(final String value);
 
+	// TODO SVG
 	@JsProperty
 	public abstract String getAlignmentBaseline();
 
@@ -161,72 +175,153 @@ public interface CSSStyleDeclaration {
 	@JsProperty
 	public abstract String getAnimation();
 
+	/**
+	 * 
+	 *
+	 * @see <a href="https://developer.mozilla.org/docs/Web/CSS/animation"> MDN
+	 *      / CSS / animation</a>
+	 */
 	@JsProperty
 	public abstract void setAnimation(final String value);
 
 	@JsProperty
 	public abstract String getAnimationDelay();
 
+	/**
+	 * 
+	 *
+	 * @see <a href=
+	 *      "https://developer.mozilla.org/docs/Web/CSS/animation-delay"> MDN /
+	 *      CSS / animation-delay</a>
+	 */
 	@JsProperty
 	public abstract void setAnimationDelay(final String value);
 
 	@JsProperty
 	public abstract String getAnimationDirection();
 
+	/**
+	 * 
+	 *
+	 * @see <a href=
+	 *      "https://developer.mozilla.org/docs/Web/CSS/animation-direction">
+	 *      MDN / CSS / animation-direction</a>
+	 */
 	@JsProperty
 	public abstract void setAnimationDirection(final String value);
 
 	@JsProperty
 	public abstract String getAnimationDuration();
 
+	/**
+	 * 
+	 *
+	 * @see <a href=
+	 *      "https://developer.mozilla.org/docs/Web/CSS/animation-duration"> MDN
+	 *      / CSS / animation-duration</a>
+	 */
 	@JsProperty
 	public abstract void setAnimationDuration(final String value);
 
 	@JsProperty
 	public abstract String getAnimationFillMode();
 
+	/**
+	 * 
+	 *
+	 * @see <a href=
+	 *      "https://developer.mozilla.org/docs/Web/CSS/animation-fill-mode">
+	 *      MDN / CSS / animation-fill-mode</a>
+	 */
 	@JsProperty
 	public abstract void setAnimationFillMode(final String value);
 
 	@JsProperty
 	public abstract String getAnimationIterationCount();
 
+	/**
+	 * 
+	 *
+	 * @see <a href=
+	 *      "https://developer.mozilla.org/docs/Web/CSS/animation-iteration-count">
+	 *      MDN / CSS / animation-iteration-count</a>
+	 */
 	@JsProperty
 	public abstract void setAnimationIterationCount(final String value);
 
 	@JsProperty
 	public abstract String getAnimationName();
 
+	/**
+	 * 
+	 *
+	 * @see <a href="https://developer.mozilla.org/docs/Web/CSS/animation-name">
+	 *      MDN / CSS / animation-name</a>
+	 */
 	@JsProperty
 	public abstract void setAnimationName(final String value);
 
 	@JsProperty
 	public abstract String getAnimationPlayState();
 
+	/**
+	 * 
+	 *
+	 * @see <a href=
+	 *      "https://developer.mozilla.org/docs/Web/CSS/animation-play-state">
+	 *      MDN / CSS / animation-play-state</a>
+	 */
 	@JsProperty
 	public abstract void setAnimationPlayState(final String value);
 
 	@JsProperty
 	public abstract String getAnimationTimingFunction();
 
+	/**
+	 * 
+	 *
+	 * @see <a href=
+	 *      "https://developer.mozilla.org/docs/Web/CSS/animation-timing-function">
+	 *      MDN / CSS / animation-timing-function</a>
+	 */
 	@JsProperty
 	public abstract void setAnimationTimingFunction(final String value);
 
 	@JsProperty
 	public abstract String getBackfaceVisibility();
 
+	/**
+	 * 
+	 *
+	 * @see <a href=
+	 *      "https://developer.mozilla.org/docs/Web/CSS/backface-visibility">
+	 *      MDN / CSS / backface-visibility</a>
+	 */
 	@JsProperty
 	public abstract void setBackfaceVisibility(final String value);
 
 	@JsProperty
 	public abstract String getBackground();
 
+	/**
+	 * 
+	 *
+	 * @see <a href="https://developer.mozilla.org/docs/Web/CSS/background"> MDN
+	 *      / CSS / background</a>
+	 */
 	@JsProperty
 	public abstract void setBackground(final String value);
 
 	@JsProperty
 	public abstract String getBackgroundAttachment();
 
+	/**
+	 * 
+	 *
+	 * @see <a href=
+	 *      "https://developer.mozilla.org/docs/Web/CSS/background-attachment">
+	 *      MDN / CSS / background-attachment</a>
+	 */
 	@JsProperty
 	public abstract void setBackgroundAttachment(final String value);
 
@@ -243,7 +338,8 @@ public interface CSSStyleDeclaration {
 	public abstract void setBackgroundClip(final String value);
 
 	/**
-	 * Values for {@link CSSStyleDeclaration#setBackgroundClip(BackgroundClip)}.
+	 * Keyword values for
+	 * {@link CSSStyleDeclaration#setBackgroundClip(BackgroundClip)}.
 	 */
 	enum BackgroundClip {
 		/**
@@ -330,30 +426,65 @@ public interface CSSStyleDeclaration {
 	@JsProperty
 	public abstract String getBackgroundImage();
 
+	/**
+	 * 
+	 *
+	 * @see <a href=
+	 *      "https://developer.mozilla.org/docs/Web/CSS/background-image"> MDN /
+	 *      CSS / background-image</a>
+	 */
 	@JsProperty
 	public abstract void setBackgroundImage(final String value);
 
 	@JsProperty
 	public abstract String getBackgroundOrigin();
 
+	/**
+	 * 
+	 *
+	 * @see <a href=
+	 *      "https://developer.mozilla.org/docs/Web/CSS/background-origin"> MDN
+	 *      / CSS / background-origin</a>
+	 */
 	@JsProperty
 	public abstract void setBackgroundOrigin(final String value);
 
 	@JsProperty
 	public abstract String getBackgroundPosition();
 
+	/**
+	 * 
+	 *
+	 * @see <a href=
+	 *      "https://developer.mozilla.org/docs/Web/CSS/background-position">
+	 *      MDN / CSS / background-position</a>
+	 */
 	@JsProperty
 	public abstract void setBackgroundPosition(final String value);
 
 	@JsProperty
 	public abstract String getBackgroundPositionX();
 
+	/**
+	 * 
+	 *
+	 * @see <a href=
+	 *      "https://developer.mozilla.org/docs/Web/CSS/background-position-x">
+	 *      MDN / CSS / background-position-x</a>
+	 */
 	@JsProperty
 	public abstract void setBackgroundPositionX(final String value);
 
 	@JsProperty
 	public abstract String getBackgroundPositionY();
 
+	/**
+	 * 
+	 *
+	 * @see <a href=
+	 *      "https://developer.mozilla.org/docs/Web/CSS/background-position-y">
+	 *      MDN / CSS / background-position-y</a>
+	 */
 	@JsProperty
 	public abstract void setBackgroundPositionY(final String value);
 
@@ -540,24 +671,49 @@ public interface CSSStyleDeclaration {
 	@JsProperty
 	public abstract String getBackgroundSize();
 
+	/**
+	 * 
+	 *
+	 * @see <a href=
+	 *      "https://developer.mozilla.org/docs/Web/CSS/background-size"> MDN /
+	 *      CSS / background-size</a>
+	 */
 	@JsProperty
 	public abstract void setBackgroundSize(final String value);
 
 	@JsProperty
 	public abstract String getBaselineShift();
 
+	/**
+	 * 
+	 *
+	 * @see <a href="https://developer.mozilla.org/docs/Web/CSS/baseline-shift">
+	 *      MDN / CSS / baseline-shift</a>
+	 */
 	@JsProperty
 	public abstract void setBaselineShift(final String value);
 
 	@JsProperty
 	public abstract String getBorder();
 
+	/**
+	 * 
+	 *
+	 * @see <a href="https://developer.mozilla.org/docs/Web/CSS/border"> MDN /
+	 *      CSS / border</a>
+	 */
 	@JsProperty
 	public abstract void setBorder(final String value);
 
 	@JsProperty
 	public abstract String getBorderBottom();
 
+	/**
+	 * 
+	 *
+	 * @see <a href="https://developer.mozilla.org/docs/Web/CSS/border-bottom">
+	 *      MDN / CSS / border-bottom</a>
+	 */
 	@JsProperty
 	public abstract void setBorderBottom(final String value);
 
@@ -596,30 +752,65 @@ public interface CSSStyleDeclaration {
 	@JsProperty
 	public abstract String getBorderBottomLeftRadius();
 
+	/**
+	 * 
+	 *
+	 * @see <a href=
+	 *      "https://developer.mozilla.org/docs/Web/CSS/border-bottom-left-radius">
+	 *      MDN / CSS / border-bottom-left-radius</a>
+	 */
 	@JsProperty
 	public abstract void setBorderBottomLeftRadius(final String value);
 
 	@JsProperty
 	public abstract String getBorderBottomRightRadius();
 
+	/**
+	 * 
+	 *
+	 * @see <a href=
+	 *      "https://developer.mozilla.org/docs/Web/CSS/border-bottom-right-radius">
+	 *      MDN / CSS / border-bottom-right-radius</a>
+	 */
 	@JsProperty
 	public abstract void setBorderBottomRightRadius(final String value);
 
 	@JsProperty
 	public abstract String getBorderBottomStyle();
 
+	/**
+	 * 
+	 *
+	 * @see <a href=
+	 *      "https://developer.mozilla.org/docs/Web/CSS/border-bottom-style">
+	 *      MDN / CSS / border-bottom-style</a>
+	 */
 	@JsProperty
 	public abstract void setBorderBottomStyle(final String value);
 
 	@JsProperty
 	public abstract String getBorderBottomWidth();
 
+	/**
+	 * 
+	 *
+	 * @see <a href=
+	 *      "https://developer.mozilla.org/docs/Web/CSS/border-bottom-width">
+	 *      MDN / CSS / border-bottom-width</a>
+	 */
 	@JsProperty
 	public abstract void setBorderBottomWidth(final String value);
 
 	@JsProperty
 	public abstract String getBorderCollapse();
 
+	/**
+	 * 
+	 *
+	 * @see <a href=
+	 *      "https://developer.mozilla.org/docs/Web/CSS/border-collapse"> MDN /
+	 *      CSS / border-collapse</a>
+	 */
 	@JsProperty
 	public abstract void setBorderCollapse(final String value);
 
@@ -659,42 +850,89 @@ public interface CSSStyleDeclaration {
 	@JsProperty
 	public abstract String getBorderImage();
 
+	/**
+	 * 
+	 *
+	 * @see <a href="https://developer.mozilla.org/docs/Web/CSS/border-image">
+	 *      MDN / CSS / border-image</a>
+	 */
 	@JsProperty
 	public abstract void setBorderImage(final String value);
 
 	@JsProperty
 	public abstract String getBorderImageOutset();
 
+	/**
+	 * 
+	 *
+	 * @see <a href=
+	 *      "https://developer.mozilla.org/docs/Web/CSS/border-image-outset">
+	 *      MDN / CSS / border-image-outset</a>
+	 */
 	@JsProperty
 	public abstract void setBorderImageOutset(final String value);
 
 	@JsProperty
 	public abstract String getBorderImageRepeat();
 
+	/**
+	 * 
+	 *
+	 * @see <a href=
+	 *      "https://developer.mozilla.org/docs/Web/CSS/border-image-repeat">
+	 *      MDN / CSS / border-image-repeat</a>
+	 */
 	@JsProperty
 	public abstract void setBorderImageRepeat(final String value);
 
 	@JsProperty
 	public abstract String getBorderImageSlice();
 
+	/**
+	 * 
+	 *
+	 * @see <a href=
+	 *      "https://developer.mozilla.org/docs/Web/CSS/border-image-slice"> MDN
+	 *      / CSS / border-image-slice</a>
+	 */
 	@JsProperty
 	public abstract void setBorderImageSlice(final String value);
 
 	@JsProperty
 	public abstract String getBorderImageSource();
 
+	/**
+	 * 
+	 *
+	 * @see <a href=
+	 *      "https://developer.mozilla.org/docs/Web/CSS/border-image-source">
+	 *      MDN / CSS / border-image-source</a>
+	 */
 	@JsProperty
 	public abstract void setBorderImageSource(final String value);
 
 	@JsProperty
 	public abstract String getBorderImageWidth();
 
+	/**
+	 * 
+	 *
+	 * @see <a href=
+	 *      "https://developer.mozilla.org/docs/Web/CSS/border-image-width"> MDN
+	 *      / CSS / border-image-width</a>
+	 */
 	@JsProperty
 	public abstract void setBorderImageWidth(final String value);
 
 	@JsProperty
 	public abstract String getBorderLeft();
 
+	/**
+	 * 
+	 *
+	 * @see <a href="https://developer.mozilla.org/docs/Web/CSS/border-left">
+	 *      MDN / CSS / border-left</a>
+	 */
 	@JsProperty
 	public abstract void setBorderLeft(final String value);
 
@@ -733,24 +971,50 @@ public interface CSSStyleDeclaration {
 	@JsProperty
 	public abstract String getBorderLeftStyle();
 
+	/**
+	 * 
+	 *
+	 * @see <a href=
+	 *      "https://developer.mozilla.org/docs/Web/CSS/border-left-style"> MDN
+	 *      / CSS / border-left-style</a>
+	 */
 	@JsProperty
 	public abstract void setBorderLeftStyle(final String value);
 
 	@JsProperty
 	public abstract String getBorderLeftWidth();
 
+	/**
+	 * 
+	 *
+	 * @see <a href=
+	 *      "https://developer.mozilla.org/docs/Web/CSS/border-left-width"> MDN
+	 *      / CSS / border-left-width</a>
+	 */
 	@JsProperty
 	public abstract void setBorderLeftWidth(final String value);
 
 	@JsProperty
 	public abstract String getBorderRadius();
 
+	/**
+	 * 
+	 *
+	 * @see <a href="https://developer.mozilla.org/docs/Web/CSS/border-radius">
+	 *      MDN / CSS / border-radius</a>
+	 */
 	@JsProperty
 	public abstract void setBorderRadius(final String value);
 
 	@JsProperty
 	public abstract String getBorderRight();
 
+	/**
+	 * 
+	 *
+	 * @see <a href="https://developer.mozilla.org/docs/Web/CSS/border-right">
+	 *      MDN / CSS / border-right</a>
+	 */
 	@JsProperty
 	public abstract void setBorderRight(final String value);
 
@@ -789,30 +1053,62 @@ public interface CSSStyleDeclaration {
 	@JsProperty
 	public abstract String getBorderRightStyle();
 
+	/**
+	 * 
+	 *
+	 * @see <a href=
+	 *      "https://developer.mozilla.org/docs/Web/CSS/border-right-style"> MDN
+	 *      / CSS / border-right-style</a>
+	 */
 	@JsProperty
 	public abstract void setBorderRightStyle(final String value);
 
 	@JsProperty
 	public abstract String getBorderRightWidth();
 
+	/**
+	 * 
+	 *
+	 * @see <a href=
+	 *      "https://developer.mozilla.org/docs/Web/CSS/border-right-width"> MDN
+	 *      / CSS / border-right-width</a>
+	 */
 	@JsProperty
 	public abstract void setBorderRightWidth(final String value);
 
 	@JsProperty
 	public abstract String getBorderSpacing();
 
+	/**
+	 * 
+	 *
+	 * @see <a href="https://developer.mozilla.org/docs/Web/CSS/border-spacing">
+	 *      MDN / CSS / border-spacing</a>
+	 */
 	@JsProperty
 	public abstract void setBorderSpacing(final String value);
 
 	@JsProperty
 	public abstract String getBorderStyle();
 
+	/**
+	 * 
+	 *
+	 * @see <a href="https://developer.mozilla.org/docs/Web/CSS/border-style">
+	 *      MDN / CSS / border-style</a>
+	 */
 	@JsProperty
 	public abstract void setBorderStyle(final String value);
 
 	@JsProperty
 	public abstract String getBorderTop();
 
+	/**
+	 * 
+	 *
+	 * @see <a href="https://developer.mozilla.org/docs/Web/CSS/border-top"> MDN
+	 *      / CSS / border-top</a>
+	 */
 	@JsProperty
 	public abstract void setBorderTop(final String value);
 
@@ -851,72 +1147,148 @@ public interface CSSStyleDeclaration {
 	@JsProperty
 	public abstract String getBorderTopLeftRadius();
 
+	/**
+	 * 
+	 *
+	 * @see <a href=
+	 *      "https://developer.mozilla.org/docs/Web/CSS/border-top-left-radius">
+	 *      MDN / CSS / border-top-left-radius</a>
+	 */
 	@JsProperty
 	public abstract void setBorderTopLeftRadius(final String value);
 
 	@JsProperty
 	public abstract String getBorderTopRightRadius();
 
+	/**
+	 * 
+	 *
+	 * @see <a href=
+	 *      "https://developer.mozilla.org/docs/Web/CSS/border-top-right-radius">
+	 *      MDN / CSS / border-top-right-radius</a>
+	 */
 	@JsProperty
 	public abstract void setBorderTopRightRadius(final String value);
 
 	@JsProperty
 	public abstract String getBorderTopStyle();
 
+	/**
+	 * 
+	 *
+	 * @see <a href=
+	 *      "https://developer.mozilla.org/docs/Web/CSS/border-top-style"> MDN /
+	 *      CSS / border-top-style</a>
+	 */
 	@JsProperty
 	public abstract void setBorderTopStyle(final String value);
 
 	@JsProperty
 	public abstract String getBorderTopWidth();
 
+	/**
+	 * 
+	 *
+	 * @see <a href=
+	 *      "https://developer.mozilla.org/docs/Web/CSS/border-top-width"> MDN /
+	 *      CSS / border-top-width</a>
+	 */
 	@JsProperty
 	public abstract void setBorderTopWidth(final String value);
 
 	@JsProperty
 	public abstract String getBorderWidth();
 
+	/**
+	 * 
+	 *
+	 * @see <a href="https://developer.mozilla.org/docs/Web/CSS/border-width">
+	 *      MDN / CSS / border-width</a>
+	 */
 	@JsProperty
 	public abstract void setBorderWidth(final String value);
 
 	@JsProperty
 	public abstract String getBottom();
 
+	/**
+	 * 
+	 *
+	 * @see <a href="https://developer.mozilla.org/docs/Web/CSS/bottom"> MDN /
+	 *      CSS / bottom</a>
+	 */
 	@JsProperty
 	public abstract void setBottom(final String value);
 
 	@JsProperty
 	public abstract String getBoxShadow();
 
+	/**
+	 * 
+	 *
+	 * @see <a href="https://developer.mozilla.org/docs/Web/CSS/box-shadow"> MDN
+	 *      / CSS / box-shadow</a>
+	 */
 	@JsProperty
 	public abstract void setBoxShadow(final String value);
 
 	@JsProperty
 	public abstract String getBoxSizing();
 
+	/**
+	 * 
+	 *
+	 * @see <a href="https://developer.mozilla.org/docs/Web/CSS/box-sizing"> MDN
+	 *      / CSS / box-sizing</a>
+	 */
 	@JsProperty
 	public abstract void setBoxSizing(final String value);
 
 	@JsProperty
 	public abstract String getBreakAfter();
 
+	/**
+	 * 
+	 *
+	 * @see <a href="https://developer.mozilla.org/docs/Web/CSS/break-after">
+	 *      MDN / CSS / break-after</a>
+	 */
 	@JsProperty
 	public abstract void setBreakAfter(final String value);
 
 	@JsProperty
 	public abstract String getBreakBefore();
 
+	/**
+	 * 
+	 *
+	 * @see <a href="https://developer.mozilla.org/docs/Web/CSS/break-before">
+	 *      MDN / CSS / break-before</a>
+	 */
 	@JsProperty
 	public abstract void setBreakBefore(final String value);
 
 	@JsProperty
 	public abstract String getBreakInside();
 
+	/**
+	 * 
+	 *
+	 * @see <a href="https://developer.mozilla.org/docs/Web/CSS/break-inside">
+	 *      MDN / CSS / break-inside</a>
+	 */
 	@JsProperty
 	public abstract void setBreakInside(final String value);
 
 	@JsProperty
 	public abstract String getCaptionSide();
 
+	/**
+	 * 
+	 *
+	 * @see <a href="https://developer.mozilla.org/docs/Web/CSS/caption-side">
+	 *      MDN / CSS / caption-side</a>
+	 */
 	@JsProperty
 	public abstract void setCaptionSide(final String value);
 
@@ -933,7 +1305,7 @@ public interface CSSStyleDeclaration {
 	public abstract void setClear(final String value);
 
 	/**
-	 * Values for {@link CSSStyleDeclaration#setClear(Clear)} .
+	 * Keyword values for {@link CSSStyleDeclaration#setClear(Clear)} .
 	 */
 	enum Clear {
 		/**
@@ -1025,18 +1397,36 @@ public interface CSSStyleDeclaration {
 	@JsProperty
 	public abstract String getClip();
 
+	/**
+	 * 
+	 *
+	 * @see <a href="https://developer.mozilla.org/docs/Web/CSS/clip"> MDN / CSS
+	 *      / clip</a>
+	 */
 	@JsProperty
 	public abstract void setClip(final String value);
 
 	@JsProperty
 	public abstract String getClipPath();
 
+	/**
+	 * 
+	 *
+	 * @see <a href="https://developer.mozilla.org/docs/Web/CSS/clip-path"> MDN
+	 *      / CSS / clip-path</a>
+	 */
 	@JsProperty
 	public abstract void setClipPath(final String value);
 
 	@JsProperty
 	public abstract String getClipRule();
 
+	/**
+	 * 
+	 *
+	 * @see <a href="https://developer.mozilla.org/docs/Web/CSS/clip-rule"> MDN
+	 *      / CSS / clip-rule</a>
+	 */
 	@JsProperty
 	public abstract void setClipRule(final String value);
 
@@ -1076,78 +1466,161 @@ public interface CSSStyleDeclaration {
 	@JsProperty
 	public abstract String getColorInterpolationFilters();
 
+	/**
+	 * 
+	 *
+	 * @see <a href=
+	 *      "https://developer.mozilla.org/docs/Web/CSS/color-interpolation-filters">
+	 *      MDN / CSS / color-interpolation-filters</a>
+	 */
 	@JsProperty
 	public abstract void setColorInterpolationFilters(final String value);
 
 	@JsProperty
 	public abstract Object getColumnCount();
 
+	/**
+	 * 
+	 *
+	 * @see <a href="https://developer.mozilla.org/docs/Web/CSS/column-count">
+	 *      MDN / CSS / column-count</a>
+	 */
 	@JsProperty
 	public abstract void setColumnCount(final Object value);
 
 	@JsProperty
 	public abstract String getColumnFill();
 
+	/**
+	 * 
+	 *
+	 * @see <a href="https://developer.mozilla.org/docs/Web/CSS/column-fill">
+	 *      MDN / CSS / column-fill</a>
+	 */
 	@JsProperty
 	public abstract void setColumnFill(final String value);
 
 	@JsProperty
 	public abstract Object getColumnGap();
 
+	/**
+	 * 
+	 *
+	 * @see <a href="https://developer.mozilla.org/docs/Web/CSS/column-gap"> MDN
+	 *      / CSS / column-gap</a>
+	 */
 	@JsProperty
 	public abstract void setColumnGap(final Object value);
 
 	@JsProperty
 	public abstract String getColumnRule();
 
+	/**
+	 * 
+	 *
+	 * @see <a href="https://developer.mozilla.org/docs/Web/CSS/column-rule">
+	 *      MDN / CSS / column-rule</a>
+	 */
 	@JsProperty
 	public abstract void setColumnRule(final String value);
 
 	@JsProperty
 	public abstract Object getColumnRuleColor();
 
+	/**
+	 * 
+	 *
+	 * @see <a href=
+	 *      "https://developer.mozilla.org/docs/Web/CSS/column-rule-color"> MDN
+	 *      / CSS / column-rule-color</a>
+	 */
 	@JsProperty
 	public abstract void setColumnRuleColor(final Object value);
 
 	@JsProperty
 	public abstract String getColumnRuleStyle();
 
+	/**
+	 * 
+	 *
+	 * @see <a href=
+	 *      "https://developer.mozilla.org/docs/Web/CSS/column-rule-style"> MDN
+	 *      / CSS / column-rule-style</a>
+	 */
 	@JsProperty
 	public abstract void setColumnRuleStyle(final String value);
 
 	@JsProperty
 	public abstract Object getColumnRuleWidth();
 
+	/**
+	 * 
+	 *
+	 * @see <a href=
+	 *      "https://developer.mozilla.org/docs/Web/CSS/column-rule-width"> MDN
+	 *      / CSS / column-rule-width</a>
+	 */
 	@JsProperty
 	public abstract void setColumnRuleWidth(final Object value);
 
 	@JsProperty
 	public abstract String getColumnSpan();
 
+	/**
+	 * 
+	 *
+	 * @see <a href="https://developer.mozilla.org/docs/Web/CSS/column-span">
+	 *      MDN / CSS / column-span</a>
+	 */
 	@JsProperty
 	public abstract void setColumnSpan(final String value);
 
 	@JsProperty
 	public abstract Object getColumnWidth();
 
+	/**
+	 * 
+	 *
+	 * @see <a href="https://developer.mozilla.org/docs/Web/CSS/column-width">
+	 *      MDN / CSS / column-width</a>
+	 */
 	@JsProperty
 	public abstract void setColumnWidth(final Object value);
 
 	@JsProperty
 	public abstract String getColumns();
 
+	/**
+	 * 
+	 *
+	 * @see <a href="https://developer.mozilla.org/docs/Web/CSS/columns"> MDN /
+	 *      CSS / columns</a>
+	 */
 	@JsProperty
 	public abstract void setColumns(final String value);
 
 	@JsProperty
 	public abstract String getContent();
 
+	/**
+	 * 
+	 *
+	 * @see <a href="https://developer.mozilla.org/docs/Web/CSS/content"> MDN /
+	 *      CSS / content</a>
+	 */
 	@JsProperty
 	public abstract void setContent(final String value);
 
 	@JsProperty
 	public abstract String getCounterIncrement();
 
+	/**
+	 * 
+	 *
+	 * @see <a href=
+	 *      "https://developer.mozilla.org/docs/Web/CSS/counter-increment"> MDN
+	 *      / CSS / </a>
+	 */
 	@JsProperty
 	public abstract void setCounterIncrement(final String value);
 
@@ -1172,12 +1645,24 @@ public interface CSSStyleDeclaration {
 	@JsProperty
 	public abstract String getCursor();
 
+	/**
+	 * 
+	 *
+	 * @see <a href="https://developer.mozilla.org/docs/Web/CSS/cursor"> MDN /
+	 *      CSS / cursor</a>
+	 */
 	@JsProperty
 	public abstract void setCursor(final String value);
 
 	@JsProperty
 	public abstract String getDirection();
 
+	/**
+	 * 
+	 *
+	 * @see <a href="https://developer.mozilla.org/docs/Web/CSS/direction"> MDN
+	 *      / CSS / direction</a>
+	 */
 	@JsProperty
 	public abstract void setDirection(final String value);
 
@@ -1194,7 +1679,8 @@ public interface CSSStyleDeclaration {
 	public abstract void setDisplay(final String value);
 
 	/**
-	 * Values for {@link CSSStyleDeclaration#setDisplay(Display) display}.
+	 * Keyword values for {@link CSSStyleDeclaration#setDisplay(Display)
+	 * display}.
 	 */
 	enum Display {
 		/**
@@ -1509,12 +1995,25 @@ public interface CSSStyleDeclaration {
 	@JsProperty
 	public abstract String getDominantBaseline();
 
+	/**
+	 * 
+	 *
+	 * @see <a href=
+	 *      "https://developer.mozilla.org/docs/Web/CSS/dominant-baseline"> MDN
+	 *      / CSS / dominant-baseline</a>
+	 */
 	@JsProperty
 	public abstract void setDominantBaseline(final String value);
 
 	@JsProperty
 	public abstract String getEmptyCells();
 
+	/**
+	 * 
+	 *
+	 * @see <a href="https://developer.mozilla.org/docs/Web/CSS/empty-cells">
+	 *      MDN / CSS / empty-cells</a>
+	 */
 	@JsProperty
 	public abstract void setEmptyCells(final String value);
 
@@ -1545,48 +2044,96 @@ public interface CSSStyleDeclaration {
 	@JsProperty
 	public abstract String getFilter();
 
+	/**
+	 * 
+	 *
+	 * @see <a href="https://developer.mozilla.org/docs/Web/CSS/filter"> MDN /
+	 *      CSS / filter</a>
+	 */
 	@JsProperty
 	public abstract void setFilter(final String value);
 
 	@JsProperty
 	public abstract String getFlex();
 
+	/**
+	 * 
+	 *
+	 * @see <a href="https://developer.mozilla.org/docs/Web/CSS/flex"> MDN / CSS
+	 *      / flex</a>
+	 */
 	@JsProperty
 	public abstract void setFlex(final String value);
 
 	@JsProperty
 	public abstract String getFlexBasis();
 
+	/**
+	 * 
+	 *
+	 * @see <a href="https://developer.mozilla.org/docs/Web/CSS/flex-basis"> MDN
+	 *      / CSS / flex-basis</a>
+	 */
 	@JsProperty
 	public abstract void setFlexBasis(final String value);
 
 	@JsProperty
 	public abstract String getFlexDirection();
 
+	/**
+	 * 
+	 *
+	 * @see <a href="https://developer.mozilla.org/docs/Web/CSS/flex-direction">
+	 *      MDN / CSS / flex-direction</a>
+	 */
 	@JsProperty
 	public abstract void setFlexDirection(final String value);
 
 	@JsProperty
 	public abstract String getFlexFlow();
 
+	/**
+	 * 
+	 *
+	 * @see <a href="https://developer.mozilla.org/docs/Web/CSS/flex-flow"> MDN
+	 *      / CSS / flex-flow</a>
+	 */
 	@JsProperty
 	public abstract void setFlexFlow(final String value);
 
 	@JsProperty
 	public abstract String getFlexGrow();
 
+	/**
+	 * 
+	 *
+	 * @see <a href="https://developer.mozilla.org/docs/Web/CSS/flex-grow"> MDN
+	 *      / CSS / flex-grow</a>
+	 */
 	@JsProperty
 	public abstract void setFlexGrow(final String value);
 
 	@JsProperty
 	public abstract String getFlexShrink();
 
+	/**
+	 * 
+	 *
+	 * @see <a href="https://developer.mozilla.org/docs/Web/CSS/flex-shrink">
+	 *      MDN / CSS / flex-shrink</a>
+	 */
 	@JsProperty
 	public abstract void setFlexShrink(final String value);
 
 	@JsProperty
 	public abstract String getFlexWrap();
 
+	/**
+	 * 
+	 *
+	 * @see <a href="https://developer.mozilla.org/docs/Web/CSS/flex-wrap"> MDN
+	 *      / CSS / flex-wrap</a>
+	 */
 	@JsProperty
 	public abstract void setFlexWrap(final String value);
 
@@ -1605,54 +2152,110 @@ public interface CSSStyleDeclaration {
 	@JsProperty
 	public abstract String getFont();
 
+	/**
+	 * 
+	 *
+	 * @see <a href="https://developer.mozilla.org/docs/Web/CSS/font"> MDN / CSS
+	 *      / font</a>
+	 */
 	@JsProperty
 	public abstract void setFont(final String value);
 
 	@JsProperty
 	public abstract String getFontFamily();
 
+	/**
+	 * 
+	 *
+	 * @see <a href="https://developer.mozilla.org/docs/Web/CSS/font-family">
+	 *      MDN / CSS / font-family</a>
+	 */
 	@JsProperty
 	public abstract void setFontFamily(final String value);
 
 	@JsProperty
 	public abstract String getFontFeatureSettings();
 
+	/**
+	 * 
+	 *
+	 * @see <a href=
+	 *      "https://developer.mozilla.org/docs/Web/CSS/font-feature-settings">
+	 *      MDN / CSS / font-feature-settings</a>
+	 */
 	@JsProperty
 	public abstract void setFontFeatureSettings(final String value);
 
 	@JsProperty
 	public abstract String getFontSize();
 
+	/**
+	 * 
+	 *
+	 * @see <a href="https://developer.mozilla.org/docs/Web/CSS/font-size"> MDN
+	 *      / CSS / font-size</a>
+	 */
 	@JsProperty
 	public abstract void setFontSize(final String value);
 
 	@JsProperty
 	public abstract String getFontSizeAdjust();
 
+	/**
+	 * 
+	 *
+	 * @see <a href=
+	 *      "https://developer.mozilla.org/docs/Web/CSS/font-size-adjust"> MDN /
+	 *      CSS / font-size-adjust</a>
+	 */
 	@JsProperty
 	public abstract void setFontSizeAdjust(final String value);
 
 	@JsProperty
 	public abstract String getFontStretch();
 
+	/**
+	 * 
+	 *
+	 * @see <a href="https://developer.mozilla.org/docs/Web/CSS/font-stretch">
+	 *      MDN / CSS / font-stretch</a>
+	 */
 	@JsProperty
 	public abstract void setFontStretch(final String value);
 
 	@JsProperty
 	public abstract String getFontStyle();
 
+	/**
+	 * 
+	 *
+	 * @see <a href="https://developer.mozilla.org/docs/Web/CSS/font-style"> MDN
+	 *      / CSS / font-style</a>
+	 */
 	@JsProperty
 	public abstract void setFontStyle(final String value);
 
 	@JsProperty
 	public abstract String getFontVariant();
 
+	/**
+	 * 
+	 *
+	 * @see <a href="https://developer.mozilla.org/docs/Web/CSS/font-variant">
+	 *      MDN / CSS / font-variant</a>
+	 */
 	@JsProperty
 	public abstract void setFontVariant(final String value);
 
 	@JsProperty
 	public abstract String getFontWeight();
 
+	/**
+	 * 
+	 *
+	 * @see <a href="https://developer.mozilla.org/docs/Web/CSS/font-weight">
+	 *      MDN / CSS / font-weight</a>
+	 */
 	@JsProperty
 	public abstract void setFontWeight(final String value);
 
@@ -1668,6 +2271,14 @@ public interface CSSStyleDeclaration {
 	@JsProperty
 	public abstract void setGlyphOrientationVertical(final String value);
 
+	// TODO grid
+
+	/**
+	 * 
+	 *
+	 * @see <a href="https://developer.mozilla.org/docs/Web/CSS/height"> MDN /
+	 *      CSS / height</a>
+	 */
 	@JsProperty
 	public abstract String getHeight();
 
@@ -1677,12 +2288,25 @@ public interface CSSStyleDeclaration {
 	@JsProperty
 	public abstract String getImeMode();
 
+	/**
+	 * 
+	 *
+	 * @see <a href="https://developer.mozilla.org/docs/Web/CSS/ime-mode"> MDN /
+	 *      CSS / ime-mode</a>
+	 */
 	@JsProperty
 	public abstract void setImeMode(final String value);
 
 	@JsProperty
 	public abstract String getJustifyContent();
 
+	/**
+	 * 
+	 *
+	 * @see <a href=
+	 *      "https://developer.mozilla.org/docs/Web/CSS/justify-content"> MDN /
+	 *      CSS / justify-content</a>
+	 */
 	@JsProperty
 	public abstract void setJustifyContent(final String value);
 
@@ -1695,18 +2319,24 @@ public interface CSSStyleDeclaration {
 	@JsProperty
 	public abstract String getLeft();
 
+	/**
+	 * 
+	 *
+	 * @see <a href="https://developer.mozilla.org/docs/Web/CSS/left"> MDN / CSS
+	 *      / left</a>
+	 */
 	@JsProperty
 	public abstract void setLeft(final String value);
 
 	@JsProperty
-	public abstract double getLength();
-
-	@JsProperty
-	public abstract void setLength(final double value);
-
-	@JsProperty
 	public abstract String getLetterSpacing();
 
+	/**
+	 * 
+	 *
+	 * @see <a href="https://developer.mozilla.org/docs/Web/CSS/letter-spacing">
+	 *      MDN / CSS / letter-spacing</a>
+	 */
 	@JsProperty
 	public abstract void setLetterSpacing(final String value);
 
@@ -1719,30 +2349,63 @@ public interface CSSStyleDeclaration {
 	@JsProperty
 	public abstract String getLineHeight();
 
+	/**
+	 * 
+	 *
+	 * @see <a href="https://developer.mozilla.org/docs/Web/CSS/"> MDN / CSS /
+	 *      line-height</a>
+	 */
 	@JsProperty
 	public abstract void setLineHeight(final String value);
 
 	@JsProperty
 	public abstract String getListStyle();
 
+	/**
+	 * 
+	 *
+	 * @see <a href="https://developer.mozilla.org/docs/Web/CSS/list-style"> MDN
+	 *      / CSS / list-style</a>
+	 */
 	@JsProperty
 	public abstract void setListStyle(final String value);
 
 	@JsProperty
 	public abstract String getListStyleImage();
 
+	/**
+	 * 
+	 *
+	 * @see <a href=
+	 *      "https://developer.mozilla.org/docs/Web/CSS/list-style-image"> MDN /
+	 *      CSS / list-style-image</a>
+	 */
 	@JsProperty
 	public abstract void setListStyleImage(final String value);
 
 	@JsProperty
 	public abstract String getListStylePosition();
 
+	/**
+	 * 
+	 *
+	 * @see <a href=
+	 *      "https://developer.mozilla.org/docs/Web/CSS/list-style-position">
+	 *      MDN / CSS / list-style-position</a>
+	 */
 	@JsProperty
 	public abstract void setListStylePosition(final String value);
 
 	@JsProperty
 	public abstract String getListStyleType();
 
+	/**
+	 * 
+	 *
+	 * @see <a href=
+	 *      "https://developer.mozilla.org/docs/Web/CSS/list-style-type"> MDN /
+	 *      CSS / list-style-type</a>
+	 */
 	@JsProperty
 	public abstract void setListStyleType(final String value);
 
@@ -1981,30 +2644,60 @@ public interface CSSStyleDeclaration {
 	@JsProperty
 	public abstract String getMask();
 
+	/**
+	 * 
+	 *
+	 * @see <a href="https://developer.mozilla.org/docs/Web/CSS/mask"> MDN / CSS
+	 *      / mask</a>
+	 */
 	@JsProperty
 	public abstract void setMask(final String value);
 
 	@JsProperty
 	public abstract String getMaxHeight();
 
+	/**
+	 * 
+	 *
+	 * @see <a href="https://developer.mozilla.org/docs/Web/CSS/max-height"> MDN
+	 *      / CSS / max-height</a>
+	 */
 	@JsProperty
 	public abstract void setMaxHeight(final String value);
 
 	@JsProperty
 	public abstract String getMaxWidth();
 
+	/**
+	 * 
+	 *
+	 * @see <a href="https://developer.mozilla.org/docs/Web/CSS/max-width"> MDN
+	 *      / CSS / max-width</a>
+	 */
 	@JsProperty
 	public abstract void setMaxWidth(final String value);
 
 	@JsProperty
 	public abstract String getMinHeight();
 
+	/**
+	 * 
+	 *
+	 * @see <a href="https://developer.mozilla.org/docs/Web/CSS/min-height"> MDN
+	 *      / CSS / min-height</a>
+	 */
 	@JsProperty
 	public abstract void setMinHeight(final String value);
 
 	@JsProperty
 	public abstract String getMinWidth();
 
+	/**
+	 * 
+	 *
+	 * @see <a href="https://developer.mozilla.org/docs/Web/CSS/min-width"> MDN
+	 *      / CSS / min-width</a>
+	 */
 	@JsProperty
 	public abstract void setMinWidth(final String value);
 
@@ -2293,42 +2986,84 @@ public interface CSSStyleDeclaration {
 	@JsProperty
 	public abstract String getOpacity();
 
+	/**
+	 * 
+	 *
+	 * @see <a href="https://developer.mozilla.org/docs/Web/CSS/opacity"> MDN /
+	 *      CSS / opacity</a>
+	 */
 	@JsProperty
 	public abstract void setOpacity(final String value);
 
 	@JsProperty
 	public abstract String getOrder();
 
+	/**
+	 * 
+	 *
+	 * @see <a href="https://developer.mozilla.org/docs/Web/CSS/order"> MDN /
+	 *      CSS / order</a>
+	 */
 	@JsProperty
 	public abstract void setOrder(final String value);
 
 	@JsProperty
 	public abstract String getOrphans();
 
+	/**
+	 * 
+	 *
+	 * @see <a href="https://developer.mozilla.org/docs/Web/CSS/orphans"> MDN /
+	 *      CSS / orphans</a>
+	 */
 	@JsProperty
 	public abstract void setOrphans(final String value);
 
 	@JsProperty
 	public abstract String getOutline();
 
+	/**
+	 * 
+	 *
+	 * @see <a href="https://developer.mozilla.org/docs/Web/CSS/outline"> MDN /
+	 *      CSS / outline</a>
+	 */
 	@JsProperty
 	public abstract void setOutline(final String value);
 
 	@JsProperty
 	public abstract String getOutlineColor();
 
+	/**
+	 * 
+	 *
+	 * @see <a href="https://developer.mozilla.org/docs/Web/CSS/outline-color">
+	 *      MDN / CSS / outline-color</a>
+	 */
 	@JsProperty
 	public abstract void setOutlineColor(final String value);
 
 	@JsProperty
 	public abstract String getOutlineStyle();
 
+	/**
+	 * 
+	 *
+	 * @see <a href="https://developer.mozilla.org/docs/Web/CSS/outline-style">
+	 *      MDN / CSS / outline-style</a>
+	 */
 	@JsProperty
 	public abstract void setOutlineStyle(final String value);
 
 	@JsProperty
 	public abstract String getOutlineWidth();
 
+	/**
+	 * 
+	 *
+	 * @see <a href="https://developer.mozilla.org/docs/Web/CSS/outline-width">
+	 *      MDN / CSS / outline-width</a>
+	 */
 	@JsProperty
 	public abstract void setOutlineWidth(final String value);
 
@@ -2345,7 +3080,8 @@ public interface CSSStyleDeclaration {
 	public abstract void setOverflow(final String value);
 
 	/**
-	 * Values for {@link CSSStyleDeclaration#setOverflow(Overflow) overflow}.
+	 * Keyword values for {@link CSSStyleDeclaration#setOverflow(Overflow)
+	 * overflow}.
 	 */
 	enum Overflow {
 		/**
@@ -2698,18 +3434,39 @@ public interface CSSStyleDeclaration {
 	@JsProperty
 	public abstract String getPageBreakAfter();
 
+	/**
+	 * 
+	 *
+	 * @see <a href=
+	 *      "https://developer.mozilla.org/docs/Web/CSS/page-break-after"> MDN /
+	 *      CSS / page-break-after</a>
+	 */
 	@JsProperty
 	public abstract void setPageBreakAfter(final String value);
 
 	@JsProperty
 	public abstract String getPageBreakBefore();
 
+	/**
+	 * 
+	 *
+	 * @see <a href=
+	 *      "https://developer.mozilla.org/docs/Web/CSS/page-break-before"> MDN
+	 *      / CSS / page-break-before</a>
+	 */
 	@JsProperty
 	public abstract void setPageBreakBefore(final String value);
 
 	@JsProperty
 	public abstract String getPageBreakInside();
 
+	/**
+	 * 
+	 *
+	 * @see <a href=
+	 *      "https://developer.mozilla.org/docs/Web/CSS/page-break-inside"> MDN
+	 *      / CSS / page-break-inside</a>
+	 */
 	@JsProperty
 	public abstract void setPageBreakInside(final String value);
 
@@ -2722,54 +3479,109 @@ public interface CSSStyleDeclaration {
 	@JsProperty
 	public abstract String getPerspective();
 
+	/**
+	 * 
+	 *
+	 * @see <a href="https://developer.mozilla.org/docs/Web/CSS/perspective">
+	 *      MDN / CSS / perspective</a>
+	 */
 	@JsProperty
 	public abstract void setPerspective(final String value);
 
 	@JsProperty
 	public abstract String getPerspectiveOrigin();
 
+	/**
+	 * 
+	 *
+	 * @see <a href=
+	 *      "https://developer.mozilla.org/docs/Web/CSS/perspective-origin"> MDN
+	 *      / CSS / perspective-origin</a>
+	 */
 	@JsProperty
 	public abstract void setPerspectiveOrigin(final String value);
 
 	@JsProperty
 	public abstract String getPointerEvents();
 
+	/**
+	 * 
+	 *
+	 * @see <a href="https://developer.mozilla.org/docs/Web/CSS/pointer-events">
+	 *      MDN / CSS / pointer-events</a>
+	 */
 	@JsProperty
 	public abstract void setPointerEvents(final String value);
 
 	@JsProperty
 	public abstract String getPosition();
 
+	/**
+	 * 
+	 *
+	 * @see <a href="https://developer.mozilla.org/docs/Web/CSS/position"> MDN /
+	 *      CSS / position</a>
+	 */
 	@JsProperty
 	public abstract void setPosition(final String value);
 
 	@JsProperty
 	public abstract String getQuotes();
 
+	/**
+	 * 
+	 *
+	 * @see <a href="https://developer.mozilla.org/docs/Web/CSS/quotes"> MDN /
+	 *      CSS / quotes</a>
+	 */
 	@JsProperty
 	public abstract void setQuotes(final String value);
 
 	@JsProperty
 	public abstract String getRight();
 
+	/**
+	 * 
+	 *
+	 * @see <a href="https://developer.mozilla.org/docs/Web/CSS/"> MDN / CSS /
+	 *      right</a>
+	 */
 	@JsProperty
 	public abstract void setRight(final String value);
 
 	@JsProperty
 	public abstract String getRubyAlign();
 
+	/**
+	 * 
+	 *
+	 * @see <a href="https://developer.mozilla.org/docs/Web/CSS/ruby-align"> MDN
+	 *      / CSS / ruby-align</a>
+	 */
 	@JsProperty
 	public abstract void setRubyAlign(final String value);
 
 	@JsProperty
 	public abstract String getRubyOverhang();
 
+	/**
+	 * 
+	 *
+	 * @see <a href="https://developer.mozilla.org/docs/Web/CSS/ruby-overhang">
+	 *      MDN / CSS / ruby-overhang</a>
+	 */
 	@JsProperty
 	public abstract void setRubyOverhang(final String value);
 
 	@JsProperty
 	public abstract String getRubyPosition();
 
+	/**
+	 * 
+	 *
+	 * @see <a href="https://developer.mozilla.org/docs/Web/CSS/ruby-position">
+	 *      MDN / CSS / ruby-position</a>
+	 */
 	@JsProperty
 	public abstract void setRubyPosition(final String value);
 
@@ -2836,18 +3648,36 @@ public interface CSSStyleDeclaration {
 	@JsProperty
 	public abstract String getTableLayout();
 
+	/**
+	 * 
+	 *
+	 * @see <a href="https://developer.mozilla.org/docs/Web/CSS/table-layout">
+	 *      MDN / CSS / table-layout</a>
+	 */
 	@JsProperty
 	public abstract void setTableLayout(final String value);
 
 	@JsProperty
 	public abstract String getTextAlign();
 
+	/**
+	 * 
+	 *
+	 * @see <a href="https://developer.mozilla.org/docs/Web/CSS/text-align"> MDN
+	 *      / CSS / text-align</a>
+	 */
 	@JsProperty
 	public abstract void setTextAlign(final String value);
 
 	@JsProperty
 	public abstract String getTextAlignLast();
 
+	/**
+	 * 
+	 *
+	 * @see <a href="https://developer.mozilla.org/docs/Web/CSS/"> MDN / CSS /
+	 *      text-align-last</a>
+	 */
 	@JsProperty
 	public abstract void setTextAlignLast(final String value);
 
@@ -2860,6 +3690,13 @@ public interface CSSStyleDeclaration {
 	@JsProperty
 	public abstract String getTextDecoration();
 
+	/**
+	 * 
+	 *
+	 * @see <a href=
+	 *      "https://developer.mozilla.org/docs/Web/CSS/text-decoration"> MDN /
+	 *      CSS / text-decoration</a>
+	 */
 	@JsProperty
 	public abstract void setTextDecoration(final String value);
 
@@ -2872,6 +3709,12 @@ public interface CSSStyleDeclaration {
 	@JsProperty
 	public abstract String getTextIndent();
 
+	/**
+	 * 
+	 *
+	 * @see <a href="https://developer.mozilla.org/docs/Web/CSS/text-indent">
+	 *      MDN / CSS / text-indent</a>
+	 */
 	@JsProperty
 	public abstract void setTextIndent(final String value);
 
@@ -2896,18 +3739,36 @@ public interface CSSStyleDeclaration {
 	@JsProperty
 	public abstract String getTextOverflow();
 
+	/**
+	 * 
+	 *
+	 * @see <a href="https://developer.mozilla.org/docs/Web/CSS/text-overflow">
+	 *      MDN / CSS / text-overflow</a>
+	 */
 	@JsProperty
 	public abstract void setTextOverflow(final String value);
 
 	@JsProperty
 	public abstract String getTextShadow();
 
+	/**
+	 * 
+	 *
+	 * @see <a href="https://developer.mozilla.org/docs/Web/CSS/text-shadow">
+	 *      MDN / CSS / text-shadow</a>
+	 */
 	@JsProperty
 	public abstract void setTextShadow(final String value);
 
 	@JsProperty
 	public abstract String getTextTransform();
 
+	/**
+	 * 
+	 *
+	 * @see <a href="https://developer.mozilla.org/docs/Web/CSS/text-transform">
+	 *      MDN / CSS / text-transform</a>
+	 */
 	@JsProperty
 	public abstract void setTextTransform(final String value);
 
@@ -2920,6 +3781,12 @@ public interface CSSStyleDeclaration {
 	@JsProperty
 	public abstract String getTop();
 
+	/**
+	 * 
+	 *
+	 * @see <a href="https://developer.mozilla.org/docs/Web/CSS/top"> MDN / CSS
+	 *      / top</a>
+	 */
 	@JsProperty
 	public abstract void setTop(final String value);
 
@@ -2932,66 +3799,138 @@ public interface CSSStyleDeclaration {
 	@JsProperty
 	public abstract String getTransform();
 
+	/**
+	 * 
+	 *
+	 * @see <a href="https://developer.mozilla.org/docs/Web/CSS/transform"> MDN
+	 *      / CSS / transform</a>
+	 */
 	@JsProperty
 	public abstract void setTransform(final String value);
 
 	@JsProperty
 	public abstract String getTransformOrigin();
 
+	/**
+	 * 
+	 *
+	 * @see <a href=
+	 *      "https://developer.mozilla.org/docs/Web/CSS/transform-origin"> MDN /
+	 *      CSS / transform-origin</a>
+	 */
 	@JsProperty
 	public abstract void setTransformOrigin(final String value);
 
 	@JsProperty
 	public abstract String getTransformStyle();
 
+	/**
+	 * 
+	 *
+	 * @see <a href=
+	 *      "https://developer.mozilla.org/docs/Web/CSS/transform-style"> MDN /
+	 *      CSS / transform-style</a>
+	 */
 	@JsProperty
 	public abstract void setTransformStyle(final String value);
 
 	@JsProperty
 	public abstract String getTransition();
 
+	/**
+	 * 
+	 *
+	 * @see <a href="https://developer.mozilla.org/docs/Web/CSS/transition"> MDN
+	 *      / CSS / transition</a>
+	 */
 	@JsProperty
 	public abstract void setTransition(final String value);
 
 	@JsProperty
 	public abstract String getTransitionDelay();
 
+	/**
+	 * 
+	 *
+	 * @see <a href=
+	 *      "https://developer.mozilla.org/docs/Web/CSS/transition-delay"> MDN /
+	 *      CSS / transition-delay</a>
+	 */
 	@JsProperty
 	public abstract void setTransitionDelay(final String value);
 
 	@JsProperty
 	public abstract String getTransitionDuration();
 
+	/**
+	 * 
+	 *
+	 * @see <a href=
+	 *      "https://developer.mozilla.org/docs/Web/CSS/transition-duration">
+	 *      MDN / CSS / transition-duration</a>
+	 */
 	@JsProperty
 	public abstract void setTransitionDuration(final String value);
 
 	@JsProperty
 	public abstract String getTransitionProperty();
 
+	/**
+	 * 
+	 *
+	 * @see <a href=
+	 *      "https://developer.mozilla.org/docs/Web/CSS/transition-property">
+	 *      MDN / CSS / transition-property</a>
+	 */
 	@JsProperty
 	public abstract void setTransitionProperty(final String value);
 
 	@JsProperty
 	public abstract String getTransitionTimingFunction();
 
+	/**
+	 * 
+	 *
+	 * @see <a href=
+	 *      "https://developer.mozilla.org/docs/Web/CSS/transition-timing-function">
+	 *      MDN / CSS / transition-timing-function</a>
+	 */
 	@JsProperty
 	public abstract void setTransitionTimingFunction(final String value);
 
 	@JsProperty
 	public abstract String getUnicodeBidi();
 
+	/**
+	 * 
+	 *
+	 * @see <a href="https://developer.mozilla.org/docs/Web/CSS/unicode-bidi">
+	 *      MDN / CSS / unicode-bidi</a>
+	 */
 	@JsProperty
 	public abstract void setUnicodeBidi(final String value);
 
 	@JsProperty
 	public abstract String getVerticalAlign();
 
+	/**
+	 * 
+	 *
+	 * @see <a href="https://developer.mozilla.org/docs/Web/CSS/vertical-align">
+	 *      MDN / CSS / vertical-align</a>
+	 */
 	@JsProperty
 	public abstract void setVerticalAlign(final String value);
 
 	@JsProperty
 	public abstract String getVisibility();
 
+	/**
+	 * 
+	 *
+	 * @see <a href="https://developer.mozilla.org/docs/Web/CSS/visibility"> MDN
+	 *      / CSS / visibility</a>
+	 */
 	@JsProperty
 	public abstract void setVisibility(final String value);
 
@@ -3475,59 +4414,659 @@ public interface CSSStyleDeclaration {
 	@JsProperty
 	public abstract void setWebkitWritingMode(final String value);
 
+	/**
+	 * @see #setWhiteSpace(WhiteSpace)
+	 */
 	@JsProperty
 	public abstract String getWhiteSpace();
 
+	/**
+	 * @see #setWhiteSpace(WhiteSpace)
+	 */
 	@JsProperty
 	public abstract void setWhiteSpace(final String value);
 
+	/**
+	 * Keyword values for {@link CSSStyleDeclaration#setWhiteSpace(WhiteSpace)}.
+	 */
+	enum WhiteSpace {
+		/**
+		 * Sequences of whitespace are collapsed. Newline characters in the
+		 * source are handled as other whitespace. Breaks lines as necessary to
+		 * fill line boxes.
+		 */
+		NORMAL {
+			@Override
+			public String getCssPropertyValue() {
+				return "normal";
+			}
+		},
+		/**
+		 * Collapses whitespace as for normal, but suppresses line breaks (text
+		 * wrapping) within text.
+		 */
+		NOWRAP {
+			@Override
+			public String getCssPropertyValue() {
+				return "nowrap";
+			}
+		},
+		/**
+		 * Sequences of whitespace are preserved, lines are only broken at
+		 * newline characters in the source and at {@code <br>
+		 * } elements.
+		 */
+		PRE {
+			@Override
+			public String getCssPropertyValue() {
+				return "pre";
+			}
+		},
+		/**
+		 * Sequences of whitespace are preserved. Lines are broken at newline
+		 * characters, at {@code <br>
+		 * }, and as necessary to fill line boxes.
+		 */
+		PRE_WRAP {
+			@Override
+			public String getCssPropertyValue() {
+				return "pre-wrap";
+			}
+		},
+		/**
+		 * Sequences of whitespace are collapsed. Lines are broken at newline
+		 * characters, at {@code <br>
+		 * }, and as necessary to fill line boxes.
+		 */
+		PRE_LINE {
+			@Override
+			public String getCssPropertyValue() {
+				return "pre-line";
+			}
+		};
+
+		public abstract String getCssPropertyValue();
+	}
+
+	/**
+	 * Used to describe how whitespace inside the element is handled.
+	 *
+	 * @see <a href="https://developer.mozilla.org/docs/Web/CSS/white-space">
+	 *      MDN / CSS / white-space</a>
+	 */
+	@JsOverlay
+	public default void setWhiteSpace(final WhiteSpace value) {
+		setWhiteSpace(value.getCssPropertyValue());
+	}
+
+	/**
+	 * @see #setWhiteSpace(WhiteSpace)
+	 */
+	@JsOverlay
+	public default void setWhiteSpace(final CssGlobalStyle value) {
+		setWhiteSpace(value.getCssPropertyValue());
+	}
+
+	/**
+	 * @see #setWidows(int)
+	 */
 	@JsProperty
 	public abstract String getWidows();
 
+	/**
+	 * @see #setWidows(int)
+	 */
 	@JsProperty
 	public abstract void setWidows(final String value);
 
+	/**
+	 * When a paragraph is split over two pages in paged media, the
+	 * {@code widows} CSS property defines the mimimum number of lines that must
+	 * be left at the top of the second page. In typography, a widow is the last
+	 * line of a paragraph appearing alone at the top of a new page. Setting the
+	 * {@code widows} property allows the prevention of single-line widows. <br>
+	 * For non-paged media, like {@code screen}, the {@code widows} CSS property
+	 * has no effect.
+	 *
+	 * @see <a href="https://developer.mozilla.org/docs/Web/CSS/widows"> MDN /
+	 *      CSS / widows</a>
+	 */
+	@JsOverlay
+	public default void setWidows(final int value) {
+		setWidows(Integer.toString(value));
+	}
+
+	/**
+	 * @see #setWidows(int)
+	 */
+	@JsOverlay
+	public default void setWidows(final CssGlobalStyle value) {
+		setWidows(value.getCssPropertyValue());
+	}
+
+	/**
+	 * @see #setWidth(Width)
+	 */
 	@JsProperty
 	public abstract String getWidth();
 
+	/**
+	 * @see #setWidth(Width)
+	 */
 	@JsProperty
 	public abstract void setWidth(final String value);
 
+	/**
+	 * Keyword values for {@link CSSStyleDeclaration#setWidth(Width, WidthBox)}.
+	 */
+	enum Width {
+		/**
+		 * The browser will calculate and select a width for the specified
+		 * element.
+		 */
+		AUTO {
+			@Override
+			public String getCssPropertyValue() {
+				return "auto";
+			}
+		},
+		/**
+		 * The intrinsic preferred width.
+		 */
+		MAX_CONTENT {
+			@Override
+			public String getCssPropertyValue() {
+				return "max-content";
+			}
+		},
+		/**
+		 * The intrinsic minimum width.
+		 */
+		MIN_CONTENT {
+			@Override
+			public String getCssPropertyValue() {
+				return "min-content";
+			}
+		},
+		/**
+		 * The containing block width minus horizontal margin, border and
+		 * padding.
+		 */
+		AVAILABLE {
+			@Override
+			public String getCssPropertyValue() {
+				return "available ";
+			}
+		},
+		/**
+		 * The larger of:
+		 * <ul>
+		 * <li>the intrinsic minimum width</li>
+		 * <li>the smaller of the intrinsic preferred width and the available
+		 * width</li>
+		 * </ul>
+		 */
+		FIT_CONTENT {
+			@Override
+			public String getCssPropertyValue() {
+				return "fit-content";
+			}
+		};
+
+		public abstract String getCssPropertyValue();
+	}
+
+	/**
+	 * Keyword values for
+	 * {@link CSSStyleDeclaration#setWidth(double, CssUnit, WidthBox)}.
+	 */
+	enum WidthBox {
+		/**
+		 * The value is applied to the element's border box.
+		 */
+		BORDER_BOX {
+			@Override
+			public String getCssPropertyValue() {
+				return "border-box";
+			}
+		},
+		/**
+		 * The value is applied to the element's content box.
+		 */
+		CONTENT_BOX {
+			@Override
+			public String getCssPropertyValue() {
+				return "content-box";
+			}
+		};
+
+		public abstract String getCssPropertyValue();
+	}
+
+	/**
+	 * Specifies the width of the content area of an element. The content area
+	 * is inside the padding, border, and margin of the element.
+	 *
+	 * @see <a href="https://developer.mozilla.org/docs/Web/CSS/width"> MDN /
+	 *      CSS / width</a>
+	 */
+	@JsOverlay
+	public default void setWidth(final Width value) {
+		setWidth(value.getCssPropertyValue());
+	}
+
+	/**
+	 * @see #setWidth(Width)
+	 */
+	@JsOverlay
+	public default void setWidth(final CssGlobalStyle value) {
+		setWidth(value.getCssPropertyValue());
+	}
+
+	/**
+	 * @see #setWidth(Width)
+	 */
+	@JsOverlay
+	public default void setWidth(final double value, CssUnit unit) {
+		setWidth(value + unit.getCssValue());
+	}
+
+	/**
+	 * @see #setWidth(Width)
+	 */
+	@JsOverlay
+	public default void setWidth(final double value, CssUnit unit, WidthBox box) {
+		setWidth(value + unit.getCssValue() + " " + box.getCssPropertyValue());
+	}
+
+	/**
+	 * @see #setWidth(Width)
+	 */
+	@JsOverlay
+	public default void setWidth(final int value, CssUnit unit) {
+		setWidth(value + unit.getCssValue());
+	}
+
+	/**
+	 * @see #setWidth(Width)
+	 */
+	@JsOverlay
+	public default void setWidth(final int value, CssUnit unit, WidthBox box) {
+		setWidth(value + unit.getCssValue() + " " + box.getCssPropertyValue());
+	}
+
+	/**
+	 * @see #setWordBreak(WordBreak)
+	 */
 	@JsProperty
 	public abstract String getWordBreak();
 
+	/**
+	 * @see #setWordBreak(WordBreak)
+	 */
 	@JsProperty
 	public abstract void setWordBreak(final String value);
 
+	/**
+	 * Keyword values for {@link CSSStyleDeclaration#setWordBreak(WordBreak)}.
+	 */
+	enum WordBreak {
+		/**
+		 * Use the default line break rule.
+		 */
+		NORMAL {
+			@Override
+			public String getCssPropertyValue() {
+				return "normal";
+			}
+		},
+		/**
+		 * Word breaks may be inserted between any character for non-CJK
+		 * (Chinese/Japanese/Korean) text.
+		 */
+		BREAK_ALL {
+			@Override
+			public String getCssPropertyValue() {
+				return "break-all";
+			}
+		},
+		/**
+		 * Don't allow word breaks for CJK text. Non-CJK text behavior is the
+		 * same as for normal.
+		 */
+		KEEP_ALL {
+			@Override
+			public String getCssPropertyValue() {
+				return "keep-all";
+			}
+		};
+
+		public abstract String getCssPropertyValue();
+	}
+
+	/**
+	 * Used to specify whether to break lines within words.
+	 *
+	 * @see <a href="https://developer.mozilla.org/docs/Web/CSS/word-break"> MDN
+	 *      / CSS / word-break</a>
+	 */
+	@JsOverlay
+	public default void setWordBreak(final WordBreak value) {
+		setWordBreak(value.getCssPropertyValue());
+	}
+
+	/**
+	 * @see #setWordBreak(WordBreak)
+	 */
+	@JsOverlay
+	public default void setWordBreak(final CssGlobalStyle value) {
+		setWordBreak(value.getCssPropertyValue());
+	}
+
+	/**
+	 * @see #setWordSpacing(double, CssUnit)
+	 */
 	@JsProperty
 	public abstract String getWordSpacing();
 
+	/**
+	 * @see #setWordSpacing(double, CssUnit)
+	 */
 	@JsProperty
 	public abstract void setWordSpacing(final String value);
 
+	/**
+	 * Keyword values for
+	 * {@link CSSStyleDeclaration#setWordSpacing(double, CssUnit)}.
+	 */
+	enum WordSpacing {
+		/**
+		 * The normal inter-word space, as defined by the current font and/or
+		 * the browser.
+		 */
+		NORMAL {
+			@Override
+			public String getCssPropertyValue() {
+				return "normal";
+			}
+		};
+
+		public abstract String getCssPropertyValue();
+	}
+
+	/**
+	 * @see #setWordSpacing(double, CssUnit)
+	 */
+	@JsOverlay
+	public default void setWordSpacing(WordSpacing value) {
+		setWordSpacing(value.getCssPropertyValue());
+	}
+
+	/**
+	 * Specifies the spacing behavior between tags and words.
+	 *
+	 * @see <a href="https://developer.mozilla.org/docs/Web/CSS/word-spacing">
+	 *      MDN / CSS / word-spacing</a>
+	 */
+	@JsOverlay
+	public default void setWordSpacing(final double value, CssUnit unit) {
+		setWordSpacing(value + unit.getCssValue());
+	}
+
+	/**
+	 * @see #setWordSpacing(double, CssUnit)
+	 */
+	@JsOverlay
+	public default void setWordSpacing(final int value, CssUnit unit) {
+		setWordSpacing(value + unit.getCssValue());
+	}
+
+	/**
+	 * @see #setWordSpacing(double, CssUnit)
+	 */
+	@JsOverlay
+	public default void setWordSpacing(CssGlobalStyle value) {
+		setWordSpacing(value.getCssPropertyValue());
+	}
+
+	/**
+	 * @see #setWordWrap(WordWrap)
+	 */
 	@JsProperty
 	public abstract String getWordWrap();
 
+	/**
+	 * @see #setWordWrap(WordWrap)
+	 */
 	@JsProperty
 	public abstract void setWordWrap(final String value);
 
+	/**
+	 * Keyword values for {@link CSSStyleDeclaration#setWordWrap(WordWrap)}.
+	 */
+	enum WordWrap {
+		/**
+		 * Indicates that lines may only break at normal word break points.
+		 */
+		NORMAL {
+			@Override
+			public String getCssPropertyValue() {
+				return "normal";
+			}
+		},
+		/**
+		 * Indicates that normally unbreakable words may be broken at arbitrary
+		 * points if there are no otherwise acceptable break points in the line.
+		 */
+		BREAK_WORD {
+			@Override
+			public String getCssPropertyValue() {
+				return "break-word";
+			}
+		};
+
+		public abstract String getCssPropertyValue();
+	}
+
+	/**
+	 * Used to specify whether or not the browser may break lines within words
+	 * in order to prevent overflow when an otherwise unbreakable string is too
+	 * long to fit in its containing box.
+	 *
+	 * @see <a href="https://developer.mozilla.org/docs/Web/CSS/word-wrap"> MDN
+	 *      / CSS / word-wrap</a>
+	 */
+	@JsOverlay
+	public default void setWordWrap(final WordWrap value) {
+		setWordWrap(value.getCssPropertyValue());
+	}
+
+	/**
+	 * @see #setWordWrap(WordWrap)
+	 */
+	@JsOverlay
+	public default void setWordWrap(final CssGlobalStyle value) {
+		setWordWrap(value.getCssPropertyValue());
+	}
+
+	/**
+	 * @see #setWritingMode(WritingMode)
+	 */
 	@JsProperty
 	public abstract String getWritingMode();
 
+	/**
+	 * @see #setWritingMode(WritingMode)
+	 */
 	@JsProperty
 	public abstract void setWritingMode(final String value);
 
+	/**
+	 * Keyword values for
+	 * {@link CSSStyleDeclaration#setWritingMode(WritingMode)}.
+	 */
+	enum WritingMode {
+		/**
+		 * Content flows horizontally from left to right, vertically from top to
+		 * bottom. The next horizontal line is positioned below the previous
+		 * line.
+		 */
+		HORIZONTAL_TB {
+			@Override
+			public String getCssPropertyValue() {
+				return "horizontal-tb";
+			}
+		},
+		/**
+		 * Content flows vertically from top to bottom, horizontally from right
+		 * to left. The next vertical line is positioned to the left of the
+		 * previous line.
+		 */
+		VERTICAL_RL {
+			@Override
+			public String getCssPropertyValue() {
+				return "vertical-rl";
+			}
+		},
+		/**
+		 * Content flows vertically from top to bottom, horizontally from left
+		 * to right. The next vertical line is positioned to the right of the
+		 * previous line.
+		 */
+		VERTICAL_LR {
+			@Override
+			public String getCssPropertyValue() {
+				return "vertical-lr";
+			}
+		},
+		/**
+		 * Experimental!<br>
+		 * Content flows vertically from top to bottom and all the glyphs, even
+		 * those in vertical scripts, are set sideways toward the right.
+		 */
+		SIDEWAYS_RL {
+			@Override
+			public String getCssPropertyValue() {
+				return "sideways-rl";
+			}
+		},
+		/**
+		 * Experimental!<br>
+		 * Content flows vertically from top to bottom and all the glyphs, even
+		 * those in vertical scripts, are set sideways toward the left.
+		 */
+		SIDEWAYS_LR {
+			@Override
+			public String getCssPropertyValue() {
+				return "sideways-lr";
+			}
+		};
+
+		public abstract String getCssPropertyValue();
+	}
+
+	/**
+	 * Defines whether lines of text are laid out horizontally or vertically and
+	 * the direction in which blocks progress.
+	 *
+	 * @see <a href="https://developer.mozilla.org/docs/Web/CSS/writing-mode">
+	 *      MDN / CSS / writing-mode</a>
+	 */
+	@JsOverlay
+	public default void setWritingMode(final WritingMode value) {
+		setWritingMode(value.getCssPropertyValue());
+	}
+
+	/**
+	 * @see #setWritingMode(WritingMode)
+	 */
+	@JsOverlay
+	public default void setWritingMode(final CssGlobalStyle value) {
+		setWritingMode(value.getCssPropertyValue());
+	}
+
+	/**
+	 * @see #setZIndex(int)
+	 */
 	@JsProperty
 	public abstract String getZIndex();
 
+	/**
+	 * @see #setZIndex(int)
+	 */
 	@JsProperty
 	public abstract void setZIndex(final String value);
 
+	/**
+	 * Specifies the z-order of an element and its descendants. When elements
+	 * overlap, z-order determines which one covers the other. An element with a
+	 * larger z-index generally covers an element with a lower one.
+	 *
+	 * @see <a href="https://developer.mozilla.org/docs/Web/CSS/z-index"> MDN /
+	 *      CSS / z-index</a>
+	 */
+	@JsOverlay
+	public default void setZIndex(final int value) {
+		setZIndex(Integer.toString(value));
+	}
+
+	/**
+	 * @see #setZIndex(int)
+	 */
+	@JsOverlay
+	public default void setZIndex(final CssGlobalStyle value) {
+		setZIndex(value.getCssPropertyValue());
+	}
+
+	/**
+	 * Keyword values for {@link CSSStyleDeclaration#setZIndex(int)}.
+	 */
+	enum ZIndex {
+		/**
+		 * The box does not establish a new local stacking context. The stack
+		 * level of the generated box in the current stacking context is the
+		 * same as its parent's box.
+		 */
+		AUTO {
+			@Override
+			public String getCssPropertyValue() {
+				return "auto";
+			}
+		};
+
+		public abstract String getCssPropertyValue();
+	}
+
+	/**
+	 * @see #setZIndex(int)
+	 */
+	@JsOverlay
+	public default void setZIndex(ZIndex value) {
+		setZIndex(value.getCssPropertyValue());
+	}
+
+	/**
+	 * @see #setZoom(String)
+	 */
 	@JsProperty
 	public abstract String getZoom();
 
+	/**
+	 * Sets the initial zoom factor of a document defined by {@code @viewport}.
+	 *
+	 * @see <a href="https://developer.mozilla.org/docs/Web/CSS/zoom"> MDN / CSS
+	 *      / zoom</a>
+	 */
 	@JsProperty
 	public abstract void setZoom(final String value);
+
+	/**
+	 * @see #setZoom(String)
+	 */
+	@JsOverlay
+	public default void setZoom(final double value) {
+		setZoom(Double.toString(value));
+	}
 
 	@JsOverlay
 	public default String get(final int index) {

@@ -434,7 +434,7 @@ include::../../../../jsinterop-test/target/gwt-asciidoc/gwt.js[tags=GwtInternals
 
 This means that Java arrays can be passed directly to Javascript code. +
 Note that Javascript code should not modify the array's length or add incompatible elements because it would break Java semantics. +
-The following example adds an element to the array which is not possible in plain Java:
+The following example adds an element to the array that would not be possible in plain Java:
 
 [source,java,indent=0]
 .Java code
