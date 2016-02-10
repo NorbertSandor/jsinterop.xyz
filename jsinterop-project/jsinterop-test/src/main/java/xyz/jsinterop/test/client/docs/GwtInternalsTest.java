@@ -18,7 +18,7 @@ import static xyz.jsinterop.test.client.TestUtils.generatedCodeMarkerStart;
 
 import java.util.Arrays;
 
-import xyz.jsinterop.client.core.JsArrayInt;
+import xyz.jsinterop.client.core.JsArrayOfInt;
 import xyz.jsinterop.client.core.JsArrays;
 import xyz.jsinterop.client.core.JsUtils;
 
@@ -68,7 +68,7 @@ public class GwtInternalsTest implements Runnable {
 			int[] javaArray = { 1, 2, 3 };
 			assertEquals(3, javaArray.length);
 
-			JsArrayInt jsArray = JsUtils.cast(javaArray);
+			JsArrayOfInt jsArray = JsUtils.cast(javaArray);
 			jsArray.push(4);
 
 			assertEquals(4, javaArray.length);

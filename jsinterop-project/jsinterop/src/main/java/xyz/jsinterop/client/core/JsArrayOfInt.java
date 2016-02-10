@@ -11,57 +11,39 @@
  */
 package xyz.jsinterop.client.core;
 
-import jsinterop.annotations.JsConstructor;
+import com.google.gwt.core.client.JavaScriptObject;
+
 import jsinterop.annotations.JsMethod;
-import jsinterop.annotations.JsOverlay;
-import jsinterop.annotations.JsPackage;
-import jsinterop.annotations.JsProperty;
-import jsinterop.annotations.JsType;
 
-@JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Array")
-public class JsArrayInt {
-	public static class Util {
-		public static native int getIntItem(Object object, int index)
-		/*-{
-			return object[index];
-		}-*/;
-
-		public static native void setIntItem(Object object, int index, int value)
-		/*-{
-			object[index] = value;
-		}-*/;
+public final class JsArrayOfInt extends JavaScriptObject implements ArrayOfInt {
+	public static JsArrayOfInt create() {
+		return JavaScriptObject.createArray().cast();
 	}
 
-	@JsOverlay
-	public static JsArrayInt of(int... items) {
-		JsArrayInt array = new JsArrayInt();
+	public static JsArrayOfInt of(int... items) {
+		JsArrayOfInt array = create();
 		array.push(items);
 		return array;
 	}
 
-	@JsConstructor
-	public JsArrayInt() {
-	}
-
-	@JsConstructor
-	public JsArrayInt(int arrayLength) {
+	protected JsArrayOfInt() {
 	}
 
 	/**
 	 * Gets or sets the length of the array. This is a number one higher than
 	 * the highest element defined in an array.
 	 */
-	@JsProperty
-	public native int getLength();
+	public native int getLength()
+	/*-{
+		return this.length;
+	}-*/;
 
 	/**
 	 * Returns a string representation of an array.
 	 */
-	@JsMethod
-	public native String toString();
+	// TODO public native String toString();
 
-	@JsMethod
-	public native String toLocaleString();
+	// TODO public native String toLocaleString();
 
 	/**
 	 * Appends new elements to an array, and returns the new length of the
@@ -71,13 +53,30 @@ public class JsArrayInt {
 	 *            New elements of the Array.
 	 */
 	@JsMethod
-	public native int push(int... items);
+	public int push(int... items) {
+		// TODO call native
+		for (int item : items) {
+			push(item);
+		}
+
+		return getLength();
+	}
+
+	@JsMethod
+	public native int push(int item)
+	/*-{
+		return this.push(item);
+	}-*/;
 
 	/**
 	 * Removes the last element from an array and returns it.
 	 */
 	@JsMethod
-	public native int pop();
+	public native int pop()
+	/*-{
+		return this.pop();
+	}-*/;
+
 	/*
 	 * Combines two or more arrays.
 	 * 
@@ -91,11 +90,9 @@ public class JsArrayInt {
 	 * @param items
 	 *            Additional items to add to the end of array1.
 	 */
-	@JsMethod
-	public native JsArrayInt concat(JsArrayInt items);
+	// TODO public native JsArrayOfInt concat(JsArrayOfInt items);
 
-	@JsMethod
-	public native JsArrayInt concat(JsArrayInt... items);
+	// TODO public native JsArrayOfInt concat(JsArrayOfInt... items);
 
 	/**
 	 * Adds all the elements of an array separated by the specified separator
@@ -106,23 +103,19 @@ public class JsArrayInt {
 	 *            next in the resulting String. If omitted, the array elements
 	 *            are separated with a comma.
 	 */
-	@JsMethod
-	public native String join(String separator);
+	// TODO public native String join(String separator);
 
-	@JsMethod
-	public native String join();
+	// TODO public native String join();
 
 	/**
 	 * Reverses the elements in an Array.
 	 */
-	@JsMethod
-	public native JsArrayInt reverse();
+	// TODO public native JsArrayOfInt reverse();
 
 	/**
 	 * Removes the first element from an array and returns it.
 	 */
-	@JsMethod
-	public native int shift();
+	// TODO public native int shift();
 
 	/**
 	 * Returns a section of an array.
@@ -132,11 +125,9 @@ public class JsArrayInt {
 	 * @param end
 	 *            The end of the specified portion of the array.
 	 */
-	@JsMethod
-	public native JsArrayInt slice(int start, int end);
+	// TODO public native JsArrayOfInt slice(int start, int end);
 
-	@JsMethod
-	public native JsArrayInt slice(int start);
+	// TODO public native JsArrayOfInt slice(int start);
 
 	/**
 	 * Sorts an array.
@@ -146,11 +137,10 @@ public class JsArrayInt {
 	 *            elements. If omitted, the elements are sorted in ascending,
 	 *            ASCII character order.
 	 */
-	@JsMethod
-	public native /* JsIntArray */ void sort(JsComparatorFunctionInt compareFn);
+	// TODO public native /* JsIntArray */ void sort(JsComparatorFunctionInt
+	// compareFn);
 
-	@JsMethod
-	public native /* JsIntArray */ void sort();
+	// TODO public native /* JsIntArray */ void sort();
 
 	/**
 	 * Removes elements from an array and, if necessary, inserts new elements in
@@ -160,8 +150,7 @@ public class JsArrayInt {
 	 *            The zero-based location in the array from which to start
 	 *            removing elements.
 	 */
-	@JsMethod
-	public native JsArrayInt splice(int start);
+	// TODO public native JsArrayOfInt splice(int start);
 
 	/**
 	 * Removes elements from an array and, if necessary, inserts new elements in
@@ -361,13 +350,13 @@ public class JsArrayInt {
 	// TODO reduceRight<U>(callbackfn: (previousValue: U, currentValue: T,
 	// currentIndex: number, array: T[]) => U, initialValue: U): U;
 
-	@JsOverlay
-	public final int get(int index) {
-		return (int) Util.getIntItem(this, index);
-	}
+	public final native int get(int index)
+	/*-{
+		return this[index];
+	}-*/;
 
-	@JsOverlay
-	public final void set(int index, int value) {
-		Util.setIntItem(this, index, value);
-	}
+	public final native void set(int index, int value)
+	/*-{
+		this[index] = value;
+	}-*/;
 }
