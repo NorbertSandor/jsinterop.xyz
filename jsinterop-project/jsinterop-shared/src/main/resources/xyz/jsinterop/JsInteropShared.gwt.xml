@@ -13,11 +13,6 @@
 
 <module>
 
-	<inherits name="com.google.gwt.user.User" />
-	<inherits name="xyz.jsinterop.JsInteropShared" />
-
-	<source path="client" />
-
-	<extend-configuration-property name="gwtjackson.configuration.extension" value="xyz.jsinterop.impl.gwt.GwtJacksonConfigurator" />
-
+	<source path="shared" />
+	
 </module>

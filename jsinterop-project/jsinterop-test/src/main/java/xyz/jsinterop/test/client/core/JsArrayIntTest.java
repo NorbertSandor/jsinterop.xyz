@@ -13,7 +13,7 @@ package xyz.jsinterop.test.client.core;
 
 import static xyz.jsinterop.test.client.TestUtils.assertEquals;
 
-import xyz.jsinterop.client.core.JsArrayOfInt;
+import xyz.jsinterop.client.core.JsArrayInt;
 
 public class JsArrayIntTest implements Runnable {
 	@Override
@@ -22,9 +22,9 @@ public class JsArrayIntTest implements Runnable {
 	}
 
 	public void testSort() {
-		JsArrayOfInt intArray = JsArrayOfInt.of(3, 2, 1);
+		JsArrayInt intArray = JsArrayInt.of(3, 2, 1);
 		assertEquals(3, intArray.get(0));
-		// TODO intArray.sort();
+		// FIXME intArray.sort();
 		assertEquals(1, intArray.get(0));
 		// TODO assertTrue(JsArrayInt.Util.create(1, 2, 3).equals(intArray));
 	}

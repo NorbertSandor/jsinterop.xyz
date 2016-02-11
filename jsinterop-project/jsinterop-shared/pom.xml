@@ -1,7 +1,6 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-
 	<parent>
 		<groupId>xyz.jsinterop</groupId>
 		<artifactId>jsinterop-project</artifactId>
@@ -9,29 +8,9 @@
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 
-	<artifactId>jsinterop</artifactId>
+	<artifactId>jsinterop-shared</artifactId>
 
 	<dependencies>
-		<dependency>
-			<groupId>xyz.jsinterop</groupId>
-			<artifactId>jsinterop-shared</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.google.gwt</groupId>
-			<artifactId>gwt-user</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.google.guava</groupId>
-			<artifactId>guava</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.google.guava</groupId>
-			<artifactId>guava-gwt</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.github.nmorel.gwtjackson</groupId>
-			<artifactId>gwt-jackson</artifactId>
-		</dependency>
 	</dependencies>
 
 	<build>

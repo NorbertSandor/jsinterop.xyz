@@ -1,8 +1,8 @@
 /*
  * #%L
- * jsinterop
+ * JsInterop.xyz
  * %%
- * Copyright (C) 2016 Norbert Sándor
+ * Copyright (C) 2015 Norbert Sándor
  * %%
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -20,10 +20,10 @@ import java.util.NoSuchElementException;
 import com.google.common.base.Objects;
 import com.google.gwt.core.client.JavaScriptObject;
 
-import xyz.jsinterop.shared.core.util.ListOf;
+import xyz.jsinterop.shared.core.util.ListOfString;
 
-public final class JsArray<T> extends JavaScriptObject implements ListOf<T> {
-	private final class ListImpl implements List<T> {
+public final class JsArrayString extends JavaScriptObject implements ListOfString {
+	private final class ListImpl implements List<String> {
 		@Override
 		public int size() {
 			return getLength();
@@ -47,8 +47,8 @@ public final class JsArray<T> extends JavaScriptObject implements ListOf<T> {
 		}
 
 		@Override
-		public Iterator<T> iterator() {
-			return new Iterator<T>() {
+		public Iterator<String> iterator() {
+			return new Iterator<String>() {
 				private int currentIndex = -1;
 
 				@Override
@@ -57,7 +57,7 @@ public final class JsArray<T> extends JavaScriptObject implements ListOf<T> {
 				}
 
 				@Override
-				public T next() {
+				public String next() {
 					if (hasNext()) {
 						return get(++currentIndex);
 					} else {
@@ -85,7 +85,7 @@ public final class JsArray<T> extends JavaScriptObject implements ListOf<T> {
 		}
 
 		@Override
-		public boolean add(T e) {
+		public boolean add(String e) {
 			push(e);
 			return true;
 		}
@@ -110,12 +110,12 @@ public final class JsArray<T> extends JavaScriptObject implements ListOf<T> {
 		}
 
 		@Override
-		public boolean addAll(Collection<? extends T> c) {
+		public boolean addAll(Collection<? extends String> c) {
 			if (c.isEmpty()) {
 				return false;
 			}
 
-			for (T e : c) {
+			for (String e : c) {
 				add(e);
 			}
 
@@ -123,7 +123,7 @@ public final class JsArray<T> extends JavaScriptObject implements ListOf<T> {
 		}
 
 		@Override
-		public boolean addAll(int index, Collection<? extends T> c) {
+		public boolean addAll(int index, Collection<? extends String> c) {
 			// TODO Auto-generated method stub
 			throw new UnsupportedOperationException();
 		}
@@ -149,24 +149,24 @@ public final class JsArray<T> extends JavaScriptObject implements ListOf<T> {
 		}
 
 		@Override
-		public T get(int index) {
-			return JsArray.this.get(index);
+		public String get(int index) {
+			return JsArrayString.this.get(index);
 		}
 
 		@Override
-		public T set(int index, T element) {
-			T previous = get(index);
-			JsArray.this.set(index, element);
+		public String set(int index, String element) {
+			String previous = get(index);
+			JsArrayString.this.set(index, element);
 			return previous;
 		}
 
 		@Override
-		public void add(int index, T element) {
+		public void add(int index, String element) {
 			splice(index, 0, element);
 		}
 
 		@Override
-		public T remove(int index) {
+		public String remove(int index) {
 			return splice(index, 1).get(0);
 		}
 
@@ -195,35 +195,35 @@ public final class JsArray<T> extends JavaScriptObject implements ListOf<T> {
 		}
 
 		@Override
-		public ListIterator<T> listIterator() {
+		public ListIterator<String> listIterator() {
 			// TODO Auto-generated method stub
 			throw new UnsupportedOperationException();
 		}
 
 		@Override
-		public ListIterator<T> listIterator(int index) {
+		public ListIterator<String> listIterator(int index) {
 			// TODO Auto-generated method stub
 			throw new UnsupportedOperationException();
 		}
 
 		@Override
-		public List<T> subList(int fromIndex, int toIndex) {
+		public List<String> subList(int fromIndex, int toIndex) {
 			// TODO Auto-generated method stub
 			throw new UnsupportedOperationException();
 		}
 	}
 
-	public static <T> JsArray<T> of() {
+	public static JsArrayString of() {
 		return JavaScriptObject.createArray().cast();
 	}
 
-	public static <T> JsArray<T> of(T... items) {
-		JsArray<T> array = of();
+	public static JsArrayString of(String... items) {
+		JsArrayString array = of();
 		array.push(items);
 		return array;
 	}
 
-	protected JsArray() {
+	protected JsArrayString() {
 	}
 
 	/**
@@ -242,16 +242,16 @@ public final class JsArray<T> extends JavaScriptObject implements ListOf<T> {
 	 * @param items
 	 *            New elements of the Array.
 	 */
-	public int push(T... items) {
+	public int push(String... items) {
 		// TODO call native
-		for (T item : items) {
+		for (String item : items) {
 			push(item);
 		}
 
 		return getLength();
 	}
 
-	public native int push(T item)
+	public native int push(String item)
 	/*-{
 		return this.push(item);
 	}-*/;
@@ -259,7 +259,7 @@ public final class JsArray<T> extends JavaScriptObject implements ListOf<T> {
 	/**
 	 * Removes the last element from an array and returns it.
 	 */
-	public native T pop()
+	public native int pop()
 	/*-{
 		return this.pop();
 	}-*/;
@@ -272,7 +272,7 @@ public final class JsArray<T> extends JavaScriptObject implements ListOf<T> {
 	 *            The zero-based location in the array from which to start
 	 *            removing elements.
 	 */
-	public native JsArray<T> splice(int start);
+	public native JsArrayString splice(int start);
 	/*-{
 		return this.splice(start);
 	}-*/;
@@ -287,7 +287,7 @@ public final class JsArray<T> extends JavaScriptObject implements ListOf<T> {
 	 * @param deleteCount
 	 *            The number of elements to remove.
 	 */
-	public native JsArray<T> splice(int start, int deleteCount)
+	public native JsArrayString splice(int start, int deleteCount)
 	/*-{
 		return this.splice(start, deleteCount);
 	}-*/;
@@ -305,19 +305,19 @@ public final class JsArray<T> extends JavaScriptObject implements ListOf<T> {
 	 *            Elements to insert into the array in place of the deleted
 	 *            elements.
 	 */
-	public native JsArray<T> splice(int start, int deleteCount, T item)
+	public native JsArrayString splice(int start, int deleteCount, String item)
 	/*-{
 		return this.splice(start, deleteCount, item);
 	}-*/;
 
 	@Override
-	public final native T get(int index)
+	public final native String get(int index)
 	/*-{
 		return this[index];
 	}-*/;
 
 	@Override
-	public final native void set(int index, T value)
+	public final native void set(int index, String value)
 	/*-{
 		this[index] = value;
 	}-*/;
@@ -328,7 +328,7 @@ public final class JsArray<T> extends JavaScriptObject implements ListOf<T> {
 	}
 
 	@Override
-	public List<T> asList() {
+	public List<String> asList() {
 		return new ListImpl();
 	}
 }

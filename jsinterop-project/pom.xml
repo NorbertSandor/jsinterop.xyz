@@ -73,6 +73,11 @@
 			</dependency>
 			<dependency>
 				<groupId>xyz.jsinterop</groupId>
+				<artifactId>jsinterop-shared</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>xyz.jsinterop</groupId>
 				<artifactId>jsinterop-test</artifactId>
 				<version>${project.version}</version>
 			</dependency>
@@ -111,6 +116,12 @@
 				<groupId>com.google.guava</groupId>
 				<artifactId>guava-gwt</artifactId>
 				<version>${dependency.guava.version}</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>com.github.nmorel.gwtjackson</groupId>
+				<artifactId>gwt-jackson</artifactId>
+				<version>0.11.1</version>
 				<scope>provided</scope>
 			</dependency>
 		</dependencies>
@@ -324,6 +335,7 @@
 		<module>jsinterop</module>
 		<module>jsinterop-website</module>
 		<module>jsinterop-test</module>
+		<module>jsinterop-shared</module>
 	</modules>
 
 </project>
