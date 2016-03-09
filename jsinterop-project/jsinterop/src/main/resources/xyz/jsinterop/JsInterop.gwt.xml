@@ -18,6 +18,4 @@
 
 	<source path="client" />
 
-	<extend-configuration-property name="gwtjackson.configuration.extension" value="xyz.jsinterop.impl.gwt.GwtJacksonConfigurator" />
-
 </module>

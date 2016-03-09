@@ -62,20 +62,21 @@ public class GwtInternalsTest implements Runnable {
 			generatedCodeMarkerEnd("GwtInternalsTest_arraySemantics_intArray");
 		}
 
-		{
-			generatedCodeMarkerStart("GwtInternalsTest_arraySemantics_break");
-			// tag::GwtInternalsTest_arraySemantics_break[]
-			int[] javaArray = { 1, 2, 3 };
-			assertEquals(3, javaArray.length);
-
-			JsArrayInt jsArray = JsUtils.cast(javaArray);
-			jsArray.push(4);
-
-			assertEquals(4, javaArray.length);
-			assertTrue(Arrays.equals(new int[] { 1, 2, 3, 4 }, javaArray));
-			// end::GwtInternalsTest_arraySemantics_break[]
-			generatedCodeMarkerEnd("GwtInternalsTest_arraySemantics_break");
-		}
+// TODO for @JsType
+//		{
+//			generatedCodeMarkerStart("GwtInternalsTest_arraySemantics_break");
+//			// tag::GwtInternalsTest_arraySemantics_break[]
+//			int[] javaArray = { 1, 2, 3 };
+//			assertEquals(3, javaArray.length);
+//
+//			JsArrayInt jsArray = JsUtils.cast(javaArray);
+//			jsArray.push(4);
+//
+//			assertEquals(4, javaArray.length);
+//			assertTrue(Arrays.equals(new int[] { 1, 2, 3, 4 }, javaArray));
+//			// end::GwtInternalsTest_arraySemantics_break[]
+//			generatedCodeMarkerEnd("GwtInternalsTest_arraySemantics_break");
+//		}
 	}
 
 	@SuppressWarnings("unused")

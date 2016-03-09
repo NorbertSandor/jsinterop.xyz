@@ -323,6 +323,12 @@ public final class JsArrayString extends JavaScriptObject implements ListOfStrin
 	}-*/;
 
 	@Override
+	public final native void add(String value)
+	/*-{
+		this.push(value);
+	}-*/;
+
+	@Override
 	public int size() {
 		return getLength();
 	}
