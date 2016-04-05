@@ -323,6 +323,12 @@ public final class JsArray<T> extends JavaScriptObject implements ListOf<T> {
 	}-*/;
 
 	@Override
+	public final native void add(T value)
+	/*-{
+		this.push(value);
+	}-*/;
+
+	@Override
 	public int size() {
 		return getLength();
 	}

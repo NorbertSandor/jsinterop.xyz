@@ -17,7 +17,9 @@ public interface ListOf<T> {
 	T get(int index);
 	
 	void set(int index, T value);
-	
+
+	void add(T value);
+
 	int size();
 	
 	List<T> asList();
