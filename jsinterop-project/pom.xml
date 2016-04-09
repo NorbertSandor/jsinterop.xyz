@@ -55,8 +55,8 @@
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
 
-		<dependency.xtend.version>2.9.1</dependency.xtend.version>
-		<plugin.xtend.version>2.9.1</plugin.xtend.version>
+		<dependency.xtend.version>2.9.2</dependency.xtend.version>
+		<plugin.xtend.version>2.9.2</plugin.xtend.version>
 		<dependency.gwt.version>2.8.0-SNAPSHOT</dependency.gwt.version>
 		<plugin.gwt.version>2.8.0-SNAPSHOT</plugin.gwt.version>
 		<dependency.guava.version>20.0-SNAPSHOT</dependency.guava.version>
