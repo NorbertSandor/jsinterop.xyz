@@ -13,7 +13,6 @@
 
 <module>
 
-	<inherits name="com.google.gwt.user.User" />
 	<inherits name="xyz.jsinterop.JsInteropShared" />
 
 	<source path="client" />

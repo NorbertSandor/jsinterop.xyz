@@ -15,7 +15,6 @@
 
 	<collapse-all-properties />
 
-	<inherits name="com.google.gwt.user.User" />
 	<inherits name="xyz.jsinterop.JsInterop" />
 	<inherits name="com.google.common.collect.Collect" />
 
