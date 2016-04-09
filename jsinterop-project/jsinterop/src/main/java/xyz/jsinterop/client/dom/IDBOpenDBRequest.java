@@ -43,26 +43,6 @@ public interface IDBOpenDBRequest extends IDBRequest {
 	}
 
 	@JsOverlay
-	public default void addEventListenerError(final EventListener<ErrorEvent> listener) {
-		addEventListener("error", listener);
-	}
-
-	@JsOverlay
-	public default void addEventListenerError(final EventListener<ErrorEvent> listener, final boolean useCapture) {
-		addEventListener("error", listener, useCapture);
-	}
-
-	@JsOverlay
-	public default void addEventListenerSuccess(final EventListener<Event> listener) {
-		addEventListener("success", listener);
-	}
-
-	@JsOverlay
-	public default void addEventListenerSuccess(final EventListener<Event> listener, final boolean useCapture) {
-		addEventListener("success", listener, useCapture);
-	}
-
-	@JsOverlay
 	public default void addEventListenerUpgradeneeded(final EventListener<IDBVersionChangeEvent> listener) {
 		addEventListener("upgradeneeded", listener);
 	}

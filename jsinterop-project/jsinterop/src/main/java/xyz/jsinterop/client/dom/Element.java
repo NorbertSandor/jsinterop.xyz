@@ -1456,86 +1456,6 @@ public interface Element extends Node, GlobalEventHandlers, ElementTraversal, No
 	}
 
 	@JsOverlay
-	public default void addEventListenerPointercancel(final EventListener<PointerEvent> listener) {
-		addEventListener("pointercancel", listener);
-	}
-
-	@JsOverlay
-	public default void addEventListenerPointercancel(final EventListener<PointerEvent> listener, final boolean useCapture) {
-		addEventListener("pointercancel", listener, useCapture);
-	}
-
-	@JsOverlay
-	public default void addEventListenerPointerdown(final EventListener<PointerEvent> listener) {
-		addEventListener("pointerdown", listener);
-	}
-
-	@JsOverlay
-	public default void addEventListenerPointerdown(final EventListener<PointerEvent> listener, final boolean useCapture) {
-		addEventListener("pointerdown", listener, useCapture);
-	}
-
-	@JsOverlay
-	public default void addEventListenerPointerenter(final EventListener<PointerEvent> listener) {
-		addEventListener("pointerenter", listener);
-	}
-
-	@JsOverlay
-	public default void addEventListenerPointerenter(final EventListener<PointerEvent> listener, final boolean useCapture) {
-		addEventListener("pointerenter", listener, useCapture);
-	}
-
-	@JsOverlay
-	public default void addEventListenerPointerleave(final EventListener<PointerEvent> listener) {
-		addEventListener("pointerleave", listener);
-	}
-
-	@JsOverlay
-	public default void addEventListenerPointerleave(final EventListener<PointerEvent> listener, final boolean useCapture) {
-		addEventListener("pointerleave", listener, useCapture);
-	}
-
-	@JsOverlay
-	public default void addEventListenerPointermove(final EventListener<PointerEvent> listener) {
-		addEventListener("pointermove", listener);
-	}
-
-	@JsOverlay
-	public default void addEventListenerPointermove(final EventListener<PointerEvent> listener, final boolean useCapture) {
-		addEventListener("pointermove", listener, useCapture);
-	}
-
-	@JsOverlay
-	public default void addEventListenerPointerout(final EventListener<PointerEvent> listener) {
-		addEventListener("pointerout", listener);
-	}
-
-	@JsOverlay
-	public default void addEventListenerPointerout(final EventListener<PointerEvent> listener, final boolean useCapture) {
-		addEventListener("pointerout", listener, useCapture);
-	}
-
-	@JsOverlay
-	public default void addEventListenerPointerover(final EventListener<PointerEvent> listener) {
-		addEventListener("pointerover", listener);
-	}
-
-	@JsOverlay
-	public default void addEventListenerPointerover(final EventListener<PointerEvent> listener, final boolean useCapture) {
-		addEventListener("pointerover", listener, useCapture);
-	}
-
-	@JsOverlay
-	public default void addEventListenerPointerup(final EventListener<PointerEvent> listener) {
-		addEventListener("pointerup", listener);
-	}
-
-	@JsOverlay
-	public default void addEventListenerPointerup(final EventListener<PointerEvent> listener, final boolean useCapture) {
-		addEventListener("pointerup", listener, useCapture);
-	}
-
-	@JsOverlay
 	public default void addEventListenerTouchcancel(final EventListener<TouchEvent> listener) {
 		addEventListener("touchcancel", listener);
 	}
@@ -1593,16 +1513,6 @@ public interface Element extends Node, GlobalEventHandlers, ElementTraversal, No
 	@JsOverlay
 	public default void addEventListenerWebkitfullscreenerror(final EventListener<Event> listener, final boolean useCapture) {
 		addEventListener("webkitfullscreenerror", listener, useCapture);
-	}
-
-	@JsOverlay
-	public default void addEventListenerWheel(final EventListener<WheelEvent> listener) {
-		addEventListener("wheel", listener);
-	}
-
-	@JsOverlay
-	public default void addEventListenerWheel(final EventListener<WheelEvent> listener, final boolean useCapture) {
-		addEventListener("wheel", listener, useCapture);
 	}
 
 	@JsMethod
