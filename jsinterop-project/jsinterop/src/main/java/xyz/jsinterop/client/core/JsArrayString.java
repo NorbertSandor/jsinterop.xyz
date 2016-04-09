@@ -272,7 +272,7 @@ public final class JsArrayString extends JavaScriptObject implements ListOfStrin
 	 *            The zero-based location in the array from which to start
 	 *            removing elements.
 	 */
-	public native JsArrayString splice(int start);
+	// FIXME GWT compile error: public native JsArrayString splice(int start);
 	/*-{
 		return this.splice(start);
 	}-*/;

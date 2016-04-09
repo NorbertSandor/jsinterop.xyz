@@ -272,7 +272,7 @@ public final class JsArray<T> extends JavaScriptObject implements ListOf<T> {
 	 *            The zero-based location in the array from which to start
 	 *            removing elements.
 	 */
-	public native JsArray<T> splice(int start);
+	// FIXME GWT compile error: public native JsArray<T> splice(int start);
 	/*-{
 		return this.splice(start);
 	}-*/;
