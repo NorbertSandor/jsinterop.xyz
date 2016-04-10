@@ -35,6 +35,11 @@ public final class JsUtils {
 		return typeof(object);
 	}-*/;
 
+	public static native String getPropertyString(Object object, String property)
+	/*-{
+		return object[property];
+	}-*/;
+
 	private JsUtils() {
 	}
 }
