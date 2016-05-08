@@ -13,6 +13,7 @@ package xyz.jsinterop.client.dom;
  */
 
 import jsinterop.annotations.JsMethod;
+import jsinterop.annotations.JsOverlay;
 import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
@@ -248,9 +249,6 @@ public interface Node extends EventTarget {
 	public abstract boolean hasChildNodes();
 
 	@JsMethod
-	public abstract Node insertBefore(final Node newChild);
-
-	@JsMethod
 	public abstract Node insertBefore(final Node newChild, final Node refChild);
 
 	@JsMethod
@@ -279,4 +277,20 @@ public interface Node extends EventTarget {
 
 	@JsMethod
 	public abstract boolean contains(final Node node);
+
+	/**
+	 * Inserts the specified node before the given index, shifting existing
+	 * elements to the right.
+	 * 
+	 * @throw IllegalArgumentException if {@code index} is less than zero or
+	 *        greater than the number of child nodes
+	 */
+	@JsOverlay
+	public default void insertBefore(final Node newChild, int index) {
+		if (index < 0 || index > getChildNodes().getLength()) {
+			throw new IllegalArgumentException("index is out of range: " + index);
+		}
+
+		insertBefore(newChild, getChildNodes().get(index));
+	}
 }
